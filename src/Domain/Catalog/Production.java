@@ -11,11 +11,11 @@ public class Production {
         throw new UnsupportedOperationException();
     }
 
-    public void addToProduction(){
+    public void addToProduction(int productionID){
         throw new UnsupportedOperationException();
     }
 
-    public void updateProduction() {
+    public void updateProduction(int productionID) {
         throw new UnsupportedOperationException();
     }
 
