@@ -2,9 +2,11 @@ package Domain.Catalog;
 
 public class Credit {
     private String jobTitle;
+    Person p;
 
-    public void createCredit(Person p) {
-        throw new UnsupportedOperationException();
+    public Credit(String jobTitle, Person p) {
+        this.jobTitle = jobTitle;
+        this.p = p;
     }
 
     public void updateCredit() {
