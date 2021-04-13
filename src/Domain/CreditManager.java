@@ -10,8 +10,6 @@ public class CreditManager {
         throw new UnsupportedOperationException();
     }
 
-    ;
-
     public Production chooseProduction(int productionID) {
         throw new UnsupportedOperationException();
     }
