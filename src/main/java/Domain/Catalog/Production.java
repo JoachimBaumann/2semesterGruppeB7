@@ -24,6 +24,7 @@ public class Production {
         throw new UnsupportedOperationException();
     }
 
+    /*
     public void addToProduction(int productionID, Credit credit){
         for (Production p: Catalog) { //TODO update catalog to pass a list to Production.
             if(p.productionID == productionID) {
@@ -31,6 +32,8 @@ public class Production {
             }
         }
     }
+
+     */
 
     public void updateProduction(int productionID) {
         throw new UnsupportedOperationException();
