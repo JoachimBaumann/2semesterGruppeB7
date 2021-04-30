@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87a629da-a715-4dbe-98bf-0c3162ec1a00" name="Default Changelist" comment="test 2 -&gt; test 3" />
+    <list default="true" id="87a629da-a715-4dbe-98bf-0c3162ec1a00" name="Default Changelist" comment="test 2 -&gt; test 3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Presentation/loginSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -68,6 +71,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main (1)" />
@@ -92,6 +106,7 @@
       <workItem from="1618343282281" duration="12000" />
       <workItem from="1618905173720" duration="953000" />
       <workItem from="1619101246962" duration="606000" />
+      <workItem from="1619511263186" duration="2019000" />
     </task>
     <servers />
   </component>
