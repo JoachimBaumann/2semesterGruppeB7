@@ -9,4 +9,16 @@ public class loginSystem {
     //user = txtUser.getText();
     //pass = txtPass.getText();
 
+    //if(pass.equals("ID:01"))
+
+    {
+      //  lblDisplay.setText("Credentials Accepted.");
+    }
+//else
+
+    {
+       // lblDisplay.setText("Please try again.");
+
+
+    }
 }
