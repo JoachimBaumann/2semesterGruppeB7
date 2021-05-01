@@ -23,9 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87a629da-a715-4dbe-98bf-0c3162ec1a00" name="Default Changelist" comment="Pillet ved FXML -&gt; Scenebuilder">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/TV2CREDITS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/UI-Background.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2semesterGruppeB7.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Presentation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Presentation/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/sample.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +57,15 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1r4aRQNdC29WoHmnLZuOYYJrJM5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -161,5 +169,23 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Pillet ved FXML -&gt; Scenebuilder" />
     <option name="LAST_COMMIT_MESSAGE" value="Pillet ved FXML -&gt; Scenebuilder" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1308" height="253" key="GridCell.Tab.0.bottom" timestamp="1619872049298">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1308" height="253" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1619872049298" />
+    <state width="1308" height="253" key="GridCell.Tab.0.center" timestamp="1619872049298">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1308" height="253" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1619872049298" />
+    <state width="1308" height="253" key="GridCell.Tab.0.left" timestamp="1619872049298">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1308" height="253" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1619872049298" />
+    <state width="1308" height="253" key="GridCell.Tab.0.right" timestamp="1619872049298">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1308" height="253" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1619872049298" />
   </component>
 </project>
