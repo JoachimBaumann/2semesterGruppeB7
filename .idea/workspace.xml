@@ -23,9 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87a629da-a715-4dbe-98bf-0c3162ec1a00" name="Default Changelist" comment="Pillet ved FXML -&gt; Scenebuilder">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2semesterGruppeB7.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Presentation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Presentation/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/sample.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,13 +53,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.2\plugins\maven\lib\maven3" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectId" id="1r4aRQNdC29WoHmnLZuOYYJrJM5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
