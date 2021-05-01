@@ -45,16 +45,20 @@
           <MenuItem mnemonicParsing="false" text="Register" />
         </items>
       </MenuButton>
-      <VBox layoutX="460.0" layoutY="72.0" prefHeight="119.0" prefWidth="361.0">
+      <VBox layoutX="450.0" layoutY="72.0" prefHeight="131.0" prefWidth="351.0">
          <children>
-            <HBox fx:id="hBoxSignIn" prefHeight="161.0" prefWidth="364.0" snapToPixel="false">
+            <VBox prefHeight="134.0" prefWidth="351.0">
                <children>
-                  <TextField layoutX="10.0" layoutY="10.0" />
-                  <TextField />
-                  <PasswordField />
-                  <Button mnemonicParsing="false" onAction="#bCancel" prefHeight="35.0" prefWidth="57.0" text="Log In" />
+                  <HBox fx:id="hBoxSignIn" prefHeight="161.0" prefWidth="364.0" snapToPixel="false">
+                     <children>
+                        <TextField text="Username" />
+                        <PasswordField text="Password" />
+                        <Button minHeight="19.0" minWidth="46.0" mnemonicParsing="false" onAction="#bCancel" prefHeight="34.0" prefWidth="46.0" text="Log In" />
+                     </children>
+                  </HBox>
+                  <Button minHeight="17.0" minWidth="38.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="38.0" text="Button" textAlignment="CENTER" />
                </children>
-            </HBox>
+            </VBox>
          </children>
       </VBox>
    </children>
