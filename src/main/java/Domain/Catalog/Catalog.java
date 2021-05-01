@@ -20,18 +20,18 @@ public class Catalog {
     }
 
     public Production getProduction(int productionID) {
-        throw new UnsupportedOperationException();
+        Production temp = null;
+        for (Production p : productions) {
+            if (p.getProductionID() == productionID) {
+                temp = p;
+            }
+        }
+        return temp;
     }
 
     public Production getProduction(String name) {
-        for (Production p: productions) {
-            if(name.equals(p.getProductionName())) {
-                return p;
-            }
-        }
-        return null;
+        throw new UnsupportedOperationException();
     }
-}
 
 
 
