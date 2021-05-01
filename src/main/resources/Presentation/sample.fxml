@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
    <children>
-      <ImageView fitHeight="540.0" fitWidth="844.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="darkBackground" fitHeight="540.0" fitWidth="844.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <viewport>
             <Rectangle2D height="540.0" width="844.0" />
          </viewport>
@@ -33,7 +33,7 @@
          </viewport>
       </ImageView>
       <Button layoutX="743.0" layoutY="40.0" mnemonicParsing="false" text="Sign in" visible="false" />
-      <ToggleButton layoutX="684.0" layoutY="13.0" minWidth="49.0" prefHeight="32.0" prefWidth="49.0" text="Dark">
+      <ToggleButton layoutX="684.0" layoutY="13.0" minWidth="49.0" onAction="#bDark" prefHeight="32.0" prefWidth="49.0" text="Dark">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -45,11 +45,11 @@
           <MenuItem mnemonicParsing="false" text="Register" />
         </items>
       </MenuButton>
-      <VBox layoutX="450.0" layoutY="72.0" prefHeight="131.0" prefWidth="351.0">
+      <VBox layoutX="450.0" layoutY="72.0" prefHeight="131.0" prefWidth="371.0">
          <children>
-            <VBox fx:id="vBox" prefHeight="134.0" prefWidth="351.0">
+            <VBox fx:id="vBoxSignIn" prefHeight="131.0" prefWidth="344.0">
                <children>
-                  <HBox fx:id="hBoxSignIn" prefHeight="105.0" prefWidth="351.0" snapToPixel="false">
+                  <HBox fx:id="hBoxSignIn" prefHeight="102.0" prefWidth="347.0" snapToPixel="false">
                      <children>
                         <TextField text="Username" />
                         <PasswordField text="Password" />
