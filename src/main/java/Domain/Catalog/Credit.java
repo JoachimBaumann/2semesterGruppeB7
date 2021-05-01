@@ -20,4 +20,12 @@ public class Credit {
     public Person getP() {
         return p;
     }
+
+    @Override
+    public String toString() {
+        return "Credit{" +
+                "jobTitle='" + jobTitle + '\'' +
+                ", p=" + p +
+                '}';
+    }
 }

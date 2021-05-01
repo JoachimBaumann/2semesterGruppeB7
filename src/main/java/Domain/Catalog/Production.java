@@ -43,4 +43,14 @@ public class Production {
     public HashMap<Integer,Credit> getCreditList() {
         return creditList;
     }
+
+    @Override
+    public String toString() {
+        return "Production{" +
+                "productionID=" + productionID +
+                ",\n releaseDate=" + releaseDate +
+                ",\n productionName='" + productionName + '\'' +
+                ",\n creditList=" + creditList + "\n" +
+                '}';
+    }
 }

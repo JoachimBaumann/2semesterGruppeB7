@@ -5,7 +5,15 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Catalog {
-    private HashMap<String,Production> productions = new HashMap<>();
+    private HashMap<Integer,Production> productions;
+
+    public Catalog() {
+        this.productions = new HashMap<>();
+    }
+
+    public void createProduction(Integer productionID,Date date,String productionName){
+        productions.put(productionID,new Production(productionID,date,productionName));
+    }
 
     public void getProductions(int productionID, Date releasedate) {
         throw new UnsupportedOperationException();
@@ -14,6 +22,7 @@ public class Catalog {
     public void editCredit() {
         throw new UnsupportedOperationException();
     }
+
 
     public void searchID(String name, int productionID) {
         throw new UnsupportedOperationException();
