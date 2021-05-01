@@ -2,9 +2,10 @@ package Domain.Catalog;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Catalog {
-    private ArrayList<Production> productions;
+    private HashMap<String,Production> productions = new HashMap<>();
 
     public void getProductions(int productionID, Date releasedate) {
         throw new UnsupportedOperationException();
@@ -20,17 +21,15 @@ public class Catalog {
     }
 
     public Production getProduction(int productionID) {
-        Production temp = null;
-        for (Production p : productions) {
-            if (p.getProductionID() == productionID) {
-                temp = p;
-            }
-        }
-        return temp;
+        return productions.get(productionID);
     }
 
     public Production getProduction(String name) {
         throw new UnsupportedOperationException();
+    }
+
+    public void addToProduction(int productionID, Credit credit){
+        productions.get(productionID).addToProduction(credit);
     }
 
 }

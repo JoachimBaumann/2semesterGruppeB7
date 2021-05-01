@@ -2,24 +2,25 @@ package Domain.Catalog;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Production {
 
     private int productionID;
     private Date releaseDate;
     private String productionName;
-    private ArrayList<Credit> creditList;
+    private HashMap<Integer,Credit> creditList;
 
     public Production(int productionID, Date releaseDate, String productionName) {
         this.productionID = productionID;
         this.releaseDate = releaseDate;
         this.productionName = productionName;
-        this.creditList = new ArrayList<>();
+        this.creditList = new HashMap<>();
     }
 
 
-    public void addToProduction(String job,Person p){
-        creditList.add(new Credit(job,p));
+    public void addToProduction(Credit credit){
+        creditList.put(credit.getP().getuID(),credit);
 
     }
 
@@ -39,7 +40,7 @@ public class Production {
         return productionName;
     }
 
-    public ArrayList<Credit> getCreditList() {
+    public HashMap<Integer,Credit> getCreditList() {
         return creditList;
     }
 }
