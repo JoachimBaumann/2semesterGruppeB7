@@ -1,5 +1,6 @@
 package Presentation;
 
+import Domain.Catalog.Catalog;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -11,6 +12,7 @@ public class Controller {
     public VBox vBoxSignIn;
     public Button bDark;
     public ImageView darkBackground;
+    Domain.Catalog.Catalog catalog = new Catalog();
 
     public void bSignIn(ActionEvent actionEvent) {
         vBoxSignIn.setVisible(true);
