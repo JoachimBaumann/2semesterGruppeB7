@@ -10,33 +10,36 @@ public class Production {
     private String productionName;
     private ArrayList<Credit> creditList;
 
-    public Production(int productionID, Date releaseDate, String productionName, Credit credits) {
+    public Production(int productionID, Date releaseDate, String productionName) {
         this.productionID = productionID;
         this.releaseDate = releaseDate;
         this.productionName = productionName;
         this.creditList = new ArrayList<>();
     }
 
-    public Production getProduction(int productionID){
-        throw new UnsupportedOperationException();
-    }
-    public Production getProduction(String name){
-        throw new UnsupportedOperationException();
-    }
 
-    /*
-    public void addToProduction(int productionID, Credit credit){
-        for (Production p: Catalog) { //TODO update catalog to pass a list to Production.
-            if(p.productionID == productionID) {
-                creditList.add(credit);
-            }
-        }
-    }
+    public void addToProduction(String job,Person p){
+        creditList.add(new Credit(job,p));
 
-     */
+    }
 
     public void updateProduction(int productionID) {
         throw new UnsupportedOperationException();
     }
 
+    public int getProductionID() {
+        return productionID;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getProductionName() {
+        return productionName;
+    }
+
+    public ArrayList<Credit> getCreditList() {
+        return creditList;
+    }
 }
