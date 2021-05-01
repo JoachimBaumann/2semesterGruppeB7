@@ -41,10 +41,6 @@ public class Person {
         return uID;
     }
 
-    public void setuID(int uID) {
-        this.uID = uID;
-    }
-
     @Override
     public String toString() {
         return "Person{" +
