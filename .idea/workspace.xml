@@ -22,9 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87a629da-a715-4dbe-98bf-0c3162ec1a00" name="Default Changelist" comment="Minor fixes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Presentation/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Presentation/sample.fxml" afterDir="false" />
+    <list default="true" id="87a629da-a715-4dbe-98bf-0c3162ec1a00" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Presentation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presentation/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
