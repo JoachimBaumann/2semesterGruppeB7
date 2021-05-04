@@ -17,7 +17,7 @@ public class Credit {
         return jobTitle;
     }
 
-    public Person getP() {
+    public Person getPerson() {
         return p;
     }
 

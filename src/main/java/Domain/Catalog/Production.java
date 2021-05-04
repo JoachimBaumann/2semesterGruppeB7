@@ -1,6 +1,5 @@
 package Domain.Catalog;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -20,7 +19,7 @@ public class Production {
 
 
     public void addToProduction(Credit credit){
-        creditList.put(credit.getP().getuID(),credit);
+        creditList.put(credit.getPerson().getuID(),credit);
 
     }
 
