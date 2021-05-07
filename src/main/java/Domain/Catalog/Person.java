@@ -41,7 +41,13 @@ public class Person {
         return uID;
     }
 
-    public void setuID(int uID) {
-        this.uID = uID;
+    @Override
+    public String toString() {
+        return "Person{" +
+                "fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", uID=" + uID +
+                '}' + "\n";
     }
 }

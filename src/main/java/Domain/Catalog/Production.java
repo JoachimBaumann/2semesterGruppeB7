@@ -1,42 +1,55 @@
 package Domain.Catalog;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Production {
 
     private int productionID;
     private Date releaseDate;
     private String productionName;
-    private ArrayList<Credit> creditList;
+    private HashMap<Integer,Credit> creditList;
 
-    public Production(int productionID, Date releaseDate, String productionName, Credit credits) {
+    public Production(int productionID, Date releaseDate, String productionName) {
         this.productionID = productionID;
         this.releaseDate = releaseDate;
         this.productionName = productionName;
-        this.creditList = new ArrayList<>();
+        this.creditList = new HashMap<>();
     }
 
-    public Production getProduction(int productionID){
-        throw new UnsupportedOperationException();
-    }
-    public Production getProduction(String name){
-        throw new UnsupportedOperationException();
-    }
 
-    /*
-    public void addToProduction(int productionID, Credit credit){
-        for (Production p: Catalog) { //TODO update catalog to pass a list to Production.
-            if(p.productionID == productionID) {
-                creditList.add(credit);
-            }
-        }
-    }
+    public void addToProduction(Credit credit){
+        creditList.put(credit.getPerson().getuID(),credit);
 
-     */
+    }
 
     public void updateProduction(int productionID) {
         throw new UnsupportedOperationException();
     }
 
+    public int getProductionID() {
+        return productionID;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getProductionName() {
+        return productionName;
+    }
+
+    public HashMap<Integer,Credit> getCreditList() {
+        return creditList;
+    }
+
+    @Override
+    public String toString() {
+        return "Production{" +
+                "productionID=" + productionID +
+                ",\n releaseDate=" + releaseDate +
+                ",\n productionName='" + productionName + '\'' +
+                ",\n creditList=" + creditList + "\n" +
+                '}';
+    }
 }

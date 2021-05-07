@@ -12,4 +12,20 @@ public class Credit {
     public void updateCredit() {
         throw new UnsupportedOperationException();
     }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public Person getPerson() {
+        return p;
+    }
+
+    @Override
+    public String toString() {
+        return "Credit{" +
+                "jobTitle='" + jobTitle + '\'' +
+                ", p=" + p +
+                '}';
+    }
 }
