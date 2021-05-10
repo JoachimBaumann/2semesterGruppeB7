@@ -2,9 +2,10 @@
 
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
@@ -13,8 +14,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
    <children>
       <ImageView fx:id="darkBackground" fitHeight="540.0" fitWidth="844.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <viewport>
@@ -33,33 +35,66 @@
          </viewport>
       </ImageView>
       <Button layoutX="743.0" layoutY="40.0" mnemonicParsing="false" text="Sign in" visible="false" />
-      <ToggleButton layoutX="684.0" layoutY="13.0" minWidth="49.0" onAction="#bDark" prefHeight="32.0" prefWidth="49.0" text="Dark">
+      <ToggleButton layoutX="680.0" layoutY="20.0" minWidth="49.0" onAction="#bDark" prefHeight="26.0" prefWidth="53.0" text="Dark">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </ToggleButton>
-      <TextField layoutX="218.0" layoutY="17.0" prefHeight="32.0" prefWidth="445.0" style="-fx-background-color: ffffff;" />
-      <MenuButton fx:id="bLogIn" layoutX="748.0" layoutY="15.0" mnemonicParsing="false" text="Log in">
+      <TextField layoutX="209.0" layoutY="17.0" prefHeight="32.0" prefWidth="467.0" style="-fx-background-color: ffffff;" />
+      <SplitMenuButton fx:id="logInd" layoutX="741.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Log ind">
         <items>
-          <MenuItem mnemonicParsing="false" onAction="#bSignIn" text="Sign in" />
-          <MenuItem mnemonicParsing="false" text="Register" />
+          <MenuItem fx:id="action1" mnemonicParsing="false" onAction="#actionOne" text="Log ind" />
+          <MenuItem fx:id="action2" mnemonicParsing="false" onAction="#actionTwo" text="Opret bruger" />
         </items>
-      </MenuButton>
-      <VBox layoutX="450.0" layoutY="72.0" prefHeight="131.0" prefWidth="371.0">
+      </SplitMenuButton>
+      <VBox layoutX="450.0" layoutY="72.0" prefHeight="94.0" prefWidth="371.0">
          <children>
-            <VBox fx:id="vBoxSignIn" prefHeight="131.0" prefWidth="344.0">
+            <VBox fx:id="vBoxSignIn" prefHeight="106.0" prefWidth="371.0">
                <children>
-                  <HBox fx:id="hBoxSignIn" prefHeight="102.0" prefWidth="347.0" snapToPixel="false">
+                  <HBox fx:id="hBoxSignIn" prefHeight="62.0" prefWidth="371.0" snapToPixel="false">
                      <children>
-                        <TextField text="Username" />
-                        <PasswordField text="Password" />
-                        <Button minHeight="19.0" minWidth="46.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="46.0" text="Log In" />
+                        <TextField fx:id="userName" promptText="Brugernavn" />
+                        <PasswordField fx:id="userPassword" promptText="Adgangskode" />
+                        <Button minHeight="19.0" minWidth="46.0" mnemonicParsing="false" onAction="#signIn" prefHeight="25.0" prefWidth="58.0" text="Log Ind" />
                      </children>
                   </HBox>
+                  <Label fx:id="label" prefHeight="18.0" prefWidth="257.0" textFill="#d90e0e" />
                   <Button mnemonicParsing="false" onAction="#bCancel" text="Cancel" />
+                  <Button mnemonicParsing="false" onAction="#forgotCode" text="Glemt din kode?" />
                </children>
             </VBox>
          </children>
       </VBox>
+      <AnchorPane fx:id="newMember" layoutX="450.0" layoutY="170.0" prefHeight="200.0" prefWidth="363.0">
+         <children>
+            <TextField layoutY="10.0" prefHeight="10.0" prefWidth="168.0" />
+            <Text fill="#1b481c" layoutX="178.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail adresse" wrappingWidth="94.03631591796875">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField layoutY="43.0" prefHeight="26.0" prefWidth="168.0" />
+            <Text fill="#1b481c" layoutX="178.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brugernavn">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <PasswordField layoutY="81.0" prefHeight="26.0" prefWidth="168.0" />
+            <PasswordField layoutY="118.0" prefHeight="26.0" prefWidth="168.0" />
+            <Text fill="#1b481c" layoutX="178.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adgangskode">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#1b481c" layoutX="178.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bekræft adgangskode">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Button layoutY="161.0" mnemonicParsing="false" text="Registre" />
+            <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#rCancel" text="Cancel" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="29.0" layoutY="7.0" mnemonicParsing="false" onAction="#logoClick" opacity="0.0" prefHeight="46.0" prefWidth="149.0" text="Logo" />
    </children>
 </AnchorPane>
