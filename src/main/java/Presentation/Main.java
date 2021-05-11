@@ -20,8 +20,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 838, 540));
         primaryStage.show();
 
-
-        System.out.println("this shit works");
     }
 
 
