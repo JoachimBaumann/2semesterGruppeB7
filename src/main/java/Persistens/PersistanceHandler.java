@@ -1,20 +1,23 @@
 package Persistens;
 
+import Domain.Catalog.Credit;
 import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 import Domain.CreditManager;
 import Domain.IPersistanceHandler;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
     private String url = "localhost";
     private int port = 5432;
-    private String databaseName = "CreditmanagementDB";
+    private String databaseName = "Projekt";
     private String username = "postgres";
-    private String password = "1234";
+    private String password = "ArgsNKN/1998";
     private Connection connection = null;
 
     private PersistanceHandler(){
@@ -87,13 +90,38 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void getCredits() {
-
+    public List<Credit> getCredits() {
+        List<Credit> returnValue = new ArrayList<>();
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM credit");
+            ResultSet sqlReturnCredits = statement.executeQuery();
+            while(sqlReturnCredits.next()){
+                returnValue.add(new Credit(sqlReturnCredits.getString(1), new Person(sqlReturnCredits.getString(1), sqlReturnCredits.getString(2),
+                        sqlReturnCredits.getString(3),sqlReturnCredits.getInt(4),sqlReturnCredits.getInt(5), sqlReturnCredits.getString(6))));
+            }
+            return returnValue;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return returnValue;
     }
 
     @Override
-    public void getCredit(int creditID) {
-
+    public Credit getCredit(int creditID) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM credit WHERE creditID = ?");
+            statement.setInt(1,creditID);
+            ResultSet sqlReturnCredit = statement.executeQuery();
+            if(!sqlReturnCredit.next()){
+                return null;
+            }
+            return new Credit(sqlReturnCredit.getString(1), new Person(sqlReturnCredit.getString(1),sqlReturnCredit.getString(2),
+                   sqlReturnCredit.getString(3),sqlReturnCredit.getInt(4),sqlReturnCredit.getInt(5),sqlReturnCredit.getString(6)));
+            //Er i tvivl om jeg har gjort ovenstående rigtigt...?
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
@@ -125,7 +153,8 @@ public class PersistanceHandler implements IPersistanceHandler {
             if (!sqlReturnValues.next()) {
                 return null;
             }
-            return new Person(sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getInt(4), sqlReturnValues.getInt(5));
+            return new Person(sqlReturnValues.getString(1), sqlReturnValues.getString(2), sqlReturnValues.getString(3),
+                    sqlReturnValues.getInt(4), sqlReturnValues.getInt(5), sqlReturnValues.getString(6));
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -140,12 +169,33 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void deletePerson(int PersonID) {
-
+    public boolean deletePerson(int personID) {
+        try{
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM person WHERE uid = ?");
+            statement.setInt(1,personID);
+            return statement.execute();
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public void addPerson() {
-
+    public boolean addPerson(Person person) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO person (mail,fname,lname,phonenumber,uid,description)"
+                    + " VALUES (?,?,?,?,?,?) ");
+            statement.setString(1, person.getMail());
+            statement.setString(2, person.getfName());
+            statement.setString(3, person.getlName());
+            statement.setInt(4, person.getPhoneNumber());
+            statement.setInt(5, person.getuID());
+            statement.setString(6, person.getDescription());
+            statement.execute();
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
     }
 }

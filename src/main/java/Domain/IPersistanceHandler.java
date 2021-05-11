@@ -3,6 +3,11 @@ package Domain;
 import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 
+import Domain.Catalog.Credit;
+import Domain.Catalog.Person;
+
+import java.util.List;
+
 public interface IPersistanceHandler {
 
     //Production
@@ -15,8 +20,8 @@ public interface IPersistanceHandler {
     public void addProduction();
 
     //Credit
-    public void getCredits();
-    public void getCredit(int creditID);
+    public List<Credit> getCredits();
+    public Credit getCredit(int creditID);
     public void updateCredit();
     public void deleteCredit(int creditID);
     public void addCredit();
@@ -26,8 +31,8 @@ public interface IPersistanceHandler {
     public void getPersons();
     public Person getPerson(int personID);
     public void updatePerson();
-    public void deletePerson(int PersonID);
-    public void addPerson();
+    public boolean deletePerson(int personID);
+    public boolean addPerson(Person person);
 
 
 
