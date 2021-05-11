@@ -2,13 +2,14 @@ package Persistens;
 
 import Domain.Catalog.Production;
 import Domain.CreditManager;
+import Domain.IPersistanceHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class PersistanceHandler implements CreditManager {
+public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
     private String url = "localhost";
     private int port = 5432;
@@ -40,37 +41,87 @@ public class PersistanceHandler implements CreditManager {
     }
 
     @Override
-    public void ViewAllProductions() {
+    public void getProductions() {
 
     }
 
     @Override
-    public Production chooseProduction(int productionID) {
-        return null;
-    }
-
-    @Override
-    public void addCredit(String fName, String lName, String jobTitle, int phoneNumber) {
+    public void getProduction(int productionID) {
 
     }
 
     @Override
-    public void confirmChanges() {
+    public boolean setProduction() {
+        return false;
+    }
+
+    @Override
+    public void searchProduction(String name) {
 
     }
 
     @Override
-    public void findProduction() {
+    public void updateProduction() {
 
     }
 
     @Override
-    public void generateReport(int productionID, Date releaseDate) {
+    public void deleteProduction(int productionID) {
 
     }
 
     @Override
-    public void saveReport() {
+    public void addProduction() {
+
+    }
+
+    @Override
+    public void getCredits() {
+
+    }
+
+    @Override
+    public void getCredit(int creditID) {
+
+    }
+
+    @Override
+    public void updateCredit() {
+
+    }
+
+    @Override
+    public void deleteCredit(int creditID) {
+
+    }
+
+    @Override
+    public void addCredit() {
+
+    }
+
+    @Override
+    public void getPersons() {
+
+    }
+
+    @Override
+    public void getPerson(int personID) {
+
+    }
+
+    @Override
+    public void updatePerson() {
+
+    }
+
+    @Override
+    public void deletePerson(int PersonID) {
+
+    }
+
+    @Override
+    public void addPerson() {
 
     }
 }
