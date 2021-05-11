@@ -34,7 +34,7 @@
       </ImageView>
       <ImageView fx:id="creditDark" fitHeight="59.0" fitWidth="198.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/C:/Users/phillip/IdeaProjects/phnie19/2semesterGruppeB7/src/main/resources/Images/" />
+            <Image url="@../Images/Dark_Credits.png" />
          </image>
       </ImageView>
       <Button layoutX="743.0" layoutY="40.0" mnemonicParsing="false" text="Sign in" visible="false" />
