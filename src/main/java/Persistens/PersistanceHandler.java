@@ -17,7 +17,7 @@ public class PersistanceHandler implements IPersistanceHandler {
     private String password = "1234";
     private Connection connection = null;
 
-    public PersistanceHandler(){
+    private PersistanceHandler(){
         initializePostgresqlDatabase();
     }
 
