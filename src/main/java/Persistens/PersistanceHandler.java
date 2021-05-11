@@ -8,8 +8,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class Facade implements CreditManager {
-    private static Facade instance;
+public class PersistanceHandler implements CreditManager {
+    private static PersistanceHandler instance;
     private String url = "localhost";
     private int port = 5432;
     private String databaseName = "Projekt";
@@ -17,13 +17,13 @@ public class Facade implements CreditManager {
     private String password = "skriv din kode";
     private Connection connection = null;
 
-    private Facade(){
+    private PersistanceHandler(){
         initializePostgresqlDatabase();
     }
 
-    public static Facade getInstance(){
+    public static PersistanceHandler getInstance(){
         if (instance == null) {
-            instance = new Facade();
+            instance = new PersistanceHandler();
         }
         return instance;
     }
