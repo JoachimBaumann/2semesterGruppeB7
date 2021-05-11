@@ -4,6 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -14,6 +19,7 @@ public class Main extends Application {
         primaryStage.setTitle("TV2 Credits");
         primaryStage.setScene(new Scene(root, 838, 540));
         primaryStage.show();
+
 
         System.out.println("this shit works");
     }

@@ -12,6 +12,8 @@ public class Controller {
     public VBox vBoxSignIn;
     public Button bDark;
     public ImageView darkBackground;
+    public ImageView creditDark;
+    public ImageView lightCredits;
     Domain.Catalog.Catalog catalog = new Catalog();
 
     public void bSignIn(ActionEvent actionEvent) {
@@ -23,8 +25,12 @@ public class Controller {
     public void bDark(ActionEvent actionEvent){
             if (darkBackground.isVisible() == true){
                 darkBackground.setVisible(false);
+                creditDark.setVisible(false);
+                lightCredits.setVisible(true);
             }else{
                 darkBackground.setVisible(true);
+                creditDark.setVisible(true);
+                lightCredits.setVisible(false);
             }
     }
 }

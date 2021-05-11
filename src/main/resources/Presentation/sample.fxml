@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
    <children>
-      <ImageView fx:id="darkBackground" fitHeight="540.0" fitWidth="844.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="darkBackground" fitHeight="540.0" fitWidth="844.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
          <viewport>
             <Rectangle2D height="540.0" width="844.0" />
          </viewport>
@@ -24,13 +24,18 @@
             <Image url="@../Images/UI-Background.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="59.0" fitWidth="198.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="lightCredits" fitHeight="59.0" fitWidth="198.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../Images/TV2CREDITS.png" />
          </image>
          <viewport>
             <Rectangle2D />
          </viewport>
+      </ImageView>
+      <ImageView fx:id="creditDark" fitHeight="59.0" fitWidth="198.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/C:/Users/phillip/IdeaProjects/phnie19/2semesterGruppeB7/src/main/resources/Images/" />
+         </image>
       </ImageView>
       <Button layoutX="743.0" layoutY="40.0" mnemonicParsing="false" text="Sign in" visible="false" />
       <ToggleButton layoutX="684.0" layoutY="13.0" minWidth="49.0" onAction="#bDark" prefHeight="32.0" prefWidth="49.0" text="Dark">
@@ -45,7 +50,7 @@
           <MenuItem mnemonicParsing="false" text="Register" />
         </items>
       </MenuButton>
-      <VBox layoutX="450.0" layoutY="72.0" prefHeight="131.0" prefWidth="371.0">
+      <VBox layoutX="450.0" layoutY="72.0" prefHeight="131.0" prefWidth="371.0" visible="false">
          <children>
             <VBox fx:id="vBoxSignIn" prefHeight="131.0" prefWidth="344.0">
                <children>
