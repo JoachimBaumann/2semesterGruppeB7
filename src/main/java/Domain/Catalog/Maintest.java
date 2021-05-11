@@ -12,6 +12,7 @@ public class Maintest {
         PersistanceHandler p = PersistanceHandler.getInstance();
 
         System.out.println(p.getPerson(1));
+        System.out.println(p.getProduction(1));
 
     }
 
