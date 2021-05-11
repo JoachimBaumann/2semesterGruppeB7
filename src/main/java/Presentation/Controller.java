@@ -26,6 +26,8 @@ public class Controller {
     public PasswordField userPassword;
     public Label label;
     public SplitMenuButton logInd;
+    public ImageView lightCredit;
+    public ImageView darkCredit;
     Domain.Catalog.Catalog catalog = new Catalog();
 
 
@@ -110,9 +112,13 @@ public class Controller {
     public void bDark(ActionEvent actionEvent){
             if (darkBackground.isVisible() == true){
                 darkBackground.setVisible(false);
+                darkCredit.setVisible(false);
+                lightCredit.setVisible(true);
 
             }else{
                 darkBackground.setVisible(true);
+                darkCredit.setVisible(true);
+                lightCredit.setVisible(false);
 
             }
     }

@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
    <children>
       <ImageView fx:id="darkBackground" fitHeight="540.0" fitWidth="844.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <viewport>
@@ -26,13 +26,18 @@
             <Image url="@../Images/UI-Background.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="59.0" fitWidth="198.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="lightCredit" fitHeight="59.0" fitWidth="198.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/TV2CREDITS.png" />
          </image>
          <viewport>
             <Rectangle2D />
          </viewport>
+      </ImageView>
+      <ImageView fx:id="darkCredit" fitHeight="59.0" fitWidth="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../Images/Dark_Credits.png" />
+         </image>
       </ImageView>
       <Button layoutX="743.0" layoutY="40.0" mnemonicParsing="false" text="Sign in" visible="false" />
       <ToggleButton layoutX="680.0" layoutY="20.0" minWidth="49.0" onAction="#bDark" prefHeight="26.0" prefWidth="53.0" text="Dark">
