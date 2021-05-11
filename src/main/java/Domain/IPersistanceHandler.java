@@ -1,5 +1,7 @@
 package Domain;
 
+import Domain.Catalog.Person;
+
 public interface IPersistanceHandler {
 
     //Production
@@ -21,7 +23,7 @@ public interface IPersistanceHandler {
 
     //Person
     public void getPersons();
-    public void getPerson(int personID);
+    public Person getPerson(int personID);
     public void updatePerson();
     public void deletePerson(int PersonID);
     public void addPerson();
