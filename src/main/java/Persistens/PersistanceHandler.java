@@ -44,8 +44,20 @@ public class PersistanceHandler implements IPersistanceHandler {
 
     }
 
-    @Override
-    public void getProduction(int productionID) {
+    @Override // få metoden til at loade credits ind i Productionslisten.
+    public Production getProduction(int productionID) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Production WHERE productionID = ?");
+            stmt.setInt(1, productionID);
+            ResultSet sqlReturnValues = stmt.executeQuery();
+            if (!sqlReturnValues.next()) {
+                return null;
+            }
+            return new Production(sqlReturnValues.getInt(1), sqlReturnValues.getDate(2), sqlReturnValues.getString(3));
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
 
     }
 

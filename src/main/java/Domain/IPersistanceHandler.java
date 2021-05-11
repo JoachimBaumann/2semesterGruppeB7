@@ -1,12 +1,13 @@
 package Domain;
 
 import Domain.Catalog.Person;
+import Domain.Catalog.Production;
 
 public interface IPersistanceHandler {
 
     //Production
     public void getProductions();
-    public void getProduction(int productionID);
+    public Production getProduction(int productionID);
     public boolean setProduction();
     public void searchProduction(String name);
     public void updateProduction();
