@@ -7,15 +7,16 @@ import Domain.IPersistanceHandler;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
     private String url = "localhost";
     private int port = 5432;
-    private String databaseName = "creditmanagement";
+    private String databaseName = "CreditmanagementDB";
     private String username = "postgres";
-    private String password = "mullehund99";
+    private String password = "1234";
     private Connection connection = null;
 
     private PersistanceHandler(){
@@ -90,8 +91,19 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void addProduction() {
-    }
+    public boolean addProduction(Timestamp date, String jobtitle) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO production (releasedate,productionname)" + " VALUES (?,?)");
+            statement.setTimestamp(1, date);
+            statement.setString(2, jobtitle);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    return false;}
+
 
     @Override
     public List<Credit> getCredits() {
