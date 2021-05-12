@@ -15,9 +15,9 @@ public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
     private String url = "localhost";
     private int port = 5432;
-    private String databaseName = "Projekt";
+    private String databaseName = "Project";
     private String username = "postgres";
-    private String password = "ArgsNKN/1998";
+    private String password = "1234";
     private Connection connection = null;
 
     private PersistanceHandler(){
@@ -140,8 +140,22 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void getPersons() {
+    public List<Person> getPersons() {
+        try {
+            PreparedStatement state = connection.prepareStatement("SELECT * FROM Person");
+            ResultSet sqlReturnValues = state.executeQuery();
+            List<Person> returnValue = new ArrayList<>();
 
+            while (sqlReturnValues.next()) {
+                returnValue.add(new Person(sqlReturnValues.getString(1), sqlReturnValues.getString(2), sqlReturnValues.getString(3),
+                        sqlReturnValues.getInt(4), sqlReturnValues.getInt(5), sqlReturnValues.getString(6)));
+            }
+            return returnValue;
+        }
+        catch (SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }
     }
 
     @Override

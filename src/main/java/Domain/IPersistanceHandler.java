@@ -28,7 +28,7 @@ public interface IPersistanceHandler {
 
 
     //Person
-    public void getPersons();
+    public List<Person> getPersons();
     public Person getPerson(int personID);
     public void updatePerson();
     public boolean deletePerson(int personID);

@@ -35,9 +35,7 @@ public class Production {
         return releaseDate;
     }
 
-    public String getProductionName() {
-        return productionName;
-    }
+    public String getProductionName() { return productionName;}
 
     public HashMap<Integer,Credit> getCreditList() {
         return creditList;
