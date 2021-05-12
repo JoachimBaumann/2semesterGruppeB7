@@ -6,11 +6,11 @@ import java.util.HashMap;
 public class Production {
 
     private int productionID;
-    private Date releaseDate;
+    private String releaseDate;
     private String productionName;
     private HashMap<Integer,Credit> creditList;
 
-    public Production(int productionID, Date releaseDate, String productionName) {
+    public Production(int productionID, String releaseDate, String productionName) {
         this.productionID = productionID;
         this.releaseDate = releaseDate;
         this.productionName = productionName;
@@ -31,7 +31,7 @@ public class Production {
         return productionID;
     }
 
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
