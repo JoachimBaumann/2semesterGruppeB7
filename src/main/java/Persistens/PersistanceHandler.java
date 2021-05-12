@@ -91,18 +91,17 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public boolean addProduction(Timestamp date, String jobtitle) {
+    public void addProduction(Timestamp date, String jobtitle) {
         try {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO production (releasedate,productionname)" + " VALUES (?,?)");
             statement.setTimestamp(1, date);
             statement.setString(2, jobtitle);
             statement.execute();
-            return true;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-    return false;}
+    }
 
 
     @Override

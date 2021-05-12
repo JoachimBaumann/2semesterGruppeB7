@@ -27,6 +27,7 @@ public class Maintest {
  */
         p.addProduction(timestamp2,"Langt ned i halsen");
         System.out.println(p.getProduction(2));
+
     }
 
 
