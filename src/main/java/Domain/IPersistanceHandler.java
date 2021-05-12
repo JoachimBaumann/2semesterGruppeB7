@@ -4,7 +4,6 @@ import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 
 import Domain.Catalog.Credit;
-import Domain.Catalog.Person;
 
 import java.util.List;
 
@@ -16,15 +15,15 @@ public interface IPersistanceHandler {
     public boolean setProduction();
     public void searchProduction(String name);
     public void updateProduction();
-    public void deleteProduction(int productionID);
+    public boolean deleteProduction(int productionID);
     public void addProduction();
 
     //Credit
     public List<Credit> getCredits();
     public Credit getCredit(int creditID);
     public void updateCredit();
-    public void deleteCredit(int creditID);
-    public void addCredit();
+    public boolean deleteCredit(int creditID);
+    public void addCredit(int creditID, String JobTitle);
 
 
     //Person

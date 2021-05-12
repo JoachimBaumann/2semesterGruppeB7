@@ -3,21 +3,19 @@ package Persistens;
 import Domain.Catalog.Credit;
 import Domain.Catalog.Person;
 import Domain.Catalog.Production;
-import Domain.CreditManager;
 import Domain.IPersistanceHandler;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
     private String url = "localhost";
     private int port = 5432;
-    private String databaseName = "Projekt";
+    private String databaseName = "creditmanagement";
     private String username = "postgres";
-    private String password = "ArgsNKN/1998";
+    private String password = "mullehund99";
     private Connection connection = null;
 
     private PersistanceHandler(){
@@ -80,13 +78,19 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void deleteProduction(int productionID) {
-
+    public boolean deleteProduction(int productionID) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM production WHERE productionID = ?");
+            statement.setInt(1, productionID);
+            return statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public void addProduction() {
-
     }
 
     @Override
@@ -130,12 +134,27 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void deleteCredit(int creditID) {
+    public boolean deleteCredit(int creditID) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM credit WHERE creditID = ?");
+            statement.setInt(1,creditID);
+            return statement.execute();
+        }   catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
 
     }
 
     @Override
-    public void addCredit() {
+    public void addCredit(int creditID, String jobtitle) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (creditid, jobtitle)" + " VALUES (?,?)");
+            statement.setInt(1,creditID);
+            statement.setString(2, jobtitle);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
