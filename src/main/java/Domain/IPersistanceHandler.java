@@ -23,9 +23,9 @@ public interface IPersistanceHandler {
     //Credit
     public List<Credit> getCredits();
     public Credit getCredit(int creditID);
-    public void updateCredit();
+    public boolean updateCredit(int creditID, String jobTitle);
     public boolean deleteCredit(int creditID);
-    public void addCredit(int creditID, String JobTitle);
+    public boolean addCredit(int creditID, String JobTitle);
 
 
     //Person

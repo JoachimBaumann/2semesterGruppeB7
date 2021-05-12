@@ -32,8 +32,6 @@ public class Maintest {
  */
        // System.out.println(p.deletePerson(4));
 
-
-
     }
 
 }
