@@ -12,7 +12,7 @@ import java.util.List;
 public interface IPersistanceHandler {
 
     //Production
-    public void getProductions();
+    public List<Production> getProductions();
     public Production getProduction(int productionID);
     public boolean setProduction();
     public void searchProduction(String name);
@@ -31,7 +31,7 @@ public interface IPersistanceHandler {
     //Person
     public void getPersons();
     public Person getPerson(int personID);
-    public void updatePerson();
+    public boolean updatePerson(String mail, String fName, String lName, int phoneNumber, int uID, String description);
     public boolean deletePerson(int personID);
     public boolean addPerson(Person person);
 

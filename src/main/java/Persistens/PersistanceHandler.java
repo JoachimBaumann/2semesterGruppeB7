@@ -14,9 +14,9 @@ public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
     private String url = "localhost";
     private int port = 5432;
-    private String databaseName = "CreditmanagementDB";
+    private String databaseName = "Projekt";
     private String username = "postgres";
-    private String password = "1234";
+    private String password = "ArgsNKN/1998";
     private Connection connection = null;
 
     private PersistanceHandler(){
@@ -42,8 +42,20 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void getProductions() {
-
+    public List<Production> getProductions() {
+        List<Production> returnValue = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Production");
+            ResultSet sqlReturnProductions = statement.executeQuery();
+            while (sqlReturnProductions.next()) {
+                returnValue.add(new Production(sqlReturnProductions.getInt(1), sqlReturnProductions.getDate(2),
+                        sqlReturnProductions.getString(3)));
+            }
+            return returnValue;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return returnValue;
     }
 
     @Override // få metoden til at loade credits ind i Productionslisten.
@@ -77,6 +89,7 @@ public class PersistanceHandler implements IPersistanceHandler {
     public void updateProduction() {
 
     }
+
 
     @Override
     public boolean deleteProduction(int productionID) {
@@ -133,7 +146,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             }
             return new Credit(sqlReturnCredit.getString(1), new Person(sqlReturnCredit.getString(1),sqlReturnCredit.getString(2),
                    sqlReturnCredit.getString(3),sqlReturnCredit.getInt(4),sqlReturnCredit.getInt(5),sqlReturnCredit.getString(6)));
-            //Er i tvivl om jeg har gjort ovenstående rigtigt...?
+            //Er i tvivl om jeg har gjort ovenstående rigtigt...? Indtil videre fungerer det
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -193,10 +206,24 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
 
-
     @Override
-    public void updatePerson() {
-
+    public boolean updatePerson(String mail, String fName, String lName, int phoneNumber, int uID, String description) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("UPDATE person SET mail = ?, fname = ?, lname = ?, phonenumber = ?, uid = ?, description = ?" +
+                    "WHERE uid = ?");
+            statement.setString(1, mail);
+            statement.setString(2, fName);
+            statement.setString(3, lName);
+            statement.setInt(4, phoneNumber);
+            statement.setInt(5, uID);
+            statement.setString(6, description);
+            statement.setInt(7, uID);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
