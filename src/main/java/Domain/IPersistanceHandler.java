@@ -5,6 +5,7 @@ import Domain.Catalog.Production;
 
 import Domain.Catalog.Credit;
 
+import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +15,7 @@ public interface IPersistanceHandler {
     //Production
     public List<Production> getProductions();
     public Production getProduction(int productionID);
-    public void searchProduction(String name);
+    public ResultSet searchProduction(String name);
     public boolean updateProduction(int productionID, String releaseDate, String productionName);
     public boolean deleteProduction(int productionID);
     public boolean addProduction(int productionID, String releaseDate, String productionName);
