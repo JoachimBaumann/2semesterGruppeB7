@@ -7,6 +7,7 @@ import Domain.IPersistanceHandler;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PersistanceHandler implements IPersistanceHandler {
@@ -41,8 +42,20 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void getProductions() {
-
+    public List<Production> getProductions() {
+        List<Production> returnValue = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Production");
+            ResultSet sqlReturnProductions = statement.executeQuery();
+            while (sqlReturnProductions.next()) {
+                returnValue.add(new Production(sqlReturnProductions.getInt(1), sqlReturnProductions.getString(2),
+                        sqlReturnProductions.getString(3)));
+            }
+            return returnValue;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return returnValue;
     }
 
     @Override // få metoden til at loade credits ind i Productionslisten.
@@ -54,7 +67,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             if (!sqlReturnValues.next()) {
                 return null;
             }
-            return new Production(sqlReturnValues.getInt(1), sqlReturnValues.getDate(2), sqlReturnValues.getString(3));
+            return new Production(sqlReturnValues.getInt(1), sqlReturnValues.getString(2), sqlReturnValues.getString(3));
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -73,9 +86,21 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void updateProduction() {
-
+    public boolean updateProduction(int productionID, String releaseDate, String productionName) {
+        try{
+            PreparedStatement statement = connection.prepareStatement("UPDATE production SET releaseDate = ?, productionName = ?" +
+                    "WHERE productionID = ?");
+            statement.setString(1,releaseDate);
+            statement.setString(2,productionName);
+            statement.setInt(3,productionID);
+            statement.executeUpdate();
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+       return false;
     }
+
 
     @Override
     public boolean deleteProduction(int productionID) {
@@ -90,8 +115,21 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void addProduction() {
+    public boolean addProduction(int productionID, String releaseDate, String productionName) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO production (productionID,releasedate,productionName)" + " VALUES (?,?,?)");
+            statement.setInt(1,productionID);
+            statement.setString(2,releaseDate);
+            statement.setString(3,productionName);
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    return false;
     }
+
 
     @Override
     public List<Credit> getCredits() {
@@ -100,7 +138,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM credit");
             ResultSet sqlReturnCredits = statement.executeQuery();
             while(sqlReturnCredits.next()){
-                returnValue.add(new Credit(sqlReturnCredits.getString(1), new Person(sqlReturnCredits.getString(1), sqlReturnCredits.getString(2),
+                returnValue.add(new Credit(sqlReturnCredits.getString(1),sqlReturnCredits.getInt(2), new Person(sqlReturnCredits.getString(1), sqlReturnCredits.getString(2),
                         sqlReturnCredits.getString(3),sqlReturnCredits.getInt(4),sqlReturnCredits.getInt(5), sqlReturnCredits.getString(6))));
             }
             return returnValue;
@@ -119,9 +157,9 @@ public class PersistanceHandler implements IPersistanceHandler {
             if(!sqlReturnCredit.next()){
                 return null;
             }
-            return new Credit(sqlReturnCredit.getString(1), new Person(sqlReturnCredit.getString(1),sqlReturnCredit.getString(2),
+            return new Credit(sqlReturnCredit.getString(1),sqlReturnCredit.getInt(2), new Person(sqlReturnCredit.getString(1),sqlReturnCredit.getString(2),
                    sqlReturnCredit.getString(3),sqlReturnCredit.getInt(4),sqlReturnCredit.getInt(5),sqlReturnCredit.getString(6)));
-            //Er i tvivl om jeg har gjort ovenstående rigtigt...?
+            //Er i tvivl om jeg har gjort ovenstående rigtigt...? Indtil videre fungerer det
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -129,8 +167,17 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void updateCredit() {
-
+    public boolean updateCredit(int creditID, String jobTitle) {
+        try{
+            PreparedStatement statement = connection.prepareStatement("UPDATE credit SET jobtitle = ? WHERE creditID = ? ");
+            statement.setString(1,jobTitle);
+            statement.setInt(2,creditID);
+            statement.executeUpdate();
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
@@ -147,15 +194,16 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public void addCredit(int creditID, String jobtitle) {
+    public boolean addCredit(int creditID, String jobtitle) {
         try {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (creditid, jobtitle)" + " VALUES (?,?)");
             statement.setInt(1,creditID);
             statement.setString(2, jobtitle);
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return false;
     }
 
     @Override
@@ -195,10 +243,23 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
 
-
     @Override
-    public void updatePerson() {
-
+    public boolean updatePerson(String mail, String fName, String lName, int phoneNumber, int uID, String description) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("UPDATE person SET mail = ?, fname = ?, lname = ?, phonenumber = ?, description = ?" +
+                    "WHERE uid = ?");
+            statement.setString(1, mail);
+            statement.setString(2, fName);
+            statement.setString(3, lName);
+            statement.setInt(4, phoneNumber);
+            statement.setString(5, description);
+            statement.setInt(6, uID);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
