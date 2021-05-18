@@ -76,12 +76,8 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public boolean setProduction() {
-        return false;
-    }
-
-    @Override
     public void searchProduction(String name) {
+
 
     }
 
@@ -194,10 +190,10 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public boolean addCredit(int creditID, String jobtitle) {
+    public boolean addCredit(int personID, String jobtitle) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (creditid, jobtitle)" + " VALUES (?,?)");
-            statement.setInt(1,creditID);
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (personID, jobtitle)" + " VALUES (?,?)");
+            statement.setInt(1, personID);
             statement.setString(2, jobtitle);
             return true;
         } catch (SQLException e) {

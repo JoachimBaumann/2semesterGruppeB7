@@ -10,7 +10,7 @@ public interface CreditManager {
 
     public Production chooseProduction(int productionID);
 
-    public void addCredit(String fName, String lName, String jobTitle, int phoneNumber);
+    public void addCredit(int personID, String jobtitle);
 
     public void confirmChanges();
 

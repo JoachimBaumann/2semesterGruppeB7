@@ -10,8 +10,8 @@ public class Catalog {
     public Catalog() {
         this.productions = new HashMap<>();
     }
-/*
-    public void createProduction(Integer productionID,Date date,String productionName){
+
+    public void createProduction(Integer productionID,String date,String productionName){
         productions.put(productionID,new Production(productionID,date,productionName));
     }
 
@@ -40,7 +40,7 @@ public class Catalog {
     public void addToProduction(int productionID, Credit credit){
         productions.get(productionID).addToProduction(credit);
     }
-*/
+
 }
 
 

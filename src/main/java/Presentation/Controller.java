@@ -1,6 +1,7 @@
 package Presentation;
 
 import Domain.Catalog.Catalog;
+import Domain.Facade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Controller {
+    private Facade facade;
     public HBox hBoxSignIn;
     public VBox vBoxSignIn;
     public Button bDark;
