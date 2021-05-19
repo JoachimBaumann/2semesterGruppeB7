@@ -33,8 +33,9 @@ public class Catalog {
         return productions.get(productionID);
     }
 
-    public Production getProduction(String name) {
-        throw new UnsupportedOperationException();
+    //ikke færdig
+    public Production getProduction(String productionName) {
+        return productions.get(productionName);
     }
 
     public void addToProduction(int productionID, Credit credit){
