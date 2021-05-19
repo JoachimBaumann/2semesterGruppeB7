@@ -103,7 +103,7 @@ public class Controller {
     }
 
     public void forgotCode(ActionEvent actionEvent) {
-        System.out.println("Wrong password");
+        System.out.println("Forkert brugernavn eller adgangskode");
     }
 
     public void bCancel(ActionEvent actionEvent){
