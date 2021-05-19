@@ -103,7 +103,7 @@ public class Controller {
     }
 
     public void forgotCode(ActionEvent actionEvent) {
-        System.out.println("Forgot the code");
+        System.out.println("Wrong password");
     }
 
     public void bCancel(ActionEvent actionEvent){
