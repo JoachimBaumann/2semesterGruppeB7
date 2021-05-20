@@ -28,3 +28,9 @@ hs_err_pid*
 /test.txt
 /.idea/
 /2semesterGruppeB7.iml
+
+src/main/resources/Presentation/user.fxml
+
+src/main/resources/Presentation/systemadmin.fxml
+
+src/main/resources/Presentation/sample.fxml
