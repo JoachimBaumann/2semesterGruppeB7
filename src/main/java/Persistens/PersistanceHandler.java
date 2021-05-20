@@ -14,7 +14,7 @@ public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
     private String url = "localhost";
     private int port = 5432;
-    private String databaseName = "Project";
+    private String databaseName = "CreditmanagementDB";
     private String username = "postgres";
     private String password = "1234";
     private Connection connection = null;
@@ -284,20 +284,23 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public boolean addPerson(String mail, String fname, String lname, int phonenumber,String description) {
+    public int addPerson(String mail, String fname, String lname, int phonenumber,String description) {
         try {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO person (mail,fname,lname,phonenumber,description)"
-                    + " VALUES (?,?,?,?,?,?) ");
+                    + " VALUES (?,?,?,?,?) RETURNING uid;");
             statement.setString(1, mail);
             statement.setString(2, fname);
             statement.setString(3, lname);
             statement.setInt(4, phonenumber);
             statement.setString(5, description);
             statement.execute();
-            return true;
+            ResultSet last_updated_person = statement.getResultSet();
+            last_updated_person.next();
+            int personID = last_updated_person.getInt(1);
+            return personID;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return -1;
         }
     }
 }
