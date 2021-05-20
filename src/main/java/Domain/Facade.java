@@ -12,7 +12,6 @@ public class Facade implements CreditManager {
     private PersistanceHandler persistanceHandler = PersistanceHandler.getInstance();
     private Catalog catalog;
 
-
     @Override
     public void ViewAllProductions() {
         throw new UnsupportedOperationException();
@@ -33,8 +32,16 @@ public class Facade implements CreditManager {
 
     }
 
-
-
+    /**
+     *
+     * @param mail Email
+     * @param fName First name
+     * @param lName Last name
+     * @param phonenumber Phonenumber
+     * @param description Description
+     * @return Returns uID from Database && returns -1 if error.
+     *
+     */
     @Override
     public int addPerson(String mail, String fName, String lName, int phonenumber, String description) {
         int tempID = persistanceHandler.addPerson(mail,fName,lName,phonenumber,description);
