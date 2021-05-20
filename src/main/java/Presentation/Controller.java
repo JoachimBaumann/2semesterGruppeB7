@@ -1,35 +1,28 @@
 package Presentation;
 
-import Domain.Catalog.Catalog;
 import Domain.Catalog.Production;
 import Domain.Facade;
-import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Controller{
+public class Controller {
     public Button bSearch;
     public Text tLogProd;
     public Text tLogAdmin;
@@ -53,12 +46,11 @@ public class Controller{
     public TableColumn tDescription;
     public TableColumn tReleaseDate;
     public TableView t;
-    private Facade facade;
-
+    private Facade facade = new Facade();
 
 
     public void signIn(ActionEvent actionEvent) throws IOException {
-        if(userName.getText().equals("producer") && userPassword.getText().equals("1234")) {
+        if (userName.getText().equals("producer") && userPassword.getText().equals("1234")) {
             tLogProd.setVisible(true);
             hBoxSignIn.setVisible(false);
             logInd.setVisible(false);
@@ -68,7 +60,7 @@ public class Controller{
             bsignOut.setVisible(true);
             //HUndeprutter lugter ik
         }
-        if(userName.getText().equals("systemadmin") && userPassword.getText().equals("5678")) {
+        if (userName.getText().equals("systemadmin") && userPassword.getText().equals("5678")) {
             tLogAdmin.setVisible(true);
             hBoxSignIn.setVisible(false);
             logInd.setVisible(false);
@@ -77,15 +69,15 @@ public class Controller{
             bAddCredit.setVisible(true);
             bsignOut.setVisible(true);
         }
-        if(userName.getText().equals("bruger") && userPassword.getText().equals("91011")) {
+        if (userName.getText().equals("bruger") && userPassword.getText().equals("91011")) {
             tLogUser.setVisible(true);
             hBoxSignIn.setVisible(false);
             logInd.setVisible(false);
             vBoxSignIn.setVisible(false);
             bsignOut.setVisible(true);
         } else {
-          label.setVisible(true);
-          label.setText("Forkert brugernavn eller adgangskode");
+            label.setVisible(true);
+            label.setText("Forkert brugernavn eller adgangskode");
         }
     }
 
@@ -103,11 +95,11 @@ public class Controller{
     }
 
 
-    public void bSearchP(ActionEvent actionEvent) throws IOException{
+    public void bSearchP(ActionEvent actionEvent) throws IOException {
         Parent rootS1 = FXMLLoader.load(getClass().getResource("SearchView.fxml"));
         Stage primaryS1 = new Stage();
         primaryS1.setTitle(("Catalog"));
-        primaryS1.setScene(new Scene(rootS1,406, 418 ));
+        primaryS1.setScene(new Scene(rootS1, 406, 418));
         primaryS1.setResizable(false);
         primaryS1.show();
     }
@@ -115,22 +107,25 @@ public class Controller{
 
     public void addProduction(ActionEvent actionEvent) {
 
-    };
-    public void logoClick(ActionEvent actionEvent){
+    }
+
+    ;
+
+    public void logoClick(ActionEvent actionEvent) {
         vBoxSignIn.setVisible(false);
         newMember.setVisible(false);
     }
 
-    public void actionOne(ActionEvent actionEvent){
+    public void actionOne(ActionEvent actionEvent) {
         vBoxSignIn.setVisible(true);
         newMember.setVisible(false);
     }
 
-    public void actionTwo(ActionEvent actionEvent){
+    public void actionTwo(ActionEvent actionEvent) {
         newMember.setVisible(true);
     }
 
-    public void rCancel(ActionEvent actionEvent){
+    public void rCancel(ActionEvent actionEvent) {
         newMember.setVisible(false);
     }
 
@@ -138,19 +133,43 @@ public class Controller{
         System.out.println("Forkert brugernavn eller adgangskode");
     }
 
-    public void bCancel(ActionEvent actionEvent){
+    public void bCancel(ActionEvent actionEvent) {
         vBoxSignIn.setVisible(false);
     }
 
     public void viewAllProductions() {
-        List<Production> listview;
+        facade.updateCatalog();
+        List<Production> list = new ArrayList<Production>();
+        list.add(new Production(2, "19.05.99", "BigDiks"));
 
+        // Now add observability by wrapping it with ObservableList.
+        ObservableList<Production> observableList = FXCollections.observableList(list);
+        observableList.addListener(new ListChangeListener() {
+            @Override
+            public void onChanged(ListChangeListener.Change change) {
+            }
+        });
+        t.setItems(observableList);
+        tID.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, Integer>, Integer>() {
+            @Override
+            public Integer call(TableColumn.CellDataFeatures<Production, Integer> param) {
+                return param.getValue().getProductionID();
+            }
+        });
 
-        ObservableList<listview> observableProductions = FXCollections.observableArrayList(listview);
-        t.setItems(observableProductions);
+/*
+        tID.setCellValueFactory(new MapValueFactory<>("productionID"));
+        tTitel.setCellValueFactory(new MapValueFactory<>("productionName"));
+        tDescription.setCellValueFactory(new MapValueFactory<>("description"));
+        tReleaseDate.setCellValueFactory(new MapValueFactory<>("releaseDate"));
+        t.getItems().addAll(observableList);
+        for (Production p:list) {
+            t.getColumns().add(p.getProductionID(),p.getProductionName(),"Funny Movie",p.getReleaseDate());
 
-
+ */
     }
+
+
 
 
     public void bDark(ActionEvent actionEvent){
