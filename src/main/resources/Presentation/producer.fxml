@@ -43,12 +43,18 @@
       </SplitMenuButton>
       <TableView fx:id="t" layoutX="-3.0" layoutY="170.0" prefHeight="388.0" prefWidth="883.0">
         <columns>
-          <TableColumn prefWidth="120.0" text="ID" />
-          <TableColumn minWidth="0.0" prefWidth="300.0" text="Titel" />
-            <TableColumn minWidth="0.0" prefWidth="300.0" text="Description" />
-            <TableColumn minWidth="0.0" prefWidth="162.0" text="ReleaseDate" />
+          <TableColumn fx:id="tID" prefWidth="120.0" text="ID" />
+          <TableColumn fx:id="tTitel" minWidth="0.0" prefWidth="300.0" text="Titel" />
+            <TableColumn fx:id="tDescription" minWidth="0.0" prefWidth="300.0" text="Description" />
+            <TableColumn fx:id="tReleaseDate" minWidth="0.0" prefWidth="162.0" text="ReleaseDate" />
         </columns>
       </TableView>
+      <HBox layoutX="530.0" layoutY="90.0">
+         <children>
+            <TextField prefHeight="26.0" prefWidth="270.0" promptText="Søgefelt" />
+            <Button mnemonicParsing="false" onAction="#bSearchP" text="Søg" />
+         </children>
+      </HBox>
       <VBox fx:id="vBoxLogIn" layoutX="431.0" layoutY="85.0" prefHeight="94.0" prefWidth="371.0" visible="false">
          <children>
             <VBox fx:id="vBoxSignIn" prefHeight="106.0" prefWidth="371.0" visible="false">
@@ -97,11 +103,5 @@
             <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#rCancel" text="Cancel" />
          </children>
       </AnchorPane>
-      <HBox layoutX="530.0" layoutY="90.0">
-         <children>
-            <TextField prefHeight="26.0" prefWidth="270.0" promptText="Søgefelt" />
-            <Button mnemonicParsing="false" onAction="#bSearchP" text="Søg" />
-         </children>
-      </HBox>
    </children>
 </AnchorPane>
