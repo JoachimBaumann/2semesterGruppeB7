@@ -1,8 +1,12 @@
 package Presentation;
 
 import Domain.Catalog.Catalog;
+import Domain.Catalog.Production;
 import Domain.Facade;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +26,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller{
     public Button bSearch;
@@ -31,7 +37,6 @@ public class Controller{
     public Button bAddProduction;
     public Button bAddCredit;
     public Button bsignOut;
-    private Facade facade;
     public HBox hBoxSignIn;
     public VBox vBoxSignIn;
     public Button bDark;
@@ -43,6 +48,12 @@ public class Controller{
     public SplitMenuButton logInd;
     public ImageView lightCredit;
     public ImageView darkCredit;
+    public TableColumn tID;
+    public TableColumn tTitel;
+    public TableColumn tDescription;
+    public TableColumn tReleaseDate;
+    public TableView t;
+    private Facade facade;
 
 
 
@@ -129,6 +140,16 @@ public class Controller{
 
     public void bCancel(ActionEvent actionEvent){
         vBoxSignIn.setVisible(false);
+    }
+
+    public void viewAllProductions() {
+        List<Production> listview;
+
+
+        ObservableList<listview> observableProductions = FXCollections.observableArrayList(listview);
+        t.setItems(observableProductions);
+
+
     }
 
 
