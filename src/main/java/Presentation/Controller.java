@@ -30,7 +30,7 @@ public class Controller {
     public SplitMenuButton logInd;
     public ImageView lightCredit;
     public ImageView darkCredit;
-    Domain.Catalog.Catalog catalog = new Catalog();
+
 
 
     public void signIn(ActionEvent actionEvent) throws IOException {
