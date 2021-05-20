@@ -15,6 +15,7 @@ public class Facade implements CreditManager {
 
     @Override
     public void updateCatalog() {
+        //update production
         List<Production> tempProduction = persistanceHandler.getProductions();
 
         catalog.getProductionList().clear();
@@ -22,6 +23,16 @@ public class Facade implements CreditManager {
         for (Production p : tempProduction){
             catalog.getProductionList().put(p.getProductionID(), p);
         }
+        //update persons
+        List<Person> pers = persistanceHandler.getPersons();
+
+        catalog.getPersons().clear();
+
+        for (Person person:pers) {
+            catalog.getPersons().put(person.getuID(), person);
+        }
+
+
     }
 
     @Override
