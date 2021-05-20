@@ -10,7 +10,7 @@ import java.util.Date;
 public class Facade implements CreditManager {
 
     private PersistanceHandler persistanceHandler = PersistanceHandler.getInstance();
-    private Catalog catalog;
+    private Catalog catalog = new Catalog();
 
     @Override
     public void ViewAllProductions() {
