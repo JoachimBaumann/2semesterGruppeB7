@@ -5,6 +5,7 @@ import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 import Persistens.PersistanceHandler;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -78,5 +79,14 @@ public class Facade implements CreditManager {
     @Override
     public void saveReport() {
 
+    }
+
+    @Override
+    public List<Production> viewProductions() {
+        List<Production> tempList = new ArrayList<>();
+        for(Production p : catalog.getProductionList().values()) {
+            tempList.add(p);
+                    }
+        return tempList;
     }
 }
