@@ -33,7 +33,7 @@ public interface IPersistanceHandler {
     public Person getPerson(int personID);
     public boolean updatePerson(String mail, String fName, String lName, int phoneNumber, int uID, String description);
     public boolean deletePerson(int personID);
-    public boolean addPerson(Person person);
+    public int addPerson(String mail, String fname, String lname, int phonenumber,String description);
 
 
 

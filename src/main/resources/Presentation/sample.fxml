@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
    <children>
       <ImageView fx:id="darkBackground" fitHeight="540.0" fitWidth="844.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <viewport>
@@ -40,19 +40,19 @@
          </image>
       </ImageView>
       <Button layoutX="743.0" layoutY="40.0" mnemonicParsing="false" text="Sign in" visible="false" />
-      <ToggleButton layoutX="680.0" layoutY="20.0" minWidth="49.0" onAction="#bDark" prefHeight="26.0" prefWidth="53.0" text="Dark">
+      <ToggleButton layoutX="682.0" layoutY="16.0" minWidth="49.0" onAction="#bDark" prefHeight="26.0" prefWidth="53.0" text="Dark">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </ToggleButton>
-      <TextField layoutX="209.0" layoutY="17.0" prefHeight="32.0" prefWidth="467.0" style="-fx-background-color: ffffff;" />
-      <SplitMenuButton fx:id="logInd" layoutX="741.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Log ind">
+      <TextField layoutX="205.0" layoutY="16.0" prefHeight="26.0" prefWidth="417.0" style="-fx-background-color: ffffff;" />
+      <SplitMenuButton fx:id="logInd" layoutX="743.0" layoutY="16.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Log ind">
         <items>
           <MenuItem fx:id="action1" mnemonicParsing="false" onAction="#actionOne" text="Log ind" />
           <MenuItem fx:id="action2" mnemonicParsing="false" onAction="#actionTwo" text="Opret bruger" />
         </items>
       </SplitMenuButton>
-      <VBox layoutX="450.0" layoutY="72.0" prefHeight="94.0" prefWidth="371.0">
+      <VBox layoutX="421.0" layoutY="75.0" prefHeight="94.0" prefWidth="371.0">
          <children>
             <VBox fx:id="vBoxSignIn" prefHeight="106.0" prefWidth="371.0">
                <children>
@@ -70,30 +70,30 @@
             </VBox>
          </children>
       </VBox>
-      <AnchorPane fx:id="newMember" layoutX="450.0" layoutY="170.0" prefHeight="200.0" prefWidth="363.0">
+      <AnchorPane fx:id="newMember" layoutX="419.0" layoutY="192.0" prefHeight="200.0" prefWidth="363.0">
          <children>
             <TextField layoutY="10.0" prefHeight="10.0" prefWidth="168.0" />
             <Text fill="#1b481c" layoutX="178.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail adresse" wrappingWidth="94.03631591796875">
                <font>
-                  <Font size="14.0" />
+                  <Font size="13.0" />
                </font>
             </Text>
             <TextField layoutY="43.0" prefHeight="26.0" prefWidth="168.0" />
             <Text fill="#1b481c" layoutX="178.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brugernavn">
                <font>
-                  <Font size="14.0" />
+                  <Font size="13.0" />
                </font>
             </Text>
             <PasswordField layoutY="81.0" prefHeight="26.0" prefWidth="168.0" />
             <PasswordField layoutY="118.0" prefHeight="26.0" prefWidth="168.0" />
             <Text fill="#1b481c" layoutX="178.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adgangskode">
                <font>
-                  <Font size="14.0" />
+                  <Font size="13.0" />
                </font>
             </Text>
             <Text fill="#1b481c" layoutX="178.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bekræft adgangskode">
                <font>
-                  <Font size="14.0" />
+                  <Font size="13.0" />
                </font>
             </Text>
             <Button layoutY="161.0" mnemonicParsing="false" text="Registre" />
@@ -101,5 +101,6 @@
          </children>
       </AnchorPane>
       <Button layoutX="29.0" layoutY="7.0" mnemonicParsing="false" onAction="#logoClick" opacity="0.0" prefHeight="46.0" prefWidth="149.0" text="Logo" />
+      <Button layoutX="624.0" layoutY="16.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="51.0" text="Søg" />
    </children>
 </AnchorPane>

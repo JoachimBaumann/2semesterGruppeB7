@@ -1,6 +1,7 @@
 package Domain;
 
 import Domain.Catalog.Catalog;
+import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 import Persistens.PersistanceHandler;
 
@@ -9,8 +10,7 @@ import java.util.Date;
 public class Facade implements CreditManager {
 
     private PersistanceHandler persistanceHandler = PersistanceHandler.getInstance();
-    private Catalog catalog;
-
+    private Catalog catalog = new Catalog();
 
     @Override
     public void ViewAllProductions() {
@@ -30,6 +30,27 @@ public class Facade implements CreditManager {
     @Override
     public void confirmChanges() {
 
+    }
+
+    /**
+     *
+     * @param mail Email
+     * @param fName First name
+     * @param lName Last name
+     * @param phonenumber Phonenumber
+     * @param description Description
+     * @return Returns uID from Database && returns -1 if error.
+     *
+     */
+    @Override
+    public int addPerson(String mail, String fName, String lName, int phonenumber, String description) {
+        int tempID = persistanceHandler.addPerson(mail,fName,lName,phonenumber,description);
+        if(tempID != -1) {
+            catalog.addPerson(tempID, new Person(mail, fName, lName, phonenumber, tempID, description));
+        }
+
+        System.out.println(catalog.getPersons());
+        return -1;
     }
 
     @Override

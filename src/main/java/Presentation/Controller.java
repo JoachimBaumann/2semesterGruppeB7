@@ -30,7 +30,7 @@ public class Controller {
     public SplitMenuButton logInd;
     public ImageView lightCredit;
     public ImageView darkCredit;
-    Domain.Catalog.Catalog catalog = new Catalog();
+
 
 
     public void signIn(ActionEvent actionEvent) throws IOException {
@@ -39,6 +39,7 @@ public class Controller {
             Parent rootPro = FXMLLoader.load(getClass().getResource("producer.fxml"));
             Scene scenePro = new Scene(rootPro, 838, 540);
             primaryPro.setScene(scenePro);
+            primaryPro.setResizable(false);
             primaryPro.show();
         }
         if(userName.getText().equals("systemadmin") && userPassword.getText().equals("5678")) {
@@ -46,6 +47,7 @@ public class Controller {
             Parent rootAdmin = FXMLLoader.load(getClass().getResource("systemadmin.fxml"));
             Scene sceneAdmin = new Scene(rootAdmin, 838, 540);
             primaryAdmin.setScene(sceneAdmin);
+            primaryAdmin.setResizable(false);
             primaryAdmin.show();
         }
         if(userName.getText().equals("bruger") && userPassword.getText().equals("91011")) {
@@ -53,6 +55,7 @@ public class Controller {
             Parent rootUser = FXMLLoader.load(getClass().getResource("user.fxml"));
             Scene sceneUser = new Scene(rootUser, 838,540);
             primaryUser.setScene(sceneUser);
+            primaryUser.setResizable(false);
             primaryUser.show();
         } else {
           label.setText("Forkert brugernavn eller adgangskode");
@@ -64,6 +67,7 @@ public class Controller {
         Stage primaryP = new Stage();
         primaryP.setTitle("TV2 Credits");
         primaryP.setScene(new Scene(rootP, 838, 540));
+        primaryP.setResizable(false);
         primaryP.show();
     }
 
@@ -72,6 +76,7 @@ public class Controller {
         Stage primaryA = new Stage();
         primaryA.setTitle("TV2 Credits");
         primaryA.setScene(new Scene(rootA, 838, 540));
+        primaryA.setResizable(false);
         primaryA.show();
     }
 
@@ -80,6 +85,7 @@ public class Controller {
         Stage primaryU = new Stage();
         primaryU.setTitle("TV2 Credits");
         primaryU.setScene(new Scene(rootU,838,540));
+        primaryU.setResizable(false);
         primaryU.show();
     }
 

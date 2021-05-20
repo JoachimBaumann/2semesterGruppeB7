@@ -6,9 +6,11 @@ import java.util.HashMap;
 
 public class Catalog {
     private HashMap<Integer,Production> productions;
+    private HashMap<Integer,Person> persons;
 
     public Catalog() {
         this.productions = new HashMap<>();
+        this.persons = new HashMap<>();
     }
 
     public void createProduction(Integer productionID,String date,String productionName){
@@ -27,6 +29,14 @@ public class Catalog {
     public void searchID(String name, int productionID) {
         throw new UnsupportedOperationException();
 
+    }
+
+    public void addPerson(int personID, Person person) {
+        persons.put(personID, person);
+    }
+
+    public HashMap<Integer, Person> getPersons() {
+        return persons;
     }
 
     public Production getProduction(int productionID) {
