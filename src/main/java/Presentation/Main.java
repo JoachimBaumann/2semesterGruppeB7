@@ -18,6 +18,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("TV2 Credits");
         primaryStage.setScene(new Scene(root, 838, 540));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }

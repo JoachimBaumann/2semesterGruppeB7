@@ -12,6 +12,8 @@ public interface CreditManager {
 
     public void addCredit(int personID, String jobtitle);
 
+    public void addPerson(String mail, String fname, String lname, int phonenumber,String description);
+
     public void confirmChanges();
 
     public void findProduction();

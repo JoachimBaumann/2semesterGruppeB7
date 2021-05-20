@@ -200,6 +200,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             return false;
         }
 
+
     }
 
     @Override
@@ -283,16 +284,15 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public boolean addPerson(Person person) {
+    public boolean addPerson(String mail, String fname, String lname, int phonenumber,String description) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO person (mail,fname,lname,phonenumber,uid,description)"
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO person (mail,fname,lname,phonenumber,description)"
                     + " VALUES (?,?,?,?,?,?) ");
-            statement.setString(1, person.getMail());
-            statement.setString(2, person.getfName());
-            statement.setString(3, person.getlName());
-            statement.setInt(4, person.getPhoneNumber());
-            statement.setInt(5, person.getuID());
-            statement.setString(6, person.getDescription());
+            statement.setString(1, mail);
+            statement.setString(2, fname);
+            statement.setString(3, lname);
+            statement.setInt(4, phonenumber);
+            statement.setString(5, description);
             statement.execute();
             return true;
         } catch (SQLException e) {
