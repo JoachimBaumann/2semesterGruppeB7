@@ -2,22 +2,35 @@ package Presentation;
 
 import Domain.Catalog.Catalog;
 import Domain.Facade;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Controller {
+public class Controller{
+    public Button bSearch;
+    public Text tLogProd;
+    public Text tLogAdmin;
+    public Text tLogUser;
+    public Button bAddProduction;
+    public Button bAddCredit;
+    public Button bsignOut;
     private Facade facade;
     public HBox hBoxSignIn;
     public VBox vBoxSignIn;
@@ -30,59 +43,68 @@ public class Controller {
     public SplitMenuButton logInd;
     public ImageView lightCredit;
     public ImageView darkCredit;
-    Domain.Catalog.Catalog catalog = new Catalog();
+
 
 
     public void signIn(ActionEvent actionEvent) throws IOException {
         if(userName.getText().equals("producer") && userPassword.getText().equals("1234")) {
-            Stage primaryPro = new Stage();
-            Parent rootPro = FXMLLoader.load(getClass().getResource("producer.fxml"));
-            Scene scenePro = new Scene(rootPro, 838, 540);
-            primaryPro.setScene(scenePro);
-            primaryPro.show();
+            tLogProd.setVisible(true);
+            hBoxSignIn.setVisible(false);
+            logInd.setVisible(false);
+            vBoxSignIn.setVisible(false);
+            bAddProduction.setVisible(true);
+            bAddCredit.setVisible(true);
+            bsignOut.setVisible(true);
+            //HUndeprutter lugter ik
         }
         if(userName.getText().equals("systemadmin") && userPassword.getText().equals("5678")) {
-            Stage primaryAdmin = new Stage();
-            Parent rootAdmin = FXMLLoader.load(getClass().getResource("systemadmin.fxml"));
-            Scene sceneAdmin = new Scene(rootAdmin, 838, 540);
-            primaryAdmin.setScene(sceneAdmin);
-            primaryAdmin.show();
+            tLogAdmin.setVisible(true);
+            hBoxSignIn.setVisible(false);
+            logInd.setVisible(false);
+            vBoxSignIn.setVisible(false);
+            bAddProduction.setVisible(true);
+            bAddCredit.setVisible(true);
+            bsignOut.setVisible(true);
         }
         if(userName.getText().equals("bruger") && userPassword.getText().equals("91011")) {
-            Stage primaryUser = new Stage();
-            Parent rootUser = FXMLLoader.load(getClass().getResource("user.fxml"));
-            Scene sceneUser = new Scene(rootUser, 838,540);
-            primaryUser.setScene(sceneUser);
-            primaryUser.show();
+            tLogUser.setVisible(true);
+            hBoxSignIn.setVisible(false);
+            logInd.setVisible(false);
+            vBoxSignIn.setVisible(false);
+            bsignOut.setVisible(true);
         } else {
+          label.setVisible(true);
           label.setText("Forkert brugernavn eller adgangskode");
         }
     }
 
     public void signOutP(ActionEvent actionEvent) throws IOException {
-        Parent rootP = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Stage primaryP = new Stage();
-        primaryP.setTitle("TV2 Credits");
-        primaryP.setScene(new Scene(rootP, 838, 540));
-        primaryP.show();
+        hBoxSignIn.setVisible(true);
+        logInd.setVisible(true);
+        vBoxSignIn.setVisible(true);
+        bAddProduction.setVisible(false);
+        bAddCredit.setVisible(false);
+        tLogProd.setVisible(false);
+        tLogAdmin.setVisible(false);
+        tLogUser.setVisible(false);
+        label.setVisible(false);
+        bsignOut.setVisible(false);
     }
 
-    public void signOutA(ActionEvent actionEvent) throws IOException {
-        Parent rootA = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Stage primaryA = new Stage();
-        primaryA.setTitle("TV2 Credits");
-        primaryA.setScene(new Scene(rootA, 838, 540));
-        primaryA.show();
+
+    public void bSearchP(ActionEvent actionEvent) throws IOException{
+        Parent rootS1 = FXMLLoader.load(getClass().getResource("SearchView.fxml"));
+        Stage primaryS1 = new Stage();
+        primaryS1.setTitle(("Catalog"));
+        primaryS1.setScene(new Scene(rootS1,406, 418 ));
+        primaryS1.setResizable(false);
+        primaryS1.show();
     }
 
-    public void signOutU(ActionEvent actionEvent) throws IOException {
-        Parent rootU = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Stage primaryU = new Stage();
-        primaryU.setTitle("TV2 Credits");
-        primaryU.setScene(new Scene(rootU,838,540));
-        primaryU.show();
-    }
 
+    public void addProduction(ActionEvent actionEvent) {
+
+    };
     public void logoClick(ActionEvent actionEvent){
         vBoxSignIn.setVisible(false);
         newMember.setVisible(false);
@@ -94,7 +116,6 @@ public class Controller {
     }
 
     public void actionTwo(ActionEvent actionEvent){
-        vBoxSignIn.setVisible(true);
         newMember.setVisible(true);
     }
 
@@ -125,3 +146,4 @@ public class Controller {
             }
     }
 }
+

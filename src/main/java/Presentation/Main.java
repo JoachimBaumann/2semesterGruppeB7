@@ -15,9 +15,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("producer.fxml"));
         primaryStage.setTitle("TV2 Credits");
         primaryStage.setScene(new Scene(root, 838, 540));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }

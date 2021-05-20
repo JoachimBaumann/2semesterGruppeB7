@@ -12,6 +12,8 @@ public interface CreditManager {
 
     public void addCredit(int personID, String jobtitle);
 
+    public int addPerson(String mail, String fName, String lName, int phonenumber, String description);
+
     public void confirmChanges();
 
     public void findProduction();
@@ -19,4 +21,7 @@ public interface CreditManager {
     public void generateReport(int productionID, Date releaseDate);
 
     public void saveReport();
+
+    public void updateCatalog();
 }
+
