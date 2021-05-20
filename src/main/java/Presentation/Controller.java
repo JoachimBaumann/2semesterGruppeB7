@@ -143,11 +143,6 @@ public class Controller{
     }
 
     public void viewAllProductions() {
-        List<Production> listview;
-
-
-        ObservableList<listview> observableProductions = FXCollections.observableArrayList(listview);
-        t.setItems(observableProductions);
 
 
     }
