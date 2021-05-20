@@ -55,6 +55,7 @@ public class Controller{
             bAddProduction.setVisible(true);
             bAddCredit.setVisible(true);
             bsignOut.setVisible(true);
+            //HUndeprutter lugter ik
         }
         if(userName.getText().equals("systemadmin") && userPassword.getText().equals("5678")) {
             tLogAdmin.setVisible(true);
