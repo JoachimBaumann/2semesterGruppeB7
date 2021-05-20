@@ -21,4 +21,7 @@ public interface CreditManager {
     public void generateReport(int productionID, Date releaseDate);
 
     public void saveReport();
+
+    public void updateCatalog();
 }
+

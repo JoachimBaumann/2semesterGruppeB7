@@ -6,11 +6,23 @@ import Domain.Catalog.Production;
 import Persistens.PersistanceHandler;
 
 import java.util.Date;
+import java.util.List;
 
 public class Facade implements CreditManager {
 
     private PersistanceHandler persistanceHandler = PersistanceHandler.getInstance();
     private Catalog catalog = new Catalog();
+
+    @Override
+    public void updateCatalog() {
+        List<Production> tempProduction = persistanceHandler.getProductions();
+
+        catalog.getProductionList().clear();
+
+        for (Production p : tempProduction){
+            catalog.getProductionList().put(p.getProductionID(), p);
+        }
+    }
 
     @Override
     public void ViewAllProductions() {

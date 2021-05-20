@@ -13,6 +13,10 @@ public class Catalog {
         this.persons = new HashMap<>();
     }
 
+    public HashMap<Integer, Production> getProductionList(){
+        return productions;
+    }
+
     public void createProduction(Integer productionID,String date,String productionName){
         productions.put(productionID,new Production(productionID,date,productionName));
     }
