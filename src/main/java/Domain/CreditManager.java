@@ -3,8 +3,11 @@ package Domain;
 import Domain.Catalog.Production;
 
 import java.util.Date;
+import java.util.List;
 
 public interface CreditManager {
+
+    public List<Production> viewProductions();
 
     public void ViewAllProductions();
 
