@@ -190,13 +190,12 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initializing tableview
-        productionTableView = new TableView<>();
-        pIDColumn = new TableColumn<>();
-        pTitelColumn = new TableColumn<>();
-        pDescriptionColumn = new TableColumn<>();
-        pReleaseDateColumn = new TableColumn<>();
+        productionTableView = new TableView<Production>(getProduction());
+        pIDColumn = new TableColumn<>("productionID");
+        pTitelColumn = new TableColumn<>("productionName");
+        pDescriptionColumn = new TableColumn<>("description");
+        pReleaseDateColumn = new TableColumn<>("releaseDate");
 
-        productionTableView.getColumns().addAll(pIDColumn,pTitelColumn,pDescriptionColumn,pReleaseDateColumn);
         pIDColumn.setText("ID");
         pTitelColumn.setText("Titel");
         pDescriptionColumn.setText("Description");
@@ -211,6 +210,8 @@ public class Controller implements Initializable {
         pTitelColumn.setPrefWidth(300);
         pDescriptionColumn.setPrefWidth(300);
         pReleaseDateColumn.setPrefWidth(300);
+
+
         pIDColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, Integer>, ObservableValue<Integer>>() {
             public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Production, Integer> p) {
                 return new ReadOnlyObjectWrapper(p.getValue().getProductionID());
@@ -235,18 +236,19 @@ public class Controller implements Initializable {
             }
         });
 
+        productionTableView.getColumns().addAll(pIDColumn,pTitelColumn,pDescriptionColumn,pReleaseDateColumn);
         mainPane.getChildren().addAll(productionTableView);
 
         //set up the columns in the table
 
-    //  pIDColumn.setCellValueFactory(new PropertyValueFactory<Production, Integer>("productionID"));
-        pTitelColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("productionName"));
-    //    pDescriptionColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("description"));
-        pReleaseDateColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("releaseDate"));
+        //  pIDColumn.setCellValueFactory(new PropertyValueFactory<Production, Integer>("productionID"));
+        //   pTitelColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("productionName"));
+        //    pDescriptionColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("description"));
+    //    pReleaseDateColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("releaseDate"));
 
         //  load dummy data
-        // tableView.setItems((getProduction()));
-        tableView.getItems().addAll(getProduction());
+        //tableView.setItems((getProduction()));
+        //tableView.getItems().addAll(getProduction());
 
 
     }
@@ -256,6 +258,8 @@ public class Controller implements Initializable {
         productions.add(new Production(1,"Sinatra","The workening"));
         productions.add(new Production(2,"Sinatra","The workening"));
         productions.add(new Production(3,"Sinatra","The workening"));
+
+
 
         return productions;
     }
