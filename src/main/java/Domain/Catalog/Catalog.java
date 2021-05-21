@@ -16,8 +16,8 @@ public class Catalog {
         return productions;
     }
 
-    public void createProduction(Integer productionID, String date, String productionName){
-        productions.put(productionID,new Production(productionID,date,productionName));
+    public void createProduction(Integer productionID, String date, String productionName, String description){
+        productions.put(productionID,new Production(productionID,date,productionName,description));
     }
 
     public void getProductions(int productionID, Date releasedate) {

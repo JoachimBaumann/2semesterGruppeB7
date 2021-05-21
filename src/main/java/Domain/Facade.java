@@ -76,10 +76,10 @@ public class Facade implements CreditManager {
     }
 
     @Override
-    public int addProduction(String releaseDate, String productionName) {
-        int tempID = persistanceHandler.addProduction(releaseDate,productionName);
+    public int addProduction(String releaseDate, String productionName, String description) {
+        int tempID = persistanceHandler.addProduction(releaseDate,productionName,description);
         if(tempID != -1) {
-            catalog.addProduction(tempID,new Production(tempID,releaseDate,productionName));
+            catalog.addProduction(tempID,new Production(tempID,releaseDate,productionName, description));
         }
 
         return -1;

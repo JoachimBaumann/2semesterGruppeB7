@@ -16,7 +16,7 @@ public interface IPersistanceHandler {
     public ResultSet searchProduction(String name);
     public boolean updateProduction(int productionID, String releaseDate, String productionName);
     public boolean deleteProduction(int productionID);
-    public int addProduction(String releaseDate, String productionName);
+    public int addProduction(String releaseDate, String productionName, String description);
 
     //Credit
     public List<Credit> getCredits();

@@ -48,7 +48,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             ResultSet sqlReturnProductions = statement.executeQuery();
             while (sqlReturnProductions.next()) {
                 returnValue.add(new Production(sqlReturnProductions.getInt(1), sqlReturnProductions.getString(2),
-                        sqlReturnProductions.getString(3)));
+                        sqlReturnProductions.getString(3),sqlReturnProductions.getString(4)));
             }
             return returnValue;
         } catch (SQLException e) {
@@ -66,7 +66,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             if (!sqlReturnValues.next()) {
                 return null;
             }
-            return new Production(sqlReturnValues.getInt(1), sqlReturnValues.getString(2), sqlReturnValues.getString(3));
+            return new Production(sqlReturnValues.getInt(1), sqlReturnValues.getString(2), sqlReturnValues.getString(3),sqlReturnValues.getString(4));
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -123,11 +123,12 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public int addProduction(String releaseDate, String productionName) {
+    public int addProduction(String releaseDate, String productionName, String description) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO production (releasedate,productionName)" + " VALUES (?,?) RETURNING productionID;");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO production (releasedate,productionName,description)" + " VALUES (?,?,?) RETURNING productionID;");
             statement.setString(1, releaseDate);
             statement.setString(2, productionName);
+            statement.setString(3, description);
             statement.execute();
             ResultSet last_updated_person = statement.getResultSet();
             last_updated_person.next();

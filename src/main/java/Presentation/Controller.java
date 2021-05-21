@@ -211,7 +211,7 @@ public class Controller implements Initializable {
         pDescriptionColumn.setPrefWidth(300);
         pReleaseDateColumn.setPrefWidth(300);
 
-
+        facade.addProduction("05.09.99","Joachim Les hottie", "Onlyfans recordings");
         pIDColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, Integer>, ObservableValue<Integer>>() {
             public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Production, Integer> p) {
                 return new ReadOnlyObjectWrapper(p.getValue().getProductionID());
@@ -223,13 +223,13 @@ public class Controller implements Initializable {
                 return new ReadOnlyObjectWrapper(p.getValue().getProductionName());
             }
         });
-        /*
+
         pDescriptionColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Production, String> p) {
-                return new ReadOnlyObjectWrapper(p.getValue().);
+                return new ReadOnlyObjectWrapper(p.getValue().getDescription());
             }
         });
-        */
+
         pReleaseDateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Production, String> p) {
                 return new ReadOnlyObjectWrapper(p.getValue().getReleaseDate());
@@ -239,27 +239,17 @@ public class Controller implements Initializable {
         productionTableView.getColumns().addAll(pIDColumn,pTitelColumn,pDescriptionColumn,pReleaseDateColumn);
         mainPane.getChildren().addAll(productionTableView);
 
-        //set up the columns in the table
-
-        //  pIDColumn.setCellValueFactory(new PropertyValueFactory<Production, Integer>("productionID"));
-        //   pTitelColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("productionName"));
-        //    pDescriptionColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("description"));
-    //    pReleaseDateColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("releaseDate"));
-
-        //  load dummy data
-        //tableView.setItems((getProduction()));
-        //tableView.getItems().addAll(getProduction());
-
 
     }
     public ObservableList<Production>  getProduction()
     {
         ObservableList<Production> productions = FXCollections.observableArrayList();
-        productions.add(new Production(1,"Sinatra","The workening"));
-        productions.add(new Production(2,"Sinatra","The workening"));
-        productions.add(new Production(3,"Sinatra","The workening"));
 
+    facade.updateCatalog();
 
+    for(Production p : facade.getCatalog().getProductionList().values()) {
+        productions.add(p);
+    }
 
         return productions;
     }
@@ -269,7 +259,8 @@ public class Controller implements Initializable {
     public void bCreateProduction(ActionEvent actionEvent) {
         String releaseDate = tpReleaseDate.getText();
         String title = tpTitel.getText();
-        facade.addProduction(releaseDate,title);
+        String description = tpBeskrivelse.getText();
+        facade.addProduction(releaseDate,title,description);
 
     }
 }

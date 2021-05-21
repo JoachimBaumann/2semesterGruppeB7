@@ -7,13 +7,15 @@ public class Production {
     private int productionID;
     private String releaseDate;
     private String productionName;
+    private String description;
     private HashMap<Integer,Credit> creditList;
 
-    public Production(int productionID, String releaseDate, String productionName) {
+    public Production(int productionID, String releaseDate, String productionName, String description) {
         this.productionID = productionID;
         this.releaseDate = releaseDate;
         this.productionName = productionName;
         this.creditList = new HashMap<>();
+        this.description = description;
     }
 
 
@@ -48,5 +50,9 @@ public class Production {
                 ",\n productionName='" + productionName + '\'' +
                 ",\n creditList=" + creditList + "\n" +
                 '}';
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

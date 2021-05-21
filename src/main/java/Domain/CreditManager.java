@@ -17,7 +17,7 @@ public interface CreditManager {
 
     public int addPerson(String mail, String fName, String lName, int phonenumber, String description);
 
-    public int addProduction(String releaseDate, String title);
+    public int addProduction(String releaseDate, String title,String description);
 
     public void confirmChanges();
 
