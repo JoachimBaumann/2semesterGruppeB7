@@ -56,6 +56,9 @@ public class Controller implements Initializable {
     public TableView<Production> tableView;
     public VBox vBoxLogIn;
     public VBox vAddProduction;
+    public TextField tpTitel;
+    public TextField tpBeskrivelse;
+    public TextField tpReleaseDate;
     private Facade facade = new Facade();
 
 
@@ -178,6 +181,14 @@ public class Controller implements Initializable {
         tID.setCellValueFactory(new PropertyValueFactory<Production,Integer>("productionID"));
         tTitel.setCellValueFactory(new PropertyValueFactory<Production,String>("productionName"));
         tReleaseDate.setCellValueFactory(new PropertyValueFactory<Production,String>("releaseDate"));
+
+    }
+
+    public void bCreateProduction(ActionEvent actionEvent) {
+        String releaseDate = tpReleaseDate.getText();
+        String title = tpTitel.getText();
+
+        facade.addProduction(releaseDate,title);
 
     }
 }

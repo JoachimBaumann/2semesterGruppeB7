@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane onDragDetected="#addProduction" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
+<AnchorPane onDragDetected="#addProduction" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
    <children>
       <ToolBar layoutY="78.0" prefHeight="40.0" prefWidth="838.0">
         <items>
@@ -107,24 +107,24 @@
          <children>
             <HBox prefHeight="64.0" prefWidth="366.0">
                <children>
-                  <TextField prefHeight="28.0" prefWidth="330.0" promptText="Titel" />
+                  <TextField fx:id="tpTitel" prefHeight="28.0" prefWidth="330.0" promptText="Titel" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" prefHeight="64.0" prefWidth="368.0">
                <children>
-                  <TextField prefHeight="28.0" prefWidth="330.0" promptText="Beskrivelse" />
+                  <TextField fx:id="tpBeskrivelse" prefHeight="28.0" prefWidth="330.0" promptText="Beskrivelse" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="42.0">
                <children>
-                  <TextField prefHeight="28.0" prefWidth="330.0" promptText="releaseDate" />
+                  <TextField fx:id="tpReleaseDate" prefHeight="28.0" prefWidth="330.0" promptText="releaseDate" />
                </children>
             </HBox>
             <HBox>
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" onAction="#closeAddProductionWindow" prefHeight="25.0" prefWidth="99.0" text="Luk" textAlignment="JUSTIFY" />
                   <TextField prefHeight="25.0" prefWidth="273.0" promptText="releaseDate" visible="false" />
-                  <Button fx:id="bCreateProduction" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#bCreateProduction" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
                </children>
             </HBox>
          </children>
