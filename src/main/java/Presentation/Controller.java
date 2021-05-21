@@ -61,6 +61,20 @@ public class Controller implements Initializable {
     public TextField tpReleaseDate;
     private Facade facade = new Facade();
 
+    //configure the table
+    @FXML private TableView<Production> productionTableView;
+    @FXML private TableColumn<Production, Integer> pIDColumn;
+    @FXML private TableColumn<Production, String> pTitelColumn;
+    @FXML private TableColumn<Production, String> pDescriptionColumn;
+    @FXML private TableColumn<Production, String> pReleaseDateColumn;
+
+    //These instance variables are used to create new Person objects
+    @FXML private TextField pIDTextfield;
+    @FXML private TextField pTitelTextField;
+    @FXML private TextField pDescriptionTextField;
+    @FXML private TextField pReleaseDateTextField;
+
+
 
     public void signIn(ActionEvent actionEvent) throws IOException {
         if (userName.getText().equals("producer") && userPassword.getText().equals("1234")) {
@@ -120,7 +134,6 @@ public class Controller implements Initializable {
 
 
     public void addProduction(ActionEvent actionEvent) {
-
     }
 
     ;
@@ -179,16 +192,49 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tID.setCellValueFactory(new PropertyValueFactory<Production,Integer>("productionID"));
-        tTitel.setCellValueFactory(new PropertyValueFactory<Production,String>("productionName"));
-        tReleaseDate.setCellValueFactory(new PropertyValueFactory<Production,String>("releaseDate"));
+        //Initializing tableview
+        productionTableView = new TableView<>();
+        pIDColumn = new TableColumn<>();
+        pTitelColumn = new TableColumn<>();
+        pDescriptionColumn = new TableColumn<>();
+        pReleaseDateColumn = new TableColumn<>();
+        //placement
+        productionTableView.setLayoutX(-2);
+        productionTableView.setLayoutY(170);
+        productionTableView.setPrefHeight(388);
+        productionTableView.setPrefWidth(883);
+        //Column Sizes
+        pIDColumn.setPrefWidth(120);
+        pTitelColumn.setPrefWidth(300);
+        pDescriptionColumn.setPrefWidth(300);
+        pReleaseDateColumn.setPrefWidth(300);
+
+        //set up the columns in the table
+
+        pIDColumn.setCellValueFactory(new PropertyValueFactory<Production, Integer>("ID"));
+        pTitelColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("Titel"));
+        pDescriptionColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("Description"));
+        pReleaseDateColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("ReleaseDate"));
+
+        //load dummy data
+        tableView.setItems((getProduction()));
 
     }
+    public ObservableList<Production>  getProduction()
+    {
+        ObservableList<Production> productions = FXCollections.observableArrayList();
+        productions.add(new Production(1,"Sinatra","The workening"));
+        productions.add(new Production(2,"Sinatra","The workening"));
+        productions.add(new Production(3,"Sinatra","The workening"));
+
+        return productions;
+    }
+
+
 
     public void bCreateProduction(ActionEvent actionEvent) {
         String releaseDate = tpReleaseDate.getText();
         String title = tpTitel.getText();
-
         facade.addProduction(releaseDate,title);
 
     }
