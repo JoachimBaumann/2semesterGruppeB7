@@ -90,6 +90,10 @@ public class Facade implements CreditManager {
 
     }
 
+    public Catalog getCatalog() {
+        return catalog;
+    }
+
     @Override
     public void generateReport(int productionID, Date releaseDate) {
 
