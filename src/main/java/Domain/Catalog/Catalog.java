@@ -39,6 +39,12 @@ public class Catalog {
         persons.put(personID, person);
     }
 
+    public void addProduction(int productionID, Production production) {
+        productions.put(productionID, production);
+    }
+
+
+
     public HashMap<Integer, Person> getPersons() {
         return persons;
     }
