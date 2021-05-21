@@ -58,7 +58,7 @@ public class Controller implements Initializable {
     public VBox vAddProduction;
     public TextField tpTitel;
     public TextField tpBeskrivelse;
-    public TextField tpReleaseDate;
+    public DatePicker tpReleaseDate;
     private Facade facade = new Facade();
 
 
@@ -186,7 +186,7 @@ public class Controller implements Initializable {
     }
 
     public void bCreateProduction(ActionEvent actionEvent) {
-        String releaseDate = tpReleaseDate.getText();
+        String releaseDate = tpReleaseDate.getEditor().getText();
         String title = tpTitel.getText();
 
         facade.addProduction(releaseDate,title);
