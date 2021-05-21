@@ -6,8 +6,6 @@ import Domain.Catalog.Production;
 import Domain.Catalog.Credit;
 
 import java.sql.ResultSet;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 public interface IPersistanceHandler {

@@ -1,6 +1,5 @@
 package Domain.Catalog;
 
-import java.util.Date;
 import java.util.HashMap;
 
 public class Production {

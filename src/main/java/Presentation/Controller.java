@@ -1,11 +1,10 @@
 package Presentation;
 
-import Domain.Catalog.Catalog;
 import Domain.Catalog.Production;
 import Domain.Facade;
-import javafx.application.Application;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +14,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -26,8 +24,6 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -59,6 +55,7 @@ public class Controller implements Initializable {
     public TextField tpTitel;
     public TextField tpBeskrivelse;
     public TextField tpReleaseDate;
+    public AnchorPane mainPane;
     private Facade facade = new Facade();
 
     //configure the table
@@ -198,6 +195,12 @@ public class Controller implements Initializable {
         pTitelColumn = new TableColumn<>();
         pDescriptionColumn = new TableColumn<>();
         pReleaseDateColumn = new TableColumn<>();
+
+        productionTableView.getColumns().addAll(pIDColumn,pTitelColumn,pDescriptionColumn,pReleaseDateColumn);
+        pIDColumn.setText("ID");
+        pTitelColumn.setText("Titel");
+        pDescriptionColumn.setText("Description");
+        pReleaseDateColumn.setText("Release Date");
         //placement
         productionTableView.setLayoutX(-2);
         productionTableView.setLayoutY(170);
@@ -208,16 +211,43 @@ public class Controller implements Initializable {
         pTitelColumn.setPrefWidth(300);
         pDescriptionColumn.setPrefWidth(300);
         pReleaseDateColumn.setPrefWidth(300);
+        pIDColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, Integer>, ObservableValue<Integer>>() {
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Production, Integer> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getProductionID());
+            }
+
+        });
+        pTitelColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Production, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getProductionName());
+            }
+        });
+        /*
+        pDescriptionColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Production, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().);
+            }
+        });
+        */
+        pReleaseDateColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Production, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getReleaseDate());
+            }
+        });
+
+        mainPane.getChildren().addAll(productionTableView);
 
         //set up the columns in the table
 
-        pIDColumn.setCellValueFactory(new PropertyValueFactory<Production, Integer>("ID"));
-        pTitelColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("Titel"));
-        pDescriptionColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("Description"));
-        pReleaseDateColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("ReleaseDate"));
+    //  pIDColumn.setCellValueFactory(new PropertyValueFactory<Production, Integer>("productionID"));
+        pTitelColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("productionName"));
+    //    pDescriptionColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("description"));
+        pReleaseDateColumn.setCellValueFactory(new PropertyValueFactory<Production, String>("releaseDate"));
 
-        //load dummy data
-        tableView.setItems((getProduction()));
+        //  load dummy data
+        // tableView.setItems((getProduction()));
+        tableView.getItems().addAll(getProduction());
+
 
     }
     public ObservableList<Production>  getProduction()

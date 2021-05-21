@@ -1,6 +1,5 @@
 package Domain.Catalog;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -17,7 +16,7 @@ public class Catalog {
         return productions;
     }
 
-    public void createProduction(Integer productionID,String date,String productionName){
+    public void createProduction(Integer productionID, String date, String productionName){
         productions.put(productionID,new Production(productionID,date,productionName));
     }
 
