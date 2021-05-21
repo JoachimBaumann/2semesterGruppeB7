@@ -213,7 +213,7 @@ public class Controller implements Initializable {
         pDescriptionColumn.setPrefWidth(300);
         pReleaseDateColumn.setPrefWidth(300);
 
-        facade.addProduction("05.09.99","Joachim Les hottie", "Onlyfans recordings");
+
         pIDColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, Integer>, ObservableValue<Integer>>() {
             public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Production, Integer> p) {
                 return new ReadOnlyObjectWrapper(p.getValue().getProductionID());
