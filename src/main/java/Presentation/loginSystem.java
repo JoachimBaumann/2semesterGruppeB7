@@ -1,24 +1,24 @@
 package Presentation;
 
+import Domain.Users.User;
+
+import java.util.ArrayList;
+
 public class loginSystem {
 
-    String pass;
-    String user;
+    private String username;
+    private String password;
 
-
-    //user = txtUser.getText();
-    //pass = txtPass.getText();
-
-    //if(pass.equals("ID:01"))
-
-    {
-      //  lblDisplay.setText("Credentials Accepted.");
-    }
-//else
-
-    {
-       // lblDisplay.setText("Please try again.");
-
+    ArrayList<User> users = new ArrayList();
 
     }
-}
+
+
+/*
+Målet: Lav en liste med users.
+
+1.  Listen er lavet. CHECK
+2.  Lav konstruktorer for brugerne.
+3.  Override method
+4.  populate array
+*/

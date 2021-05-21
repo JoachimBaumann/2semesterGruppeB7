@@ -29,7 +29,6 @@ public class Catalog {
         throw new UnsupportedOperationException();
     }
 
-
     public void searchID(String name, int productionID) {
         throw new UnsupportedOperationException();
 
@@ -42,8 +41,6 @@ public class Catalog {
     public void addProduction(int productionID, Production production) {
         productions.put(productionID, production);
     }
-
-
 
     public HashMap<Integer, Person> getPersons() {
         return persons;

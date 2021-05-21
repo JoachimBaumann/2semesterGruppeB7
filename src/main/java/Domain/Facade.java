@@ -22,7 +22,7 @@ public class Facade implements CreditManager {
         catalog.getProductionList().clear();
 
         for (Production p : tempProduction){
-            catalog.getProductionList().put(p.getProductionID(), p);
+            catalog.addProduction(p.getProductionID(), p);
         }
         //update persons
         List<Person> pers = persistanceHandler.getPersons();
@@ -30,7 +30,7 @@ public class Facade implements CreditManager {
         catalog.getPersons().clear();
 
         for (Person person:pers) {
-            catalog.getPersons().put(person.getuID(), person);
+            catalog.addPerson(person.getuID(), person);
         }
 
 
@@ -90,6 +90,7 @@ public class Facade implements CreditManager {
 
     }
 
+    //TODO check nødvendigheden af nedenstående:
     public Catalog getCatalog() {
         return catalog;
     }

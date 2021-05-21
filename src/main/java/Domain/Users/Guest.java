@@ -1,8 +1,12 @@
 package Domain.Users;
 
-public class Guest implements User {
+public class Guest extends User {
     @Override
-    public void login() {
-
+    public String checkRole() {
+        return "Guest";
+        }
+    public Guest(String username, String password){
+        super(username, password);
     }
+
 }

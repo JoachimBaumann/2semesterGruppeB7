@@ -1,9 +1,14 @@
 package Domain.Users;
 
-public class SystemAdministrator implements User {
-
+public class SystemAdministrator extends User {
     @Override
-    public void login() {
-    throw new UnsupportedOperationException();
+    public String checkRole() {
+        return "SystemAdministrator";
+    }
+    private int sID;
+    public SystemAdministrator(int sID, String username, String password){
+        super(username, password);
+        this.sID = sID;
     }
 }
+
