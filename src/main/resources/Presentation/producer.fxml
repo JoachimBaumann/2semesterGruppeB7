@@ -41,7 +41,7 @@
             <MenuItem fx:id="action2" mnemonicParsing="false" onAction="#actionTwo" text="Opret bruger" />
          </items>
       </SplitMenuButton>
-      <TableView fx:id="t" layoutX="-3.0" layoutY="170.0" prefHeight="388.0" prefWidth="883.0">
+      <TableView fx:id="tableView" layoutX="-3.0" layoutY="170.0" prefHeight="388.0" prefWidth="883.0">
         <columns>
           <TableColumn fx:id="tID" prefWidth="120.0" text="ID" />
           <TableColumn fx:id="tTitel" minWidth="0.0" prefWidth="300.0" text="Titel" />
@@ -55,7 +55,7 @@
             <Button mnemonicParsing="false" onAction="#bSearchP" text="Søg" />
          </children>
       </HBox>
-      <VBox fx:id="vBoxLogIn" layoutX="431.0" layoutY="85.0" prefHeight="94.0" prefWidth="371.0" visible="false">
+      <VBox fx:id="vBoxLogIn" layoutX="431.0" layoutY="85.0" prefHeight="94.0" prefWidth="371.0">
          <children>
             <VBox fx:id="vBoxSignIn" prefHeight="106.0" prefWidth="371.0" visible="false">
                <children>

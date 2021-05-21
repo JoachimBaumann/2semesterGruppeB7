@@ -6,10 +6,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -41,11 +43,11 @@ public class Controller {
     public SplitMenuButton logInd;
     public ImageView lightCredit;
     public ImageView darkCredit;
-    public TableColumn tID;
-    public TableColumn tTitel;
-    public TableColumn tDescription;
-    public TableColumn tReleaseDate;
-    public TableView t;
+    public TableColumn<Production, Integer> tID;
+    public TableColumn<Production, String> tTitel;
+    public TableColumn<Production, String> tDescription;
+    public TableColumn <Production, String>tReleaseDate;
+    public TableView<Production> tableView;
     private Facade facade = new Facade();
 
 
@@ -137,36 +139,21 @@ public class Controller {
         vBoxSignIn.setVisible(false);
     }
 
-    public void viewAllProductions() {
-        facade.updateCatalog();
-        List<Production> list = new ArrayList<Production>();
-        list.add(new Production(2, "19.05.99", "BigDiks"));
+    public void viewAllProductions(){
+        List<Production> productionList = new ArrayList<>();
 
-        // Now add observability by wrapping it with ObservableList.
-        ObservableList<Production> observableList = FXCollections.observableList(list);
-        observableList.addListener(new ListChangeListener() {
-            @Override
-            public void onChanged(ListChangeListener.Change change) {
-            }
-        });
-        t.setItems(observableList);
-        tID.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, Integer>, Integer>() {
-            @Override
-            public Integer call(TableColumn.CellDataFeatures<Production, Integer> param) {
-                return param.getValue().getProductionID();
-            }
-        });
 
-/*
-        tID.setCellValueFactory(new MapValueFactory<>("productionID"));
-        tTitel.setCellValueFactory(new MapValueFactory<>("productionName"));
-        tDescription.setCellValueFactory(new MapValueFactory<>("description"));
-        tReleaseDate.setCellValueFactory(new MapValueFactory<>("releaseDate"));
-        t.getItems().addAll(observableList);
-        for (Production p:list) {
-            t.getColumns().add(p.getProductionID(),p.getProductionName(),"Funny Movie",p.getReleaseDate());
+        productionList.add( new Production(2,"99.99.99", "The Big Working one") );
+        productionList.add( new Production(3,"99.99.99", "The Big Working two") );
+        productionList.add( new Production(4,"99.99.99", "The Big Working three") );
 
- */
+        tID.setCellValueFactory(new PropertyValueFactory<Production,Integer>("productionID"));
+        tTitel.setCellValueFactory(new PropertyValueFactory<Production,String>("productionName"));
+        tReleaseDate.setCellValueFactory(new PropertyValueFactory<Production,String>("releaseDate"));
+
+        tableView.getItems().add(0, productionList.get(1));
+
+
     }
 
 
