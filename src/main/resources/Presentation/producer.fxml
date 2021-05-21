@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane onDragDetected="#addProduction" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
+<AnchorPane onDragDetected="#addProduction" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
    <children>
       <ToolBar layoutY="78.0" prefHeight="40.0" prefWidth="838.0">
         <items>
@@ -103,7 +103,7 @@
             <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#rCancel" text="Cancel" />
          </children>
       </AnchorPane>
-      <VBox fx:id="vAddProduction" layoutX="8.0" layoutY="201.0" prefHeight="161.0" prefWidth="331.0" visible="false">
+      <VBox fx:id="vAddProduction" layoutX="8.0" layoutY="201.0" prefHeight="161.0" prefWidth="331.0">
          <children>
             <HBox prefHeight="64.0" prefWidth="366.0">
                <children>
@@ -124,7 +124,7 @@
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" onAction="#closeAddProductionWindow" prefHeight="25.0" prefWidth="99.0" text="Luk" textAlignment="JUSTIFY" />
                   <TextField prefHeight="25.0" prefWidth="273.0" promptText="releaseDate" visible="false" />
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
+                  <Button fx:id="bCreateProduction" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
                </children>
             </HBox>
          </children>
