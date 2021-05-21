@@ -181,6 +181,7 @@ public class Controller implements Initializable {
     }
     public void addProductionButton(){
         vAddProduction.setVisible(true);
+        vAddProduction.toFront();
     }
     public void closeAddProductionWindow(){
         vAddProduction.setVisible(false);
@@ -200,6 +201,7 @@ public class Controller implements Initializable {
         pTitelColumn.setText("Titel");
         pDescriptionColumn.setText("Description");
         pReleaseDateColumn.setText("Release Date");
+        productionTableView.toBack();
         //placement
         productionTableView.setLayoutX(-2);
         productionTableView.setLayoutY(170);
