@@ -14,9 +14,9 @@ public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
     private String url = "localhost";
     private int port = 5432;
-    private String databaseName = "postgres";
+    private String databaseName = "CreditmanagementDB";
     private String username = "postgres";
-    private String password = "mullehund99";
+    private String password = "1234";
     private Connection connection = null;
 
     private PersistanceHandler() {
@@ -218,7 +218,7 @@ public class PersistanceHandler implements IPersistanceHandler {
         return false;
     }
 
-            // Mangler execute statement. :)
+
     @Override
     public List<Person> getPersons() {
         try {
