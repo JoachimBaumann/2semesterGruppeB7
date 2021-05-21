@@ -52,6 +52,8 @@ public class Controller implements Initializable {
     public TableColumn<Production, String> tDescription;
     public TableColumn <Production, String>tReleaseDate;
     public TableView<Production> tableView;
+    public VBox vBoxLogIn;
+    public VBox vAddProduction;
     private Facade facade = new Facade();
 
 
@@ -164,6 +166,12 @@ public class Controller implements Initializable {
                 lightCredit.setVisible(false);
 
             }
+    }
+    public void addProductionButton(){
+        vAddProduction.setVisible(true);
+    }
+    public void closeAddProductionWindow(){
+        vAddProduction.setVisible(false);
     }
 
 

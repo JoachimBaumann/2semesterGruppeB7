@@ -22,7 +22,7 @@
       <ToolBar layoutY="78.0" prefHeight="40.0" prefWidth="838.0">
         <items>
             <Button mnemonicParsing="false" onAction="#viewAllProductions" text="Alle produtioner" />
-            <Button fx:id="bAddProduction" mnemonicParsing="false" onAction="#addProduction" text="Tilføj produktion" visible="false" />
+            <Button fx:id="bAddProduction" mnemonicParsing="false" onAction="#addProductionButton" text="Tilføj produktion" visible="false" />
             <Button fx:id="bAddCredit" mnemonicParsing="false" text="Tilføj kreditering" visible="false" />
             <Button fx:id="bsignOut" mnemonicParsing="false" onAction="#signOutP" text="Log ud" visible="false" />
         </items>
@@ -103,5 +103,31 @@
             <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#rCancel" text="Cancel" />
          </children>
       </AnchorPane>
+      <VBox fx:id="vAddProduction" layoutX="8.0" layoutY="201.0" prefHeight="161.0" prefWidth="331.0" visible="false">
+         <children>
+            <HBox prefHeight="64.0" prefWidth="366.0">
+               <children>
+                  <TextField prefHeight="28.0" prefWidth="330.0" promptText="Titel" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="64.0" prefWidth="368.0">
+               <children>
+                  <TextField prefHeight="28.0" prefWidth="330.0" promptText="Beskrivelse" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="42.0">
+               <children>
+                  <TextField prefHeight="28.0" prefWidth="330.0" promptText="releaseDate" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#closeAddProductionWindow" prefHeight="25.0" prefWidth="99.0" text="Luk" textAlignment="JUSTIFY" />
+                  <TextField prefHeight="25.0" prefWidth="273.0" promptText="releaseDate" visible="false" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
