@@ -124,19 +124,21 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public boolean addProduction(int productionID, String releaseDate, String productionName) {
+    public int addProduction(String releaseDate, String productionName) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO production (productionID,releasedate,productionName)" + " VALUES (?,?,?)");
-            statement.setInt(1, productionID);
-            statement.setString(2, releaseDate);
-            statement.setString(3, productionName);
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO production (releasedate,productionName)" + " VALUES (?,?) RETURNING productionID;");
+            statement.setString(1, releaseDate);
+            statement.setString(2, productionName);
             statement.execute();
-            return true;
+            ResultSet last_updated_person = statement.getResultSet();
+            last_updated_person.next();
+            int productionID = last_updated_person.getInt(1);
+            return productionID;
         } catch (SQLException e) {
             e.printStackTrace();
+            return -1;
         }
 
-        return false;
     }
 
 
