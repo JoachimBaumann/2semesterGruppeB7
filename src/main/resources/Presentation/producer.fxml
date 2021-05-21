@@ -41,7 +41,7 @@
             <MenuItem fx:id="action2" mnemonicParsing="false" onAction="#actionTwo" text="Opret bruger" />
          </items>
       </SplitMenuButton>
-      <TableView fx:id="tableView" layoutX="-3.0" layoutY="170.0" prefHeight="388.0" prefWidth="883.0">
+      <TableView fx:id="tableView" layoutX="-2.0" layoutY="170.0" prefHeight="388.0" prefWidth="883.0">
         <columns>
           <TableColumn fx:id="tID" prefWidth="120.0" text="ID" />
           <TableColumn fx:id="tTitel" minWidth="0.0" prefWidth="300.0" text="Titel" />
@@ -103,7 +103,7 @@
             <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#rCancel" text="Cancel" />
          </children>
       </AnchorPane>
-      <VBox fx:id="vAddProduction" layoutX="8.0" layoutY="201.0" prefHeight="161.0" prefWidth="331.0">
+      <VBox fx:id="vAddProduction" layoutX="8.0" layoutY="201.0" prefHeight="161.0" prefWidth="331.0" visible="false">
          <children>
             <HBox prefHeight="64.0" prefWidth="366.0">
                <children>

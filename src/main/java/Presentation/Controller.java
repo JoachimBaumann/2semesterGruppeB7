@@ -105,6 +105,7 @@ public class Controller implements Initializable {
         tLogUser.setVisible(false);
         label.setVisible(false);
         bsignOut.setVisible(false);
+        vAddProduction.setVisible(false);
     }
 
 
