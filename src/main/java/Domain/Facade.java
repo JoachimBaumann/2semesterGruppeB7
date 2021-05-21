@@ -72,8 +72,16 @@ public class Facade implements CreditManager {
         if(tempID != -1) {
             catalog.addPerson(tempID, new Person(mail, fName, lName, phonenumber, tempID, description));
         }
+        return -1;
+    }
 
-        System.out.println(catalog.getPersons());
+    @Override
+    public int addProduction(String releaseDate, String productionName) {
+        int tempID = persistanceHandler.addProduction(releaseDate,productionName);
+        if(tempID != -1) {
+            catalog.addProduction(tempID,new Production(tempID,releaseDate,productionName));
+        }
+
         return -1;
     }
 
