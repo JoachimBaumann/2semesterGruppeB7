@@ -8,10 +8,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -21,10 +23,12 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
     public Button bSearch;
     public Text tLogProd;
     public Text tLogAdmin;
@@ -139,21 +143,10 @@ public class Controller {
         vBoxSignIn.setVisible(false);
     }
 
+    ObservableList<Production> observableList = FXCollections.observableArrayList(facade.viewProductions());
+
     public void viewAllProductions(){
-        List<Production> productionList = new ArrayList<>();
-
-
-        productionList.add( new Production(2,"99.99.99", "The Big Working one") );
-        productionList.add( new Production(3,"99.99.99", "The Big Working two") );
-        productionList.add( new Production(4,"99.99.99", "The Big Working three") );
-
-        tID.setCellValueFactory(new PropertyValueFactory<Production,Integer>("productionID"));
-        tTitel.setCellValueFactory(new PropertyValueFactory<Production,String>("productionName"));
-        tReleaseDate.setCellValueFactory(new PropertyValueFactory<Production,String>("releaseDate"));
-
-        tableView.getItems().add(0, productionList.get(1));
-
-
+        tableView.setItems(observableList);
     }
 
 
@@ -171,6 +164,16 @@ public class Controller {
                 lightCredit.setVisible(false);
 
             }
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tID.setCellValueFactory(new PropertyValueFactory<Production,Integer>("productionID"));
+        tTitel.setCellValueFactory(new PropertyValueFactory<Production,String>("productionName"));
+        tReleaseDate.setCellValueFactory(new PropertyValueFactory<Production,String>("releaseDate"));
+
+        tableView.setItems(observableList);
     }
 }
 
