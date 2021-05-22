@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -193,6 +194,21 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initializing tableview
         productionTableView = new TableView<Production>(getProduction());
+
+        // this makes it possible to doubleClick a row
+        productionTableView.setRowFactory(tv -> {
+            TableRow<Production> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Production rowData = row.getItem();
+                    System.out.println("Double click on: "+rowData.getProductionID());
+                }
+            });
+            return row ;
+        });
+
+
+
         pIDColumn = new TableColumn<>("productionID");
         pTitelColumn = new TableColumn<>("productionName");
         pDescriptionColumn = new TableColumn<>("description");
@@ -209,10 +225,10 @@ public class Controller implements Initializable {
         productionTableView.setPrefHeight(388);
         productionTableView.setPrefWidth(883);
         //Column Sizes
-        pIDColumn.setPrefWidth(120);
+        pIDColumn.setPrefWidth(53);
         pTitelColumn.setPrefWidth(300);
-        pDescriptionColumn.setPrefWidth(300);
-        pReleaseDateColumn.setPrefWidth(300);
+        pDescriptionColumn.setPrefWidth(370);
+        pReleaseDateColumn.setPrefWidth(117);
 
 
         pIDColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, Integer>, ObservableValue<Integer>>() {
@@ -272,5 +288,7 @@ public class Controller implements Initializable {
         updateList();
 
     }
+
+
 }
 
