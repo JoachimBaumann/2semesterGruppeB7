@@ -15,7 +15,7 @@ public class PersistanceHandler implements IPersistanceHandler {
     private int port = 5432;
     private String databaseName = "postgres";
     private String username = "postgres";
-    private String password = "mullehund99";
+    private String password = "bigboi";
     private Connection connection = null;
 
     private PersistanceHandler() {
