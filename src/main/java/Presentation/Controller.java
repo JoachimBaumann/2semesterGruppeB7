@@ -57,6 +57,7 @@ public class Controller implements Initializable {
     public TextField tpReleaseDate;
     public AnchorPane mainPane;
     private Facade facade = new Facade();
+    ObservableList<Production> productions;
 
     //configure the table
     @FXML private TableView<Production> productionTableView;
@@ -245,24 +246,30 @@ public class Controller implements Initializable {
     }
     public ObservableList<Production>  getProduction()
     {
-        ObservableList<Production> productions = FXCollections.observableArrayList();
+        productions = FXCollections.observableArrayList();
 
     facade.updateCatalog();
 
-    for(Production p : facade.getCatalog().getProductionList().values()) {
-        productions.add(p);
-    }
+    updateList();
 
         return productions;
     }
 
 
+    public void updateList(){
+        productions.clear();
+        for(Production p : facade.getCatalog().getProductionList().values()) {
+            productions.add(p);
+        }
+    }
 
     public void bCreateProduction(ActionEvent actionEvent) {
         String releaseDate = tpReleaseDate.getText();
         String title = tpTitel.getText();
         String description = tpBeskrivelse.getText();
         facade.addProduction(releaseDate,title,description);
+
+        updateList();
 
     }
 }
