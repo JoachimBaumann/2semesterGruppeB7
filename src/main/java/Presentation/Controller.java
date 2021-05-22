@@ -164,7 +164,7 @@ public class Controller implements Initializable {
     }
 
     public void viewAllProductions() {
-        throw new UnsupportedOperationException();
+        updateList();
     }
 
 
@@ -206,8 +206,6 @@ public class Controller implements Initializable {
             });
             return row ;
         });
-
-
 
         pIDColumn = new TableColumn<>("productionID");
         pTitelColumn = new TableColumn<>("productionName");
