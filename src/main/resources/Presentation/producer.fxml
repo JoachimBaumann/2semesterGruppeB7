@@ -104,7 +104,7 @@
             <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#rCancel" text="Cancel" />
          </children>
       </AnchorPane>
-      <VBox fx:id="vAddProduction" layoutX="8.0" layoutY="201.0" prefHeight="161.0" prefWidth="331.0">
+      <VBox fx:id="vAddProduction" layoutX="8.0" layoutY="201.0" prefHeight="161.0" prefWidth="331.0" visible="false">
          <children>
             <HBox prefHeight="64.0" prefWidth="366.0">
                <children>
