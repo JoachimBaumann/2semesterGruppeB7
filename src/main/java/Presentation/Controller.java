@@ -6,6 +6,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class Controller implements Initializable {
     public Button bSearch;
@@ -57,6 +59,7 @@ public class Controller implements Initializable {
     public TextField tpBeskrivelse;
     public TextField tpReleaseDate;
     public AnchorPane mainPane;
+    public TextField searchField;
     private Facade facade = new Facade();
     ObservableList<Production> productions;
 
@@ -202,6 +205,7 @@ public class Controller implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Production rowData = row.getItem();
+
                     System.out.println("Double click on: "+rowData.getProductionID());
                 }
             });
@@ -257,8 +261,30 @@ public class Controller implements Initializable {
         productionTableView.getColumns().addAll(pIDColumn,pTitelColumn,pDescriptionColumn,pReleaseDateColumn);
         mainPane.getChildren().addAll(productionTableView);
 
+        FilteredList<Production> filteredData = new FilteredList<>(FXCollections.observableList(productions));
+        productionTableView.setItems(filteredData);
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredData.setPredicate(createPredicate(newValue))
+        );
+
 
     }
+
+    private Predicate<Production> createPredicate(String searchText){
+        return Production -> {
+            if (searchText == null || searchText.isEmpty()) return true;
+            return searchFindsOrder(Production, searchText);
+        };
+    }
+
+    private boolean searchFindsOrder(Production production, String searchText){
+        return (production.getProductionName().toLowerCase().contains(searchText.toLowerCase())) ||
+                Integer.valueOf(production.getProductionID()).toString().equals(searchText.toLowerCase());
+    }
+
+
+
     public ObservableList<Production>  getProduction()
     {
         productions = FXCollections.observableArrayList();
@@ -269,6 +295,8 @@ public class Controller implements Initializable {
 
         return productions;
     }
+
+
 
 
     public void updateList(){
