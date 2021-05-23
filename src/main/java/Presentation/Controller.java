@@ -144,6 +144,7 @@ public class Controller implements Initializable {
 
     public void actionOne(ActionEvent actionEvent) {
         vBoxSignIn.setVisible(true);
+        vBoxSignIn.setDisable(false);
         newMember.setVisible(false);
     }
 

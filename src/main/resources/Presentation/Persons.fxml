@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="483.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.PersonsController">
+   <children>
+      <TextField layoutX="99.0" layoutY="93.0" prefHeight="26.0" prefWidth="360.0" promptText="Søg efter personer" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="179.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/TV2CREDITS.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="personsTV" editable="true" layoutX="40.0" layoutY="138.0" prefHeight="315.0" prefWidth="477.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="uID" />
+          <TableColumn prefWidth="75.0" text="Navn" />
+            <TableColumn prefWidth="75.0" text="Efternavn" />
+            <TableColumn prefWidth="75.0" text="Mail" />
+            <TableColumn prefWidth="75.0" text="Telefon" />
+            <TableColumn prefWidth="100.79995727539062" text="Beskrivelse" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
