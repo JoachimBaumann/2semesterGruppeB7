@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,6 +20,7 @@ public class ProductionController implements Initializable {
     public TextField pTilte;
     public TextField pReleaseDate;
     public TextField pProductionID;
+    public TextArea pBeskrivelse;
     private Informationholder informationholder = Informationholder.getInstance();
     private Production production = informationholder.getProduction();
 
@@ -28,6 +30,7 @@ public class ProductionController implements Initializable {
     pTilte.setText(production.getProductionName());
     pReleaseDate.setText(production.getReleaseDate());
     pProductionID.setText(String.valueOf(production.getProductionID()));
+    pBeskrivelse.setText(production.getDescription());
     }
 
 public void cancelProduction(ActionEvent event) throws IOException {
