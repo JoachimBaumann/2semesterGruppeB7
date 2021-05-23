@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -191,6 +192,18 @@ public class Controller implements Initializable {
     }
     public void closeAddProductionWindow(){
         vAddProduction.setVisible(false);
+    }
+
+
+    public void changeScene(ActionEvent event) throws IOException
+    {
+        Parent productionViewParent = FXMLLoader.load(getClass().getResource("Production.fxml"));
+        Scene productionViewScene = new Scene(productionViewParent);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(productionViewScene);
+        window.show();
     }
 
 
