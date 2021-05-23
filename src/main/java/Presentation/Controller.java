@@ -218,8 +218,20 @@ public class Controller implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Production rowData = row.getItem();
+                    Parent productionViewParent = null;
+                    try {
+                        productionViewParent = FXMLLoader.load(getClass().getResource("Production.fxml"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Scene productionViewScene = new Scene(productionViewParent);
 
-                    System.out.println("Double click on: "+rowData.getProductionID());
+                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+                    window.setScene(productionViewScene);
+                    window.show();
+
+
                 }
             });
             return row ;
