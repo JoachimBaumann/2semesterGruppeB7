@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ProductionController">
    <children>
       <ImageView fitHeight="300.0" fitWidth="218.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -33,5 +33,6 @@
       <TextField layoutX="400.0" layoutY="10.0" prefHeight="25.0" prefWidth="233.0" />
       <TextField layoutX="400.0" layoutY="36.0" prefWidth="233.0" />
       <TextField layoutX="400.0" layoutY="63.0" prefWidth="233.0" />
+      <Button layoutX="536.0" layoutY="438.0" mnemonicParsing="false" onAction="#cancelProduction" text="Annuller" />
    </children>
 </AnchorPane>

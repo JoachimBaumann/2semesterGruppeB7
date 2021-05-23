@@ -17,11 +17,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainPane" onDragDetected="#addProduction" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
+<AnchorPane fx:id="mainPane" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
    <children>
       <ToolBar layoutY="78.0" prefHeight="40.0" prefWidth="838.0">
         <items>
-            <Button mnemonicParsing="false" onAction="#viewAllProductions" text="Alle produtioner" />
+            <Button mnemonicParsing="false" onAction="#changeScene" text="Alle produtioner" />
             <Button fx:id="bAddProduction" mnemonicParsing="false" onAction="#addProductionButton" text="Tilføj produktion" visible="false" />
             <Button fx:id="bAddCredit" mnemonicParsing="false" text="Tilføj kreditering" visible="false" />
             <Button fx:id="bsignOut" mnemonicParsing="false" onAction="#signOutP" text="Log ud" visible="false" />

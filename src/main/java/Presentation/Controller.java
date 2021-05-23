@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -190,6 +191,18 @@ public class Controller implements Initializable {
     }
 
 
+    public void changeScene(ActionEvent event) throws IOException
+    {
+        Parent productionViewParent = FXMLLoader.load(getClass().getResource("Production.fxml"));
+        Scene productionViewScene = new Scene(productionViewParent);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(productionViewScene);
+        window.show();
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initializing tableview
@@ -201,6 +214,8 @@ public class Controller implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Production rowData = row.getItem();
+
+
                     System.out.println("Double click on: "+rowData.getProductionID());
                 }
             });
