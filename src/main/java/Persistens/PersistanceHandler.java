@@ -11,11 +11,11 @@ import java.util.List;
 
 public class PersistanceHandler implements IPersistanceHandler {
     private static PersistanceHandler instance;
-    private String url = "localhost";
+    private String url = "hattie.db.elephantsql.com";
     private int port = 5432;
-    private String databaseName = "postgres";
-    private String username = "postgres";
-    private String password = "phillip99";
+    private String databaseName = "dpanlzms";
+    private String username = "dpanlzms";
+    private String password = "ZhCCYbMW-ey8nERpqtL4JzHbF8CVihSJ";
     private Connection connection = null;
 
     private PersistanceHandler() {
