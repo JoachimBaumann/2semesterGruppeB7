@@ -21,7 +21,7 @@
    <children>
       <ToolBar layoutY="78.0" prefHeight="40.0" prefWidth="838.0">
         <items>
-            <Button mnemonicParsing="false" onAction="#changeScene" text="Alle produtioner" />
+            <Button mnemonicParsing="false" text="Alle produtioner" />
             <Button fx:id="bAddCredit" mnemonicParsing="false" text="Personer" visible="false" />
             <Button fx:id="bsignOut" mnemonicParsing="false" onAction="#signOutP" text="Log ud" visible="false" />
         </items>

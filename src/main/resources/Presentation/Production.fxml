@@ -20,7 +20,7 @@
          <image>
             <Image url="@../Images/UI-Background.png" />
          </image></ImageView>
-      <TextArea layoutX="400.0" layoutY="89.0" prefHeight="130.0" prefWidth="233.0" />
+      <TextArea fx:id="pBeskrivelse" layoutX="400.0" layoutY="89.0" prefHeight="130.0" prefWidth="233.0" />
       <TableView fx:id="CreditTV" layoutX="14.0" layoutY="187.0" prefHeight="276.0" prefWidth="302.0">
         <columns>
           <TableColumn prefWidth="75.0" text="CreditID" />
@@ -34,9 +34,9 @@
       <Text layoutX="326.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProduktionID:" wrappingWidth="77.3367919921875" />
       <Text layoutX="336.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beskrivelse:" wrappingWidth="62.13671875" />
       <Button layoutX="608.0" layoutY="438.0" mnemonicParsing="false" text="Gem ændringer" />
-      <TextField layoutX="400.0" layoutY="10.0" prefHeight="25.0" prefWidth="233.0" />
-      <TextField layoutX="400.0" layoutY="36.0" prefWidth="233.0" />
-      <TextField layoutX="400.0" layoutY="63.0" prefWidth="233.0" />
+      <TextField fx:id="pTilte" layoutX="400.0" layoutY="10.0" prefHeight="25.0" prefWidth="233.0" />
+      <TextField fx:id="pReleaseDate" layoutX="400.0" layoutY="36.0" prefWidth="233.0" />
+      <TextField fx:id="pProductionID" layoutX="400.0" layoutY="63.0" prefWidth="233.0" />
       <Button layoutX="536.0" layoutY="438.0" mnemonicParsing="false" onAction="#cancelProduction" text="Annuller" />
       <Button layoutX="14.0" layoutY="154.0" mnemonicParsing="false" text="Tilføj Kreditering" />
    </children>

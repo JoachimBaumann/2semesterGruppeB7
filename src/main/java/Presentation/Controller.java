@@ -1,5 +1,6 @@
 package Presentation;
 
+import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 import Domain.Facade;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -24,6 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -62,6 +64,7 @@ public class Controller implements Initializable {
     public Text tPassword;
     private Facade facade = new Facade();
     ObservableList<Production> productions;
+    private Informationholder informationholder = Informationholder.getInstance();
 
     //configure the table
     @FXML private TableView<Production> productionTableView;
@@ -183,6 +186,8 @@ public class Controller implements Initializable {
     }
 
 
+
+
     public void changeScene(ActionEvent event) throws IOException
     {
         Parent productionViewParent = FXMLLoader.load(getClass().getResource("Production.fxml"));
@@ -193,7 +198,6 @@ public class Controller implements Initializable {
         window.setScene(productionViewScene);
         window.show();
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -206,6 +210,7 @@ public class Controller implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Production rowData = row.getItem();
+                    informationholder.setProduction(rowData);
                     Parent productionViewParent = null;
                     try {
                         productionViewParent = FXMLLoader.load(getClass().getResource("Production.fxml"));
