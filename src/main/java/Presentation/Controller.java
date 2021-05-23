@@ -38,14 +38,11 @@ public class Controller implements Initializable {
     public Button bAddProduction;
     public Button bAddCredit;
     public Button bsignOut;
-    public HBox hBoxSignIn;
-    public VBox vBoxSignIn;
     public Button bDark;
     public ImageView darkBackground;
     public AnchorPane newMember;
     public TextField userName;
     public PasswordField userPassword;
-    public Label label;
     public SplitMenuButton logInd;
     public ImageView lightCredit;
     public ImageView darkCredit;
@@ -61,6 +58,8 @@ public class Controller implements Initializable {
     public TextField tpReleaseDate;
     public AnchorPane mainPane;
     public TextField searchField;
+    public TitledPane tBoxLogIn;
+    public Text tPassword;
     private Facade facade = new Facade();
     ObservableList<Production> productions;
 
@@ -82,59 +81,48 @@ public class Controller implements Initializable {
     public void signIn(ActionEvent actionEvent) throws IOException {
         if (userName.getText().equals("producer") && userPassword.getText().equals("1234")) {
             tLogProd.setVisible(true);
-            hBoxSignIn.setVisible(false);
+            tBoxLogIn.setVisible(false);
             logInd.setVisible(false);
-            vBoxSignIn.setVisible(false);
+            tBoxLogIn.setVisible(false);
             bAddProduction.setVisible(true);
             bAddCredit.setVisible(true);
             bsignOut.setVisible(true);
+            tBoxLogIn.toBack();
             //HUndeprutter lugter ik
         }
         if (userName.getText().equals("systemadmin") && userPassword.getText().equals("5678")) {
             tLogAdmin.setVisible(true);
-            hBoxSignIn.setVisible(false);
             logInd.setVisible(false);
-            vBoxSignIn.setVisible(false);
             bAddProduction.setVisible(true);
             bAddCredit.setVisible(true);
             bsignOut.setVisible(true);
+            tBoxLogIn.toBack();
+            tBoxLogIn.setVisible(false);
         }
         if (userName.getText().equals("bruger") && userPassword.getText().equals("91011")) {
             tLogUser.setVisible(true);
-            hBoxSignIn.setVisible(false);
             logInd.setVisible(false);
-            vBoxSignIn.setVisible(false);
             bsignOut.setVisible(true);
+            tBoxLogIn.toBack();
+            tBoxLogIn.setVisible(false);
         } else {
-            label.setVisible(true);
-            label.setText("Forkert brugernavn eller adgangskode");
+            tPassword.setVisible(true);
         }
     }
 
     public void signOutP(ActionEvent actionEvent) throws IOException {
-        hBoxSignIn.setVisible(true);
+        tBoxLogIn.setVisible(false);
         logInd.setVisible(true);
-        vBoxSignIn.setVisible(true);
         bAddProduction.setVisible(false);
         bAddCredit.setVisible(false);
         tLogProd.setVisible(false);
         tLogAdmin.setVisible(false);
         tLogUser.setVisible(false);
-        label.setVisible(false);
+        tPassword.setVisible(false);
         bsignOut.setVisible(false);
         vAddProduction.setVisible(false);
+        tBoxLogIn.toBack();
     }
-
-
-    public void bSearchP(ActionEvent actionEvent) throws IOException {
-        Parent rootS1 = FXMLLoader.load(getClass().getResource("SearchView.fxml"));
-        Stage primaryS1 = new Stage();
-        primaryS1.setTitle(("Catalog"));
-        primaryS1.setScene(new Scene(rootS1, 406, 418));
-        primaryS1.setResizable(false);
-        primaryS1.show();
-    }
-
 
     public void addProduction(ActionEvent actionEvent) {
     }
@@ -142,14 +130,13 @@ public class Controller implements Initializable {
     ;
 
     public void logoClick(ActionEvent actionEvent) {
-        vBoxSignIn.setVisible(false);
-        newMember.setVisible(false);
+        tBoxLogIn.setVisible(false);
     }
 
     public void actionOne(ActionEvent actionEvent) {
-        vBoxSignIn.setVisible(true);
-        vBoxSignIn.setDisable(false);
+        tBoxLogIn.setVisible(true);
         newMember.setVisible(false);
+        tBoxLogIn.toFront();
     }
 
     public void actionTwo(ActionEvent actionEvent) {
@@ -165,7 +152,8 @@ public class Controller implements Initializable {
     }
 
     public void bCancel(ActionEvent actionEvent) {
-        vBoxSignIn.setVisible(false);
+        tBoxLogIn.setVisible(false);
+        tBoxLogIn.toBack();
     }
 
     public void viewAllProductions() {
@@ -328,7 +316,6 @@ public class Controller implements Initializable {
         updateList();
 
     }
-
 
 }
 

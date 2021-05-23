@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,13 +17,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainPane" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
+<AnchorPane fx:id="mainPane" prefHeight="422.0" prefWidth="813.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
    <children>
       <ToolBar layoutY="78.0" prefHeight="40.0" prefWidth="838.0">
         <items>
             <Button mnemonicParsing="false" onAction="#changeScene" text="Alle produtioner" />
             <Button fx:id="bAddCredit" mnemonicParsing="false" text="Personer" visible="false" />
-            <Button fx:id="bsignOut" mnemonicParsing="false" onAction="#signOutP" text="Log ud" />
+            <Button fx:id="bsignOut" mnemonicParsing="false" onAction="#signOutP" text="Log ud" visible="false" />
         </items>
       </ToolBar>
       <ImageView fitHeight="46.0" fitWidth="200.0" layoutX="14.0" layoutY="23.0">
@@ -48,29 +48,33 @@
             <TableColumn fx:id="tReleaseDate" minWidth="0.0" prefWidth="162.0" text="ReleaseDate" />
         </columns>
       </TableView>
+      <TitledPane fx:id="tBoxLogIn" animated="false" layoutX="251.0" layoutY="209.0" prefHeight="98.0" prefWidth="378.0" text="LogIn" visible="false">
+         <content>
+            <VBox fx:id="vBoxLogIn" prefHeight="194.0" prefWidth="374.0">
+               <children>
+                  <VBox fx:id="vBoxSignIn" prefHeight="106.0" prefWidth="371.0">
+                     <children>
+                        <HBox fx:id="hBoxSignIn" prefHeight="62.0" prefWidth="371.0" snapToPixel="false">
+                           <children>
+                              <TextField fx:id="userName" promptText="Brugernavn" />
+                              <PasswordField fx:id="userPassword" promptText="Adgangskode" />
+                              <Button minHeight="19.0" minWidth="46.0" mnemonicParsing="false" onAction="#signIn" prefHeight="25.0" prefWidth="58.0" text="Log Ind" />
+                           </children>
+                        </HBox>
+                        <Text fx:id="tPassword" fill="#ff0404" strokeType="OUTSIDE" strokeWidth="0.0" text="Forkert brugernavn eller adgangskode" visible="false" wrappingWidth="204.53673362731934" />
+                        <Button mnemonicParsing="false" onAction="#bCancel" text="Cancel" />
+                        <Button mnemonicParsing="false" onAction="#forgotCode" text="Glemt din kode?" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </TitledPane>
       <HBox layoutX="569.0" layoutY="90.0" prefHeight="26.0" prefWidth="271.0">
          <children>
             <TextField fx:id="searchField" prefHeight="26.0" prefWidth="270.0" promptText="Søgefelt" />
          </children>
       </HBox>
-      <VBox fx:id="vBoxLogIn" disable="true" layoutX="431.0" layoutY="85.0" prefHeight="94.0" prefWidth="371.0">
-         <children>
-            <VBox fx:id="vBoxSignIn" prefHeight="106.0" prefWidth="371.0" visible="false">
-               <children>
-                  <HBox fx:id="hBoxSignIn" prefHeight="62.0" prefWidth="371.0" snapToPixel="false">
-                     <children>
-                        <TextField fx:id="userName" promptText="Brugernavn" />
-                        <PasswordField fx:id="userPassword" promptText="Adgangskode" />
-                        <Button minHeight="19.0" minWidth="46.0" mnemonicParsing="false" onAction="#signIn" prefHeight="25.0" prefWidth="58.0" text="Log Ind" />
-                     </children>
-                  </HBox>
-                  <Label fx:id="label" prefHeight="18.0" prefWidth="257.0" textFill="#d90e0e" />
-                  <Button mnemonicParsing="false" onAction="#bCancel" text="Cancel" />
-                  <Button mnemonicParsing="false" onAction="#forgotCode" text="Glemt din kode?" />
-               </children>
-            </VBox>
-         </children>
-      </VBox>
       <AnchorPane fx:id="newMember" layoutX="429.0" layoutY="202.0" prefHeight="200.0" prefWidth="363.0" visible="false">
          <children>
             <TextField layoutY="10.0" prefHeight="10.0" prefWidth="168.0" />
