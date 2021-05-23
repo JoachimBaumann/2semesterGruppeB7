@@ -12,6 +12,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Text layoutX="404.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="404.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="404.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="404.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <ImageView fitHeight="300.0" fitWidth="218.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/UI-Background.png" />
@@ -33,5 +37,7 @@
       <TextField layoutX="400.0" layoutY="10.0" prefHeight="25.0" prefWidth="233.0" />
       <TextField layoutX="400.0" layoutY="36.0" prefWidth="233.0" />
       <TextField layoutX="400.0" layoutY="63.0" prefWidth="233.0" />
+      <Button layoutX="544.0" layoutY="438.0" mnemonicParsing="false" text="Cancel" />
+      <Button layoutX="14.0" layoutY="154.0" mnemonicParsing="false" text="Tilføj Kreditering" />
    </children>
 </AnchorPane>
