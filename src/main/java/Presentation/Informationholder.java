@@ -1,5 +1,6 @@
 package Presentation;
 
+import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 import Domain.Users.User;
 
@@ -8,6 +9,7 @@ public final class Informationholder {
 private Production production;
 private final static Informationholder INSTANCE = new Informationholder();
 private User user;
+private Person person;
 
 
 
@@ -28,5 +30,13 @@ public Production getProduction(){
     }
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

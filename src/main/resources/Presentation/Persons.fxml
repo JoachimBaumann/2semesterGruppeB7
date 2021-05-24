@@ -20,15 +20,15 @@
       </ImageView>
       <TableView fx:id="personsTV" editable="true" layoutX="40.0" layoutY="135.0" prefHeight="280.0" prefWidth="478.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="uID" />
-          <TableColumn prefWidth="75.0" text="Navn" />
-            <TableColumn prefWidth="75.0" text="Efternavn" />
-            <TableColumn prefWidth="75.0" text="Mail" />
-            <TableColumn prefWidth="75.0" text="Telefon" />
-            <TableColumn prefWidth="100.79995727539062" text="Beskrivelse" />
+          <TableColumn fx:id="uIDcolumn" prefWidth="75.0" text="uID" />
+          <TableColumn fx:id="fnameColumn" prefWidth="75.0" text="Navn" />
+            <TableColumn fx:id="lNameColumn" prefWidth="75.0" text="Efternavn" />
+            <TableColumn fx:id="mailColumn" prefWidth="75.0" text="Mail" />
+            <TableColumn fx:id="phoneColumn" prefWidth="75.0" text="Telefon" />
+            <TableColumn fx:id="beskrivelsecolumn" prefWidth="100.79995727539062" text="Beskrivelse" />
         </columns>
       </TableView>
-      <TitledPane fx:id="tAddPerson" animated="false" layoutX="155.0" layoutY="119.0" text="Tilføj Person">
+      <TitledPane fx:id="tAddPerson" animated="false" layoutX="155.0" layoutY="119.0" text="Tilføj Person" visible="false">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="266.0">
                <children>
