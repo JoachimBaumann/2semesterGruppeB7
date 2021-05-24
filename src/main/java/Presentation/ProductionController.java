@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -30,6 +31,9 @@ public class ProductionController implements Initializable {
     public Button bConfirmed;
     public Button bDenyChanges;
     private final Informationholder informationholder = Informationholder.getInstance();
+    public Button bRediger;
+    public VBox vboxRediger;
+    public Button bTilføjKreditering;
     private Facade facade = new Facade();
 
 
@@ -38,6 +42,7 @@ public class ProductionController implements Initializable {
         updateTextFields();
         confirmPopUp.setVisible(false);
         confirmPopUp.toBack();
+        checkRole();
     }
 
     public void cancelProduction(ActionEvent event) throws IOException {
@@ -57,6 +62,7 @@ public class ProductionController implements Initializable {
     }
 
     public void bConfirmedClicked() {
+        updateTextFields();
         Production production = informationholder.getProduction();
         if (production != null) {
             if (!TitleTextField.getText().isEmpty() && !ReleaseDateTextField.getText().isEmpty() && !ProductionIDTextField.getText().isEmpty() && !BeskrivelseTextArea.getText().isEmpty()) {
@@ -70,9 +76,9 @@ public class ProductionController implements Initializable {
         informationholder.setProduction(facade.getCatalog().getProduction(temp));
         confirmPopUp.toBack();
         confirmPopUp.setVisible(false);
-
+        vboxRediger.setVisible(false);
+        vboxRediger.toBack();
         updateTextFields();
-
     }
 
     public void cancelledPopUp() {
@@ -81,7 +87,6 @@ public class ProductionController implements Initializable {
     }
 
     public void updateTextFields() {
-        //TODO Add information parse to Database
         tProductionTitle.setText(informationholder.getProduction().getProductionName());
         TitleTextField.setText(informationholder.getProduction().getProductionName());
         tProductionReleaseDate.setText(informationholder.getProduction().getReleaseDate());
@@ -90,6 +95,7 @@ public class ProductionController implements Initializable {
         ProductionIDTextField.setText(String.valueOf(informationholder.getProduction().getProductionID()));
         tProduktionBeskrivelse.setText(informationholder.getProduction().getDescription());
         BeskrivelseTextArea.setText(informationholder.getProduction().getDescription());
+
     }
 
     public void bAddCredit(ActionEvent event2) throws IOException {
@@ -100,6 +106,39 @@ public class ProductionController implements Initializable {
 
         window.setScene(personsViewScene);
         window.show();
+    }
+    public void vBoxRedigerToggle(){
+        vboxRediger.setVisible(true);
+        vboxRediger.toFront();
+    }
+    public void checkRole(){
+
+        if(informationholder.getUser() != null) {
+
+            if (informationholder.getUser().getRole().equals("Systemadministrator")) {
+                bRediger.setVisible(true);
+                bConfirmed.setVisible(true);
+                bTilføjKreditering.setVisible(true);
+            } else if (informationholder.getUser().getRole().equals("Producer")) {
+                bRediger.setVisible(true);
+                bConfirmed.setVisible(true);
+                bTilføjKreditering.setVisible(true);
+            } else if (informationholder.getUser().getRole().equals("Bruger") || informationholder.getUser() == null) {
+                bRediger.setVisible(false);
+                bConfirmed.setVisible(false);
+                bTilføjKreditering.setVisible(false);
+                vboxRediger.setVisible(false);
+                vboxRediger.toBack();
+            }
+            else{
+                bRediger.setVisible(false);
+                bConfirmed.setVisible(false);
+                vboxRediger.setVisible(false);
+                vboxRediger.toBack();
+                bTilføjKreditering.setVisible(false);
+            }
+        }
+
     }
 
 }

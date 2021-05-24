@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ProductionController">
@@ -21,7 +22,6 @@
          <image>
             <Image url="@../Images/Funny-Movie-Poster-Parodies-movies-34619671-600-889.jpg" />
          </image></ImageView>
-      <TextArea fx:id="BeskrivelseTextArea" layoutX="400.0" layoutY="89.0" prefHeight="130.0" prefWidth="233.0" />
       <TableView fx:id="CreditTV" layoutX="14.0" layoutY="276.0" prefHeight="276.0" prefWidth="302.0">
         <columns>
           <TableColumn prefWidth="75.0" text="CreditID" />
@@ -34,12 +34,17 @@
       <Text layoutX="330.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ReleaseDate:" wrappingWidth="70.936767578125" />
       <Text layoutX="326.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProduktionID:" wrappingWidth="77.3367919921875" />
       <Text layoutX="336.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beskrivelse:" wrappingWidth="62.13671875" />
-      <Button fx:id="bConfirmed" layoutX="612.0" layoutY="526.0" mnemonicParsing="false" onAction="#updateProductions" text="Gem ændringer" />
-      <TextField fx:id="TitleTextField" layoutX="400.0" layoutY="10.0" prefHeight="25.0" prefWidth="233.0" />
-      <TextField fx:id="ReleaseDateTextField" layoutX="400.0" layoutY="36.0" prefWidth="233.0" />
-      <TextField fx:id="ProductionIDTextField" layoutX="400.0" layoutY="63.0" prefWidth="233.0" />
+      <Button fx:id="bConfirmed" layoutX="612.0" layoutY="526.0" mnemonicParsing="false" onAction="#updateProductions" text="Gem ændringer" visible="false" />
+      <VBox fx:id="vboxRediger" layoutX="401.0" layoutY="10.0" prefHeight="210.0" prefWidth="234.0" visible="false">
+         <children>
+            <TextField fx:id="TitleTextField" prefHeight="25.0" prefWidth="233.0" />
+            <TextField fx:id="ReleaseDateTextField" prefWidth="233.0" />
+            <TextField fx:id="ProductionIDTextField" editable="false" prefWidth="233.0" />
+            <TextArea fx:id="BeskrivelseTextArea" prefHeight="130.0" prefWidth="233.0" />
+         </children>
+      </VBox>
       <Button layoutX="568.0" layoutY="526.0" mnemonicParsing="false" onAction="#cancelProduction" text="Luk" />
-      <Button layoutX="14.0" layoutY="240.0" mnemonicParsing="false" onAction="#bAddCredit" text="Tilføj Kreditering" />
+      <Button fx:id="bTilføjKreditering" layoutX="14.0" layoutY="240.0" mnemonicParsing="false" onAction="#bAddCredit" text="Tilføj Kreditering" visible="false" />
       <TitledPane fx:id="confirmPopUp" animated="false" layoutX="241.0" layoutY="224.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -51,5 +56,6 @@
             </AnchorPane>
         </content>
       </TitledPane>
+      <Button fx:id="bRediger" layoutX="400.0" layoutY="227.0" mnemonicParsing="false" onAction="#vBoxRedigerToggle" text="Rediger" visible="false" />
    </children>
 </AnchorPane>
