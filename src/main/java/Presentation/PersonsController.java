@@ -25,7 +25,7 @@ public class PersonsController implements Initializable {
     public TableView personsTV;
     public TitledPane tAddPerson;
     public TitledPane confirmPopUp;
-    public AnchorPane tpOpretKreditering;
+    public TitledPane tpOpretKreditering;
     public TextField pFirstName;
     public TextField pLastName;
     public TextField pMail;
@@ -37,6 +37,8 @@ public class PersonsController implements Initializable {
     public TableColumn mailColumn;
     public TableColumn phoneColumn;
     public TableColumn beskrivelsecolumn;
+    public TextField tPersonName;
+
     Informationholder informationholder = Informationholder.getInstance();
     private Facade facade = new Facade();
 
@@ -49,34 +51,61 @@ public class PersonsController implements Initializable {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Person rowData = row.getItem();
                     informationholder.setPerson(rowData);
+                    tpOpretKreditering.setVisible(false);
+                    tPersonName.setText(rowData.getfName() + " " + rowData.getlName());
                 }
             });
             return row;
         });
 
-        /*setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Production, Integer>, ObservableValue<Integer>>() {
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Production, Integer> p) {
-                return new ReadOnlyObjectWrapper(p.getValue().getProductionID());
-            }
 
+        uIDcolumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Person, Integer>, ObservableValue<Integer>>() {
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Person, Integer> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getuID());
+            }
         });
 
 
-         */
+        fnameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Person, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getfName());
+            }
+        });
+        lNameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Person, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getlName());
+            }
+        });
+        mailColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Person, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getMail());
+            }
+        });
+        phoneColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Person, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getPhoneNumber());
+            }
+        });
+        beskrivelsecolumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Person, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Person, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getDescription());
+            }
+        });
+
 
     }
 
-    public void showAddPersonWindow(){
+    public void showAddPersonWindow() {
         tAddPerson.setVisible(true);
         tAddPerson.toFront();
     }
 
-    public void hideAddPersonWindow(){
+    public void hideAddPersonWindow() {
         tAddPerson.setVisible(false);
         tAddPerson.toBack();
     }
 
-    public void closePersonWindow(ActionEvent event){
+    public void closePersonWindow(ActionEvent event) {
         Parent producerViewParent = null;
         try {
             producerViewParent = FXMLLoader.load(getClass().getResource("producer.fxml"));
@@ -85,34 +114,39 @@ public class PersonsController implements Initializable {
         }
         Scene producerViewScene = new Scene(producerViewParent);
 
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         window.setScene(producerViewScene);
         window.show();
     }
-    public void bConfirmedClicked(){
+
+    public void bConfirmedClicked() {
         //Todo Add information parse to DB
         confirmPopUp.toBack();
         confirmPopUp.setVisible(false);
         tAddPerson.setVisible(false);
         tAddPerson.toBack();
-        
+
 
     }
-    public void cancelledPopUp(){
+
+    public void cancelledPopUp() {
         confirmPopUp.setVisible(false);
         confirmPopUp.toBack();
     }
-    public void updatePersons(){
-        facade.addPerson(pMail.getText(),pFirstName.getText(),pLastName.getText(),Integer.valueOf(pPhone.getText()),pBeskrivelse.getText());
+
+    public void updatePersons() {
+        facade.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText());
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
     }
-    public void acceptOpretKreditering(){
+
+    public void acceptOpretKreditering() {
         tpOpretKreditering.setVisible(false);
         tpOpretKreditering.toBack();
     }
-    public void cancelOpretKreditering(){
+
+    public void cancelOpretKreditering() {
         tpOpretKreditering.setVisible(false);
         tpOpretKreditering.toBack();
     }
