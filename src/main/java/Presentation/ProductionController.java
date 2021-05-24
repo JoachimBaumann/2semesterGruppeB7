@@ -62,6 +62,7 @@ public class ProductionController implements Initializable {
         confirmPopUp.toBack();
     }
     public void updateTextFields(){
+        //TODO Add information parse to Database
         tProductionTitle.setText(informationholder.getProduction().getProductionName());
         TitleTextField.setText(informationholder.getProduction().getProductionName());
         tProductionReleaseDate.setText(informationholder.getProduction().getReleaseDate());
