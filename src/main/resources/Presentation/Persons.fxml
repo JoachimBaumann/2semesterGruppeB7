@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane prefHeight="483.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.PersonsController">
    <children>
@@ -16,7 +16,7 @@
             <Image url="@../Images/TV2CREDITS.png" />
          </image>
       </ImageView>
-      <TableView fx:id="personsTV" editable="true" layoutX="40.0" layoutY="138.0" prefHeight="315.0" prefWidth="477.0">
+      <TableView fx:id="personsTV" editable="true" layoutX="40.0" layoutY="138.0" prefHeight="280.0" prefWidth="478.0">
         <columns>
           <TableColumn prefWidth="75.0" text="uID" />
           <TableColumn prefWidth="75.0" text="Navn" />
@@ -26,5 +26,6 @@
             <TableColumn prefWidth="100.79995727539062" text="Beskrivelse" />
         </columns>
       </TableView>
+      <Button layoutX="414.0" layoutY="443.0" mnemonicParsing="false" text="Tilføj Kreditering" />
    </children>
 </AnchorPane>
