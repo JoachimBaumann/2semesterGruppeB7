@@ -335,7 +335,7 @@ public class ProducerController implements Initializable {
     }
 
     public void bCreateProduction(ActionEvent actionEvent) {
-
+        //TODO Add information parse to database
         String releaseDate = tpReleaseDate.getText();
         String title = tpTitel.getText();
         String description = tpBeskrivelse.getText();

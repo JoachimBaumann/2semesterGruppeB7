@@ -42,6 +42,7 @@ public class PersonsController {
         window.show();
     }
     public void bConfirmedClicked(){
+        //Todo Add information parse to DB
         confirmPopUp.toBack();
         confirmPopUp.setVisible(false);
         tAddPerson.setVisible(false);
