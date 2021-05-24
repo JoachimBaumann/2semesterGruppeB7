@@ -40,7 +40,7 @@
       <TextField fx:id="ProductionIDTextField" layoutX="400.0" layoutY="63.0" prefWidth="233.0" />
       <Button layoutX="568.0" layoutY="526.0" mnemonicParsing="false" onAction="#cancelProduction" text="Luk" />
       <Button layoutX="14.0" layoutY="240.0" mnemonicParsing="false" onAction="#bAddCredit" text="Tilføj Kreditering" />
-      <TitledPane fx:id="confirmPopUp" animated="false" layoutX="270.0" layoutY="200.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
+      <TitledPane fx:id="confirmPopUp" animated="false" layoutX="241.0" layoutY="224.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>

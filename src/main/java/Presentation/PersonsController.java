@@ -15,6 +15,7 @@ import java.io.IOException;
 public class PersonsController {
     public TableView personsTV;
     public TitledPane tAddPerson;
+    public TitledPane confirmPopUp;
 
     public void showAddPersonWindow(){
         tAddPerson.setVisible(true);
@@ -39,5 +40,21 @@ public class PersonsController {
 
         window.setScene(producerViewScene);
         window.show();
+    }
+    public void bConfirmedClicked(){
+        confirmPopUp.toBack();
+        confirmPopUp.setVisible(false);
+        tAddPerson.setVisible(false);
+        tAddPerson.toBack();
+        
+
+    }
+    public void cancelledPopUp(){
+        confirmPopUp.setVisible(false);
+        confirmPopUp.toBack();
+    }
+    public void updatePersons(){
+        confirmPopUp.toFront();
+        confirmPopUp.setVisible(true);
     }
 }

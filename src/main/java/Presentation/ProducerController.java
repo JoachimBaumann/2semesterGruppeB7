@@ -62,6 +62,8 @@ public class ProducerController implements Initializable {
     public TextField searchField;
     public TitledPane tBoxLogIn;
     public Text tPassword;
+    public TitledPane confirmPopUp;
+    public Button cancelledPopUp;
     private Facade facade = new Facade();
     ObservableList<Production> productions;
     private Informationholder informationholder = Informationholder.getInstance();
@@ -311,12 +313,15 @@ public class ProducerController implements Initializable {
     }
 
     public void bCreateProduction(ActionEvent actionEvent) {
+
         String releaseDate = tpReleaseDate.getText();
         String title = tpTitel.getText();
         String description = tpBeskrivelse.getText();
         facade.addProduction(releaseDate,title,description);
 
         updateList();
+        confirmPopUp.setVisible(false);
+        confirmPopUp.toBack();
 
     }
     public void openPersonWindow(ActionEvent event){
@@ -333,5 +338,16 @@ public class ProducerController implements Initializable {
         window.setScene(personsViewScene);
         window.show();
     }
+    public void bAddClicked(){
+        confirmPopUp.toFront();
+        confirmPopUp.setVisible(true);
+
+
+    }
+    public void cancelledPopUp(){
+        confirmPopUp.setVisible(false);
+        confirmPopUp.toBack();
+    }
+
 }
 

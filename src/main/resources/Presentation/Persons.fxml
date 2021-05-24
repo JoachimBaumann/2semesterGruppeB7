@@ -8,14 +8,31 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="483.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.PersonsController">
    <children>
+      <TextField layoutX="99.0" layoutY="93.0" prefHeight="26.0" prefWidth="360.0" promptText="Søg efter personer" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="179.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/TV2CREDITS.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="personsTV" editable="true" layoutX="40.0" layoutY="135.0" prefHeight="280.0" prefWidth="478.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="uID" />
+          <TableColumn prefWidth="75.0" text="Navn" />
+            <TableColumn prefWidth="75.0" text="Efternavn" />
+            <TableColumn prefWidth="75.0" text="Mail" />
+            <TableColumn prefWidth="75.0" text="Telefon" />
+            <TableColumn prefWidth="100.79995727539062" text="Beskrivelse" />
+        </columns>
+      </TableView>
       <TitledPane fx:id="tAddPerson" animated="false" layoutX="155.0" layoutY="119.0" text="Tilføj Person" visible="false">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="266.0">
                <children>
-                  <Button layoutX="210.0" layoutY="196.0" mnemonicParsing="false" onAction="#hideAddPersonWindow" text="Tilføj" />
+                  <Button layoutX="210.0" layoutY="196.0" mnemonicParsing="false" onAction="#updatePersons" text="Tilføj" />
                   <TextField layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="238.0" promptText="Fornavn" />
                   <TextField layoutX="14.0" layoutY="51.0" prefHeight="26.0" prefWidth="238.0" promptText="Efternavn" />
                   <TextField layoutX="14.0" layoutY="84.0" prefHeight="26.0" prefWidth="238.0" promptText="Telefon" />
@@ -26,23 +43,18 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <TextField layoutX="99.0" layoutY="93.0" prefHeight="26.0" prefWidth="360.0" promptText="Søg efter personer" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="179.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/TV2CREDITS.png" />
-         </image>
-      </ImageView>
-      <TableView fx:id="personsTV" editable="true" layoutX="40.0" layoutY="138.0" prefHeight="280.0" prefWidth="478.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="uID" />
-          <TableColumn prefWidth="75.0" text="Navn" />
-            <TableColumn prefWidth="75.0" text="Efternavn" />
-            <TableColumn prefWidth="75.0" text="Mail" />
-            <TableColumn prefWidth="75.0" text="Telefon" />
-            <TableColumn prefWidth="100.79995727539062" text="Beskrivelse" />
-        </columns>
-      </TableView>
       <Button layoutX="414.0" layoutY="443.0" mnemonicParsing="false" onAction="#showAddPersonWindow" text="Tilføj Kreditering" />
       <Button layoutX="349.0" layoutY="443.0" mnemonicParsing="false" onAction="#closePersonWindow" text="Annuller" />
+      <TitledPane fx:id="confirmPopUp" animated="false" layoutX="194.0" layoutY="87.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#bConfirmedClicked" text="Bekræft" />
+                  <Button fx:id="cancelledPopUp" layoutX="12.0" layoutY="65.0" mnemonicParsing="false" onAction="#cancelledPopUp" text="Annuller" />
+                  <Text fill="#ff0101" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vil du gemme dine ændringer?" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
    </children>
 </AnchorPane>
