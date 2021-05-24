@@ -5,6 +5,10 @@ import Domain.Catalog.Production;
 import Domain.Facade;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +23,10 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class PersonsController implements Initializable {
     public TableView personsTV;
@@ -38,6 +45,7 @@ public class PersonsController implements Initializable {
     public TableColumn phoneColumn;
     public TableColumn beskrivelsecolumn;
     public TextField tPersonName;
+    public TextField searchField;
 
     Informationholder informationholder = Informationholder.getInstance();
     private Facade facade = new Facade();
@@ -45,13 +53,14 @@ public class PersonsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        facade.updateCatalog();
         personsTV.setRowFactory(tv -> {
             TableRow<Person> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Person rowData = row.getItem();
                     informationholder.setPerson(rowData);
-                    tpOpretKreditering.setVisible(false);
+                    tpOpretKreditering.setVisible(true);
                     tPersonName.setText(rowData.getfName() + " " + rowData.getlName());
                 }
             });
@@ -92,7 +101,25 @@ public class PersonsController implements Initializable {
             }
         });
 
+        FilteredList<Person> filteredData = new FilteredList<>(FXCollections.observableList(getPersons()));
+        personsTV.setItems(filteredData);
 
+        searchField.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredData.setPredicate(createPredicate(newValue))
+        );
+    }
+
+    private Predicate<Person> createPredicate(String searchText) {
+        return Person -> {
+            if (searchText == null || searchText.isEmpty()) return true;
+            return searchFindsOrder(Person, searchText);
+        };
+    }
+
+    private boolean searchFindsOrder(Person person, String searchText) {
+        return (person.getfName().toLowerCase().contains(searchText.toLowerCase()))
+                || (person.getlName().toLowerCase().contains(searchText.toLowerCase())) ||
+                Integer.valueOf(person.getuID()).toString().equals(searchText.toLowerCase());
     }
 
     public void showAddPersonWindow() {
@@ -122,6 +149,7 @@ public class PersonsController implements Initializable {
 
     public void bConfirmedClicked() {
         //Todo Add information parse to DB
+        facade.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText());
         confirmPopUp.toBack();
         confirmPopUp.setVisible(false);
         tAddPerson.setVisible(false);
@@ -136,7 +164,7 @@ public class PersonsController implements Initializable {
     }
 
     public void updatePersons() {
-        facade.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText());
+
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
     }
@@ -149,5 +177,17 @@ public class PersonsController implements Initializable {
     public void cancelOpretKreditering() {
         tpOpretKreditering.setVisible(false);
         tpOpretKreditering.toBack();
+    }
+
+    public ObservableList<Person> getPersons() {
+        ArrayList<Person> tempList = new ArrayList<>();
+
+        for (Person p: facade.getCatalog().getPersons().values()){
+            tempList.add(p);
+        }
+
+        ObservableList observableList = FXCollections.observableArrayList(tempList);
+        return observableList;
+
     }
 }

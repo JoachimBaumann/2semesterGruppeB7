@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="483.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.PersonsController">
    <children>
-      <TextField layoutX="99.0" layoutY="93.0" prefHeight="26.0" prefWidth="360.0" promptText="Søg efter personer" />
+      <TextField fx:id="searchField" layoutX="99.0" layoutY="93.0" prefHeight="26.0" prefWidth="360.0" promptText="Søg efter personer" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="179.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/TV2CREDITS.png" />
