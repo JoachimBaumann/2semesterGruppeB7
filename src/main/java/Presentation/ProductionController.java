@@ -26,6 +26,7 @@ public class ProductionController implements Initializable {
     public TextField TitleTextField;
     public TextField ReleaseDateTextField;
     public TextField ProductionIDTextField;
+    private Informationholder informationholder = Informationholder.getInstance();
 
 
     @Override
@@ -42,14 +43,14 @@ public void cancelProduction(ActionEvent event) throws IOException {
     window.show();
     }
     public void updateProductions(){
-        tProductionTitle.setText(TitleTextField.getText());
-        TitleTextField.setText((tProductionTitle.getText()));
-        tProductionReleaseDate.setText(ReleaseDateTextField.getText());
-        ReleaseDateTextField.setText(tProductionReleaseDate.getText());
-        tProductionID.setText(ProductionIDTextField.getText());
-        ProductionIDTextField.setText(tProductionID.getText());
-        tProduktionBeskrivelse.setText(BeskrivelseTextArea.getText());
-        BeskrivelseTextArea.setText(tProduktionBeskrivelse.getText());
+        tProductionTitle.setText(informationholder.getProduction().getProductionName());
+        TitleTextField.setText(informationholder.getProduction().getProductionName());
+        tProductionReleaseDate.setText(informationholder.getProduction().getReleaseDate());
+        ReleaseDateTextField.setText(informationholder.getProduction().getReleaseDate());
+        tProductionID.setText(String.valueOf(informationholder.getProduction().getProductionID()));
+        ProductionIDTextField.setText(String.valueOf(informationholder.getProduction().getProductionID()));
+        tProduktionBeskrivelse.setText(informationholder.getProduction().getDescription());
+        BeskrivelseTextArea.setText(informationholder.getProduction().getDescription());
     }
 }
 
