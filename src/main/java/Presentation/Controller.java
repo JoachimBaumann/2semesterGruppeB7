@@ -185,20 +185,6 @@ public class Controller implements Initializable {
         vAddProduction.setVisible(false);
     }
 
-
-
-
-    public void changeScene(ActionEvent event) throws IOException
-    {
-        Parent productionViewParent = FXMLLoader.load(getClass().getResource("Production.fxml"));
-        Scene productionViewScene = new Scene(productionViewParent);
-
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        window.setScene(productionViewScene);
-        window.show();
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initializing tableview
