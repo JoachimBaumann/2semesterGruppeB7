@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -28,7 +27,7 @@ public class ProductionController implements Initializable {
     public TitledPane confirmPopUp;
     public Button bConfirmed;
     public Button bDenyChanges;
-    private Informationholder informationholder = Informationholder.getInstance();
+    private final Informationholder informationholder = Informationholder.getInstance();
 
 
     @Override

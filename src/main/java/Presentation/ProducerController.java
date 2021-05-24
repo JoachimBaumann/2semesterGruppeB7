@@ -95,6 +95,7 @@ public class ProducerController implements Initializable {
     public void signIn() {
         if (informationholder.getUser().getRole().equals("Producer") || informationholder.getUser().getRole().equals("Systemadministrator"))  {
             tLogProd.setVisible(true);
+            tLogProd.setText("Du er logget ind som: " + informationholder.getUser().getRole());
             tBoxLogIn.setVisible(false);
             logInd.setVisible(false);
             tBoxLogIn.setVisible(false);
@@ -104,9 +105,10 @@ public class ProducerController implements Initializable {
             tBoxLogIn.toBack();
             //HUndeprutter lugter ik
         }
-        if (informationholder.getUser().getRole().equals("User")) {
-            tLogUser.setVisible(true);
+        if (informationholder.getUser().getRole().equals("Bruger")) {
             logInd.setVisible(false);
+            tLogProd.setText("Du er logget ind som: " + informationholder.getUser().getRole());
+            tLogProd.setVisible(true);
             bsignOut.setVisible(true);
             tBoxLogIn.toBack();
             tBoxLogIn.setVisible(false);
