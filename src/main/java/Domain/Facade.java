@@ -107,8 +107,7 @@ public class Facade implements CreditManager {
 
     @Override
     public List<Production> viewProductions() {
-        List<Production> tempList = new ArrayList<>();
-        tempList.addAll(catalog.getProductionList().values());
+        List<Production> tempList = new ArrayList<>(catalog.getProductionList().values());
         return tempList;
     }
 
