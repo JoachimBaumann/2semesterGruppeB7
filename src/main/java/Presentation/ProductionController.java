@@ -66,6 +66,8 @@ public class ProductionController implements Initializable {
             }
         }
         facade.updateCatalog();
+        int temp = informationholder.getProduction().getProductionID();
+        informationholder.setProduction(facade.getCatalog().getProduction(temp));
         confirmPopUp.toBack();
         confirmPopUp.setVisible(false);
 
