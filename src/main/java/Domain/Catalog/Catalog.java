@@ -24,15 +24,15 @@ public class Catalog {
         throw new UnsupportedOperationException();
     }
 
-    public void editCredit() {
-        throw new UnsupportedOperationException();
+    public void editPerson(String mail, String fName, String lName, int phoneNumber, int uID, String description) {
+        persons.get(uID).setDescription(description);
+        persons.get(uID).setfName(fName);
+        persons.get(uID).setlName(lName);
+        persons.get(uID).setMail(mail);
+        persons.get(uID).setPhoneNumber(phoneNumber);
+
     }
 
-
-    public void searchID(String name, int productionID) {
-        throw new UnsupportedOperationException();
-
-    }
 
     public void addPerson(int personID, Person person) {
         persons.put(personID, person);
