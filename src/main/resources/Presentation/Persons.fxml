@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="483.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.PersonsController">
+<AnchorPane prefHeight="483.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.PersonsController">
    <children>
       <TextField layoutX="99.0" layoutY="93.0" prefHeight="26.0" prefWidth="360.0" promptText="Søg efter personer" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="179.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -28,16 +28,16 @@
             <TableColumn prefWidth="100.79995727539062" text="Beskrivelse" />
         </columns>
       </TableView>
-      <TitledPane fx:id="tAddPerson" animated="false" layoutX="155.0" layoutY="119.0" text="Tilføj Person" visible="false">
+      <TitledPane fx:id="tAddPerson" animated="false" layoutX="155.0" layoutY="119.0" text="Tilføj Person">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="266.0">
                <children>
                   <Button layoutX="210.0" layoutY="196.0" mnemonicParsing="false" onAction="#updatePersons" text="Tilføj" />
-                  <TextField layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="238.0" promptText="Fornavn" />
-                  <TextField layoutX="14.0" layoutY="51.0" prefHeight="26.0" prefWidth="238.0" promptText="Efternavn" />
-                  <TextField layoutX="14.0" layoutY="84.0" prefHeight="26.0" prefWidth="238.0" promptText="Telefon" />
-                  <TextField layoutX="14.0" layoutY="118.0" prefHeight="26.0" prefWidth="238.0" promptText="Mail" />
-                  <TextField layoutX="14.0" layoutY="152.0" prefHeight="26.0" prefWidth="238.0" promptText="Krediteringsrolle" />
+                  <TextField fx:id="pFirstName" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="238.0" promptText="Fornavn" />
+                  <TextField fx:id="pLastName" layoutX="14.0" layoutY="51.0" prefHeight="26.0" prefWidth="238.0" promptText="Efternavn" />
+                  <TextField fx:id="pPhone" layoutX="14.0" layoutY="84.0" prefHeight="26.0" prefWidth="238.0" promptText="Telefon" />
+                  <TextField fx:id="pMail" layoutX="14.0" layoutY="118.0" prefHeight="26.0" prefWidth="238.0" promptText="Mail" />
+                  <TextField fx:id="pBeskrivelse" layoutX="14.0" layoutY="152.0" prefHeight="26.0" prefWidth="238.0" promptText="Beskrivelse" />
                   <Button layoutX="142.0" layoutY="196.0" mnemonicParsing="false" onAction="#hideAddPersonWindow" text="Annuller" />
                </children>
             </AnchorPane>
