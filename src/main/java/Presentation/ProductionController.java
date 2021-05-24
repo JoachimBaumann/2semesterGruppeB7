@@ -34,7 +34,7 @@ public class ProductionController implements Initializable {
     public Button bRediger;
     public VBox vboxRediger;
     public Button bTilføjKreditering;
-    private Facade facade = new Facade();
+    private Facade facade = Facade.getInstance();
 
 
     @Override

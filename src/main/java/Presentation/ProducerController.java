@@ -65,7 +65,7 @@ public class ProducerController implements Initializable {
     public Text tPassword;
     public TitledPane confirmPopUp;
     public Button cancelledPopUp;
-    private Facade facade = new Facade();
+    private Facade facade = Facade.getInstance();
     ObservableList<Production> productions;
     private Informationholder informationholder = Informationholder.getInstance();
 

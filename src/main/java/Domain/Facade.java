@@ -12,11 +12,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Facade implements CreditManager {
+public final class Facade implements CreditManager {
 
-    private PersistanceHandler persistanceHandler = PersistanceHandler.getInstance();
-    private Catalog catalog = new Catalog();
+    private final PersistanceHandler persistanceHandler = PersistanceHandler.getInstance();
+    private final static Facade INSTANCE = new Facade();
+    private Catalog catalog;
 
+
+    public static Facade getInstance(){
+        return INSTANCE;
+    }
+    private Facade(){
+        catalog = new Catalog();
+    }
     @Override
     public void updateCatalog() {
         //update production

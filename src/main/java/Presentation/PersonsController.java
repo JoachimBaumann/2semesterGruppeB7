@@ -49,7 +49,7 @@ public class PersonsController implements Initializable {
     public TextField tPersonRole;
 
     Informationholder informationholder = Informationholder.getInstance();
-    private Facade facade = new Facade();
+    private Facade facade = Facade.getInstance();
 
 
     @Override
