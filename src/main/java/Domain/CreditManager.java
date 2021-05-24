@@ -19,8 +19,6 @@ public interface CreditManager {
 
     public int addProduction(String releaseDate, String title,String description);
 
-    public void confirmChanges();
-
     public void findProduction();
 
     public void generateReport(int productionID, Date releaseDate);

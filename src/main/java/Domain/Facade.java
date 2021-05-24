@@ -51,11 +51,6 @@ public class Facade implements CreditManager {
     persistanceHandler.addCredit(personID, jobtitle);
     }
 
-    @Override
-    public void confirmChanges() {
-
-    }
-
     /**
      *
      * @param mail Email
