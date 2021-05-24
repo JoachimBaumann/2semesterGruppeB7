@@ -219,30 +219,7 @@ public class ProducerController implements Initializable {
             signIn();
         }
         // this makes it possible to doubleClick a row
-        productionTableView.setRowFactory(tv -> {
-            TableRow<Production> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    Production rowData = row.getItem();
-                    informationholder.setProduction(rowData);
-                    Parent productionViewParent = null;
-                    try {
-                        productionViewParent = FXMLLoader.load(getClass().getResource("Production.fxml"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Scene productionViewScene = new Scene(productionViewParent);
-
-                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                    window.setScene(productionViewScene);
-                    window.show();
-
-
-                }
-            });
-            return row;
-        });
+        chooseProduction();
 
         pIDColumn = new TableColumn<>("productionID");
         pTitelColumn = new TableColumn<>("productionName");
@@ -301,6 +278,33 @@ public class ProducerController implements Initializable {
         );
 
 
+    }
+
+    private void chooseProduction() {
+        productionTableView.setRowFactory(tv -> {
+            TableRow<Production> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    Production rowData = row.getItem();
+                    informationholder.setProduction(rowData);
+                    Parent productionViewParent = null;
+                    try {
+                        productionViewParent = FXMLLoader.load(getClass().getResource("Production.fxml"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Scene productionViewScene = new Scene(productionViewParent);
+
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                    window.setScene(productionViewScene);
+                    window.show();
+
+
+                }
+            });
+            return row;
+        });
     }
 
     private Predicate<Production> createPredicate(String searchText) {
