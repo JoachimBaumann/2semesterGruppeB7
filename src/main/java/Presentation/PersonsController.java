@@ -152,7 +152,9 @@ public class PersonsController implements Initializable {
 
     public void bConfirmedClicked() {
         //Todo Add information parse to DB
-        facade.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText());
+        if (facade.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText()) != -1) {
+            hideAddPersonWindow();
+        }
         confirmPopUp.toBack();
         confirmPopUp.setVisible(false);
         tAddPerson.setVisible(false);
@@ -167,7 +169,7 @@ public class PersonsController implements Initializable {
     }
 
     public void updatePersons() {
-        facade.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText());
+
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
     }
