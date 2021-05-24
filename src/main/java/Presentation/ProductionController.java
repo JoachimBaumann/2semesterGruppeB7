@@ -62,7 +62,6 @@ public class ProductionController implements Initializable {
     }
 
     public void bConfirmedClicked() {
-        updateTextFields();
         Production production = informationholder.getProduction();
         if (production != null) {
             if (!TitleTextField.getText().isEmpty() && !ReleaseDateTextField.getText().isEmpty() && !ProductionIDTextField.getText().isEmpty() && !BeskrivelseTextArea.getText().isEmpty()) {
