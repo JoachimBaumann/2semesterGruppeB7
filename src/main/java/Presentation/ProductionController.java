@@ -30,7 +30,7 @@ public class ProductionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    updateProductions();
     }
 public void cancelProduction(ActionEvent event) throws IOException {
     Parent producerViewParent = FXMLLoader.load(getClass().getResource("producer.fxml"));
@@ -43,10 +43,13 @@ public void cancelProduction(ActionEvent event) throws IOException {
     }
     public void updateProductions(){
         tProductionTitle.setText(TitleTextField.getText());
+        TitleTextField.setText((tProductionTitle.getText()));
         tProductionReleaseDate.setText(ReleaseDateTextField.getText());
+        ReleaseDateTextField.setText(tProductionReleaseDate.getText());
         tProductionID.setText(ProductionIDTextField.getText());
+        ProductionIDTextField.setText(tProductionID.getText());
         tProduktionBeskrivelse.setText(BeskrivelseTextArea.getText());
+        BeskrivelseTextArea.setText(tProduktionBeskrivelse.getText());
     }
-
 }
 
