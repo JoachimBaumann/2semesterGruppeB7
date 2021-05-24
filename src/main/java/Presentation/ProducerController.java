@@ -333,5 +333,9 @@ public class ProducerController implements Initializable {
         window.setScene(personsViewScene);
         window.show();
     }
+
+    public void checkLogin(){
+
+    }
 }
 
