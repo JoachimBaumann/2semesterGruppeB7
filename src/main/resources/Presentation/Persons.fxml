@@ -57,9 +57,9 @@
          </content>
       </TitledPane>
       <Button layoutX="424.0" layoutY="443.0" mnemonicParsing="false" text="Tilføj til Produktion" />
-      <TitledPane animated="false" collapsible="false" layoutX="177.0" layoutY="120.0" text="Opret Kreditering" visible="false">
+      <TitledPane fx:id="tpOpretKreditering" animated="false" collapsible="false" layoutX="177.0" layoutY="120.0" text="Opret Kreditering" visible="false">
         <content>
-          <AnchorPane fx:id="tpOpretKreditering" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="tPersonName" editable="false" layoutX="26.0" layoutY="22.0" />
                   <TextField layoutX="26.0" layoutY="90.0" />
