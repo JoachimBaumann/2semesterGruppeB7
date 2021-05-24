@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class PersonsController {
     public TableView personsTV;
     public TitledPane tAddPerson;
     public TitledPane confirmPopUp;
+    public AnchorPane tpOpretKreditering;
     public TextField pFirstName;
     public TextField pLastName;
     public TextField pMail;
@@ -66,5 +68,13 @@ public class PersonsController {
         facade.addPerson(pMail.getText(),pFirstName.getText(),pLastName.getText(),Integer.valueOf(pPhone.getText()),pBeskrivelse.getText());
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
+    }
+    public void acceptOpretKreditering(){
+        tpOpretKreditering.setVisible(false);
+        tpOpretKreditering.toBack();
+    }
+    public void cancelOpretKreditering(){
+        tpOpretKreditering.setVisible(false);
+        tpOpretKreditering.toBack();
     }
 }
