@@ -58,7 +58,7 @@
                            <children>
                               <TextField fx:id="userName" promptText="Brugernavn" />
                               <PasswordField fx:id="userPassword" promptText="Adgangskode" />
-                              <Button minHeight="19.0" minWidth="46.0" mnemonicParsing="false" onAction="#signIn" prefHeight="25.0" prefWidth="58.0" text="Log Ind" />
+                              <Button minHeight="19.0" minWidth="46.0" mnemonicParsing="false" onAction="#checkLogin" prefHeight="25.0" prefWidth="58.0" text="Log Ind" />
                            </children>
                         </HBox>
                         <Text fx:id="tPassword" fill="#ff0404" strokeType="OUTSIDE" strokeWidth="0.0" text="Forkert brugernavn eller adgangskode" visible="false" wrappingWidth="204.53673362731934" />

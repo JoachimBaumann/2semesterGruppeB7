@@ -3,6 +3,7 @@ package Domain;
 import Domain.Catalog.Catalog;
 import Domain.Catalog.Person;
 import Domain.Catalog.Production;
+import Domain.Users.User;
 import Persistens.PersistanceHandler;
 
 import java.util.ArrayList;
@@ -105,4 +106,19 @@ public class Facade implements CreditManager {
         tempList.addAll(catalog.getProductionList().values());
         return tempList;
     }
+
+    public User getUser(String username){
+      ResultSet resultSet = persistanceHandler.getLogin(username);
+
+        try {
+            resultSet.next();
+            User user = new User(resultSet.getString("username"),resultSet.getString("password"),resultSet.getString("role"),resultSet.getInt("userID"));
+            return user;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+
+    }
+
 }

@@ -306,4 +306,18 @@ public class PersistanceHandler implements IPersistanceHandler {
             return -1;
         }
     }
+
+    public ResultSet getLogin(String username){
+        try {
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM Users WHERE Username = ?");
+        statement.setString(1, username);
+        statement.execute();
+        ResultSet user = statement.getResultSet();
+        return user;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
