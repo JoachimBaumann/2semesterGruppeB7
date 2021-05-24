@@ -36,8 +36,8 @@ import java.util.function.Predicate;
 public class ProducerController implements Initializable {
     public Button bSearch;
     public Text tLogProd;
-    public Text tLogAdmin;
-    public Text tLogUser;
+
+
     public Button bAddProduction;
     public Button bAddCredit;
     public Button bsignOut;
@@ -123,8 +123,6 @@ public class ProducerController implements Initializable {
         bAddProduction.setVisible(false);
         bAddCredit.setVisible(false);
         tLogProd.setVisible(false);
-        tLogAdmin.setVisible(false);
-        tLogUser.setVisible(false);
         tPassword.setVisible(false);
         bsignOut.setVisible(false);
         TAddProduction.setVisible(false);

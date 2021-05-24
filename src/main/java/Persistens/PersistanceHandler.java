@@ -94,13 +94,14 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public boolean updateProduction(int productionID, String releaseDate, String productionName) {
+    public boolean updateProduction(int productionID, String releaseDate, String productionName,String description) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE production SET releaseDate = ?, productionName = ?" +
+            PreparedStatement statement = connection.prepareStatement("UPDATE production SET releaseDate = ?, productionName = ?, Description = ?" +
                     "WHERE productionID = ?");
             statement.setString(1, releaseDate);
             statement.setString(2, productionName);
-            statement.setInt(3, productionID);
+            statement.setString(3,description);
+            statement.setInt(4, productionID);
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {

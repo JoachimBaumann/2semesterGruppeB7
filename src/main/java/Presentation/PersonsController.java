@@ -61,8 +61,10 @@ public class PersonsController implements Initializable {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Person rowData = row.getItem();
                     informationholder.setPerson(rowData);
-                    tpOpretKreditering.setVisible(true);
-                    tPersonName.setText(rowData.getfName() + " " + rowData.getlName());
+                    if (informationholder.getProduction() != null) {
+                        tpOpretKreditering.setVisible(true);
+                        tPersonName.setText(rowData.getfName() + " " + rowData.getlName());
+                    }
                 }
             });
             return row;
@@ -186,7 +188,7 @@ public class PersonsController implements Initializable {
     public ObservableList<Person> getPersons() {
         ArrayList<Person> tempList = new ArrayList<>();
 
-        for (Person p: facade.getCatalog().getPersons().values()){
+        for (Person p : facade.getCatalog().getPersons().values()) {
             tempList.add(p);
         }
 

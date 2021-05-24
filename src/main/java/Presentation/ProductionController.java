@@ -1,5 +1,7 @@
 package Presentation;
 
+import Domain.Catalog.Production;
+import Domain.Facade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,6 +30,7 @@ public class ProductionController implements Initializable {
     public Button bConfirmed;
     public Button bDenyChanges;
     private final Informationholder informationholder = Informationholder.getInstance();
+    private Facade facade = new Facade();
 
 
     @Override
@@ -36,31 +39,46 @@ public class ProductionController implements Initializable {
         confirmPopUp.setVisible(false);
         confirmPopUp.toBack();
     }
+
     public void cancelProduction(ActionEvent event) throws IOException {
-    Parent producerViewParent = FXMLLoader.load(getClass().getResource("producer.fxml"));
-    Scene producerViewScene = new Scene(producerViewParent);
+        Parent producerViewParent = FXMLLoader.load(getClass().getResource("producer.fxml"));
+        Scene producerViewScene = new Scene(producerViewParent);
 
-    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-    window.setScene(producerViewScene);
-    window.show();
+        window.setScene(producerViewScene);
+        informationholder.setProduction(null);
+        window.show();
     }
-    public void updateProductions(){
+
+    public void updateProductions() {
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
     }
-    public void bConfirmedClicked(){
+
+    public void bConfirmedClicked() {
+        Production production = informationholder.getProduction();
+        if (production != null) {
+            if (!TitleTextField.getText().isEmpty() && !ReleaseDateTextField.getText().isEmpty() && !ProductionIDTextField.getText().isEmpty() && !BeskrivelseTextArea.getText().isEmpty()) {
+                if(!facade.updateProduction(informationholder.getProduction().getProductionID(), ReleaseDateTextField.getText(), TitleTextField.getText(), BeskrivelseTextArea.getText())){
+                    System.out.println("something went wrong");
+                }
+            }
+        }
+        facade.updateCatalog();
         confirmPopUp.toBack();
         confirmPopUp.setVisible(false);
 
         updateTextFields();
 
     }
-    public void cancelledPopUp(){
+
+    public void cancelledPopUp() {
         confirmPopUp.setVisible(false);
         confirmPopUp.toBack();
     }
-    public void updateTextFields(){
+
+    public void updateTextFields() {
         //TODO Add information parse to Database
         tProductionTitle.setText(informationholder.getProduction().getProductionName());
         TitleTextField.setText(informationholder.getProduction().getProductionName());
@@ -72,14 +90,14 @@ public class ProductionController implements Initializable {
         BeskrivelseTextArea.setText(informationholder.getProduction().getDescription());
     }
 
-        public void bAddCredit(ActionEvent event2) throws IOException {
-            Parent personsViewParent = FXMLLoader.load(getClass().getResource("Persons.fxml"));
-            Scene personsViewScene = new Scene(personsViewParent);
+    public void bAddCredit(ActionEvent event2) throws IOException {
+        Parent personsViewParent = FXMLLoader.load(getClass().getResource("Persons.fxml"));
+        Scene personsViewScene = new Scene(personsViewParent);
 
-            Stage window = (Stage) ((Node)event2.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event2.getSource()).getScene().getWindow();
 
-            window.setScene(personsViewScene);
-            window.show();   
+        window.setScene(personsViewScene);
+        window.show();
     }
 
 }
