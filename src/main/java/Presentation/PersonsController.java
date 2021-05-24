@@ -47,6 +47,7 @@ public class PersonsController implements Initializable {
     public TextField tPersonName;
     public TextField searchField;
     public TextField tPersonRole;
+    public TitledPane confirmPopUp1;
 
     Informationholder informationholder = Informationholder.getInstance();
     private Facade facade = Facade.getInstance();
@@ -180,12 +181,22 @@ public class PersonsController implements Initializable {
         tPersonName.setText(informationholder.getPerson().getfName());
         tpOpretKreditering.setVisible(false);
         tpOpretKreditering.toBack();
+        confirmPopUp1.setVisible(false);
+        confirmPopUp1.toBack();
         facade.updateCatalog();
     }
 
     public void cancelOpretKreditering() {
         tpOpretKreditering.setVisible(false);
         tpOpretKreditering.toBack();
+    }
+    public void opretKreditering(){
+        confirmPopUp1.setVisible(true);
+        confirmPopUp1.toFront();
+    }
+    public void cancelConfirm(){
+        confirmPopUp1.setVisible(false);
+        confirmPopUp1.toBack();
     }
 
     public ObservableList<Person> getPersons() {
