@@ -8,6 +8,8 @@ public class Person {
     private int uID;
     private String description;
 
+
+
     public Person(String mail, String fName, String lName, int phoneNumber, int uID, String description) {
         this.mail = mail;
         this.fName = fName;
@@ -59,7 +61,13 @@ public class Person {
         this.description = description;
     }
 
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
     public String toString() {
