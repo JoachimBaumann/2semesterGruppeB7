@@ -319,6 +319,19 @@ public class Controller implements Initializable {
         updateList();
 
     }
+    public void openPersonWindow(ActionEvent event){
+        Parent personsViewParent = null;
+        try {
+            personsViewParent = FXMLLoader.load(getClass().getResource("Persons.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene personsViewScene = new Scene(personsViewParent);
 
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(personsViewScene);
+        window.show();
+    }
 }
 

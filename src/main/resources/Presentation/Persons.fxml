@@ -4,12 +4,28 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="483.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.PersonsController">
    <children>
+      <TitledPane fx:id="tAddPerson" animated="false" layoutX="155.0" layoutY="119.0" text="Tilføj Person" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="266.0">
+               <children>
+                  <Button layoutX="210.0" layoutY="196.0" mnemonicParsing="false" onAction="#hideAddPersonWindow" text="Tilføj" />
+                  <TextField layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="238.0" promptText="Fornavn" />
+                  <TextField layoutX="14.0" layoutY="51.0" prefHeight="26.0" prefWidth="238.0" promptText="Efternavn" />
+                  <TextField layoutX="14.0" layoutY="84.0" prefHeight="26.0" prefWidth="238.0" promptText="Telefon" />
+                  <TextField layoutX="14.0" layoutY="118.0" prefHeight="26.0" prefWidth="238.0" promptText="Mail" />
+                  <TextField layoutX="14.0" layoutY="152.0" prefHeight="26.0" prefWidth="238.0" promptText="Krediteringsrolle" />
+                  <Button layoutX="142.0" layoutY="196.0" mnemonicParsing="false" onAction="#hideAddPersonWindow" text="Annuller" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
       <TextField layoutX="99.0" layoutY="93.0" prefHeight="26.0" prefWidth="360.0" promptText="Søg efter personer" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="179.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -26,6 +42,7 @@
             <TableColumn prefWidth="100.79995727539062" text="Beskrivelse" />
         </columns>
       </TableView>
-      <Button layoutX="414.0" layoutY="443.0" mnemonicParsing="false" text="Tilføj Kreditering" />
+      <Button layoutX="414.0" layoutY="443.0" mnemonicParsing="false" onAction="#showAddPersonWindow" text="Tilføj Kreditering" />
+      <Button layoutX="349.0" layoutY="443.0" mnemonicParsing="false" onAction="#closePersonWindow" text="Annuller" />
    </children>
 </AnchorPane>
