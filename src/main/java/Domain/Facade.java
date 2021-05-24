@@ -37,6 +37,11 @@ public class Facade implements CreditManager {
     }
 
     @Override
+    public boolean updateProduction(String productionName, String description, String releaseDate) {
+        return false;
+    }
+
+    @Override
     public void ViewAllProductions() {
         throw new UnsupportedOperationException();
     }
@@ -105,4 +110,5 @@ public class Facade implements CreditManager {
         tempList.addAll(catalog.getProductionList().values());
         return tempList;
     }
+
 }

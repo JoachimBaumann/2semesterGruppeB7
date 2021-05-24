@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -33,11 +34,22 @@
       <Text layoutX="330.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ReleaseDate:" wrappingWidth="70.936767578125" />
       <Text layoutX="326.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProduktionID:" wrappingWidth="77.3367919921875" />
       <Text layoutX="336.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beskrivelse:" wrappingWidth="62.13671875" />
-      <Button layoutX="612.0" layoutY="526.0" mnemonicParsing="false" onAction="#updateProductions" text="Gem ændringer" />
+      <Button fx:id="bConfirmed" layoutX="612.0" layoutY="526.0" mnemonicParsing="false" onAction="#updateProductions" text="Gem ændringer" />
       <TextField fx:id="TitleTextField" layoutX="400.0" layoutY="10.0" prefHeight="25.0" prefWidth="233.0" />
       <TextField fx:id="ReleaseDateTextField" layoutX="400.0" layoutY="36.0" prefWidth="233.0" />
       <TextField fx:id="ProductionIDTextField" layoutX="400.0" layoutY="63.0" prefWidth="233.0" />
-      <Button layoutX="534.0" layoutY="526.0" mnemonicParsing="false" onAction="#cancelProduction" text="Annuller" />
-      <Button layoutX="14.0" layoutY="240.0" mnemonicParsing="false" text="Tilføj Kreditering" />
+      <Button layoutX="568.0" layoutY="526.0" mnemonicParsing="false" onAction="#cancelProduction" text="Luk" />
+      <Button layoutX="14.0" layoutY="240.0" mnemonicParsing="false" onAction="#bAddCredit" text="Tilføj Kreditering" />
+      <TitledPane fx:id="confirmPopUp" animated="false" layoutX="270.0" layoutY="200.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#bConfirmedClicked" text="Bekræft" />
+                  <Button fx:id="cancelledPopUp" layoutX="12.0" layoutY="65.0" mnemonicParsing="false" onAction="#cancelledPopUp" text="Annuller" />
+                  <Text fill="#ff0101" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vil du gemme dine ændringer?" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
    </children>
 </AnchorPane>
