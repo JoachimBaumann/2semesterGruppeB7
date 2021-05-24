@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="483.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.PersonsController">
+<AnchorPane prefHeight="483.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.PersonsController">
    <children>
       <TextField fx:id="searchField" layoutX="99.0" layoutY="93.0" prefHeight="26.0" prefWidth="360.0" promptText="Søg efter personer" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="179.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -62,7 +62,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="tPersonName" editable="false" layoutX="26.0" layoutY="22.0" />
-                  <TextField layoutX="26.0" layoutY="90.0" />
+                  <TextField fx:id="tPersonRole" layoutX="26.0" layoutY="90.0" />
                   <Text layoutX="26.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JobRolle:" />
                   <Text layoutX="26.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Navn:" />
                   <Button layoutX="84.0" layoutY="142.0" mnemonicParsing="false" onAction="#acceptOpretKreditering" text="Opret Kreditering" />

@@ -46,6 +46,7 @@ public class PersonsController implements Initializable {
     public TableColumn beskrivelsecolumn;
     public TextField tPersonName;
     public TextField searchField;
+    public TextField tPersonRole;
 
     Informationholder informationholder = Informationholder.getInstance();
     private Facade facade = new Facade();
@@ -164,14 +165,17 @@ public class PersonsController implements Initializable {
     }
 
     public void updatePersons() {
-
+        facade.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText());
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
     }
 
     public void acceptOpretKreditering() {
+        //Todo Add information parse to DB
+        tPersonName.setText(informationholder.getPerson().getfName());
         tpOpretKreditering.setVisible(false);
         tpOpretKreditering.toBack();
+        facade.updateCatalog();
     }
 
     public void cancelOpretKreditering() {
