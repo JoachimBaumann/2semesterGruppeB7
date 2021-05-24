@@ -59,6 +59,7 @@ public class PersonsController implements Initializable {
             TableRow<Person> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    tpOpretKreditering.toFront();
                     Person rowData = row.getItem();
                     informationholder.setPerson(rowData);
                     if (informationholder.getProduction() != null) {
