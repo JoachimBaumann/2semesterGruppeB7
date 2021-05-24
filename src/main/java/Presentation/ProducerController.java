@@ -147,7 +147,7 @@ public class ProducerController implements Initializable {
                     signIn();
                 }
                 else tPassword.setVisible(true);
-            }
+            } else tPassword.setVisible(true);
         }
     }
 
