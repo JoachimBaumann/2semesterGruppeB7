@@ -6,9 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -26,14 +25,19 @@ public class ProductionController implements Initializable {
     public TextField TitleTextField;
     public TextField ReleaseDateTextField;
     public TextField ProductionIDTextField;
+    public TitledPane confirmPopUp;
+    public Button bConfirmed;
+    public Button bDenyChanges;
     private Informationholder informationholder = Informationholder.getInstance();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    updateProductions();
+        updateTextFields();
+        confirmPopUp.setVisible(false);
+        confirmPopUp.toBack();
     }
-public void cancelProduction(ActionEvent event) throws IOException {
+    public void cancelProduction(ActionEvent event) throws IOException {
     Parent producerViewParent = FXMLLoader.load(getClass().getResource("producer.fxml"));
     Scene producerViewScene = new Scene(producerViewParent);
 
@@ -43,6 +47,21 @@ public void cancelProduction(ActionEvent event) throws IOException {
     window.show();
     }
     public void updateProductions(){
+        confirmPopUp.toFront();
+        confirmPopUp.setVisible(true);
+    }
+    public void bConfirmedClicked(){
+        confirmPopUp.toBack();
+        confirmPopUp.setVisible(false);
+
+        updateTextFields();
+
+    }
+    public void cancelledPopUp(){
+        confirmPopUp.setVisible(false);
+        confirmPopUp.toBack();
+    }
+    public void updateTextFields(){
         tProductionTitle.setText(informationholder.getProduction().getProductionName());
         TitleTextField.setText(informationholder.getProduction().getProductionName());
         tProductionReleaseDate.setText(informationholder.getProduction().getReleaseDate());
@@ -52,5 +71,16 @@ public void cancelProduction(ActionEvent event) throws IOException {
         tProduktionBeskrivelse.setText(informationholder.getProduction().getDescription());
         BeskrivelseTextArea.setText(informationholder.getProduction().getDescription());
     }
+
+        public void bAddCredit(ActionEvent event2) throws IOException {
+            Parent personsViewParent = FXMLLoader.load(getClass().getResource("Persons.fxml"));
+            Scene personsViewScene = new Scene(personsViewParent);
+
+            Stage window = (Stage) ((Node)event2.getSource()).getScene().getWindow();
+
+            window.setScene(personsViewScene);
+            window.show();   
+    }
+
 }
 

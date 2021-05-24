@@ -38,6 +38,11 @@ public class Facade implements CreditManager {
     }
 
     @Override
+    public boolean updateProduction(String productionName, String description, String releaseDate) {
+        return false;
+    }
+
+    @Override
     public void ViewAllProductions() {
         throw new UnsupportedOperationException();
     }

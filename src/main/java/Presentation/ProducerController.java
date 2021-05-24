@@ -32,7 +32,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
-public class Controller implements Initializable {
+public class ProducerController implements Initializable {
     public Button bSearch;
     public Text tLogProd;
     public Text tLogAdmin;
@@ -54,7 +54,7 @@ public class Controller implements Initializable {
     public TableColumn <Production, String>tReleaseDate;
     public TableView<Production> tableView;
     public VBox vBoxLogIn;
-    public VBox vAddProduction;
+    public TitledPane TAddProduction;
     public TextField tpTitel;
     public TextField tpBeskrivelse;
     public TextField tpReleaseDate;
@@ -123,7 +123,7 @@ public class Controller implements Initializable {
         tLogUser.setVisible(false);
         tPassword.setVisible(false);
         bsignOut.setVisible(false);
-        vAddProduction.setVisible(false);
+        TAddProduction.setVisible(false);
         tBoxLogIn.toBack();
     }
 
@@ -178,11 +178,11 @@ public class Controller implements Initializable {
             }
     }
     public void addProductionButton(){
-        vAddProduction.setVisible(true);
-        vAddProduction.toFront();
+        TAddProduction.setVisible(true);
+        TAddProduction.toFront();
     }
     public void closeAddProductionWindow(){
-        vAddProduction.setVisible(false);
+        TAddProduction.setVisible(false);
     }
 
     @Override

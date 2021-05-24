@@ -26,5 +26,7 @@ public interface CreditManager {
     public void saveReport();
 
     public void updateCatalog();
+
+    public boolean updateProduction(String productionName, String description, String releaseDate);
 }
 

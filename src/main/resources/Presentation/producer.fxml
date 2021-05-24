@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainPane" prefHeight="422.0" prefWidth="813.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
+<AnchorPane fx:id="mainPane" prefHeight="422.0" prefWidth="813.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ProducerController">
    <children>
       <ToolBar layoutY="78.0" prefHeight="40.0" prefWidth="838.0">
         <items>
@@ -105,32 +105,40 @@
             <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#rCancel" text="Cancel" />
          </children>
       </AnchorPane>
-      <VBox fx:id="vAddProduction" layoutX="8.0" layoutY="201.0" prefHeight="161.0" prefWidth="331.0" visible="false">
-         <children>
-            <HBox prefHeight="64.0" prefWidth="366.0">
+      <TitledPane fx:id="TAddProduction" animated="false" layoutX="14.0" layoutY="132.0" text="Tilføj Produktion" visible="false">
+        <content>
+          <AnchorPane>
                <children>
-                  <TextField fx:id="tpTitel" prefHeight="28.0" prefWidth="330.0" promptText="Titel" />
+                  <VBox prefHeight="161.0" prefWidth="331.0">
+                     <children>
+                        <HBox prefHeight="64.0" prefWidth="366.0">
+                           <children>
+                              <TextField fx:id="tpTitel" prefHeight="28.0" prefWidth="330.0" promptText="Titel" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="64.0" prefWidth="368.0">
+                           <children>
+                              <TextField fx:id="tpBeskrivelse" prefHeight="28.0" prefWidth="330.0" promptText="Beskrivelse" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="42.0">
+                           <children>
+                              <TextField fx:id="tpReleaseDate" prefHeight="28.0" prefWidth="330.0" promptText="releaseDate" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#closeAddProductionWindow" prefHeight="25.0" prefWidth="99.0" text="Luk" textAlignment="JUSTIFY" />
+                              <TextField prefHeight="25.0" prefWidth="273.0" promptText="releaseDate" visible="false" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#bCreateProduction" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="64.0" prefWidth="368.0">
-               <children>
-                  <TextField fx:id="tpBeskrivelse" prefHeight="28.0" prefWidth="330.0" promptText="Beskrivelse" />
-               </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="42.0">
-               <children>
-                  <TextField fx:id="tpReleaseDate" prefHeight="28.0" prefWidth="330.0" promptText="releaseDate" />
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#closeAddProductionWindow" prefHeight="25.0" prefWidth="99.0" text="Luk" textAlignment="JUSTIFY" />
-                  <TextField prefHeight="25.0" prefWidth="273.0" promptText="releaseDate" visible="false" />
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#bCreateProduction" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
+            </AnchorPane>
+        </content>
+      </TitledPane>
       <Button fx:id="bAddProduction" layoutX="14.0" layoutY="132.0" mnemonicParsing="false" onAction="#addProductionButton" text="Tilføj produktion" visible="false" />
    </children>
 </AnchorPane>
