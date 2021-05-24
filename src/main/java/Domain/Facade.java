@@ -3,8 +3,11 @@ package Domain;
 import Domain.Catalog.Catalog;
 import Domain.Catalog.Person;
 import Domain.Catalog.Production;
+import Domain.Users.User;
 import Persistens.PersistanceHandler;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +24,7 @@ public class Facade implements CreditManager {
 
         catalog.getProductionList().clear();
 
-        for (Production p : tempProduction){
+        for (Production p : tempProduction) {
             catalog.getProductionList().put(p.getProductionID(), p);
         }
         //update persons
@@ -29,7 +32,7 @@ public class Facade implements CreditManager {
 
         catalog.getPersons().clear();
 
-        for (Person person:pers) {
+        for (Person person : pers) {
             catalog.getPersons().put(person.getuID(), person);
         }
 
@@ -53,23 +56,21 @@ public class Facade implements CreditManager {
 
     @Override
     public void addCredit(int personID, String jobtitle) {
-    persistanceHandler.addCredit(personID, jobtitle);
+        persistanceHandler.addCredit(personID, jobtitle);
     }
 
     /**
-     *
-     * @param mail Email
-     * @param fName First name
-     * @param lName Last name
+     * @param mail        Email
+     * @param fName       First name
+     * @param lName       Last name
      * @param phonenumber Phonenumber
      * @param description Description
      * @return Returns uID from Database && returns -1 if error.
-     *
      */
     @Override
     public int addPerson(String mail, String fName, String lName, int phonenumber, String description) {
-        int tempID = persistanceHandler.addPerson(mail,fName,lName,phonenumber,description);
-        if(tempID != -1) {
+        int tempID = persistanceHandler.addPerson(mail, fName, lName, phonenumber, description);
+        if (tempID != -1) {
             catalog.addPerson(tempID, new Person(mail, fName, lName, phonenumber, tempID, description));
         }
         return -1;
@@ -77,9 +78,9 @@ public class Facade implements CreditManager {
 
     @Override
     public int addProduction(String releaseDate, String productionName, String description) {
-        int tempID = persistanceHandler.addProduction(releaseDate,productionName,description);
-        if(tempID != -1) {
-            catalog.addProduction(tempID,new Production(tempID,releaseDate,productionName, description));
+        int tempID = persistanceHandler.addProduction(releaseDate, productionName, description);
+        if (tempID != -1) {
+            catalog.addProduction(tempID, new Production(tempID, releaseDate, productionName, description));
         }
 
         return -1;
@@ -109,6 +110,20 @@ public class Facade implements CreditManager {
         List<Production> tempList = new ArrayList<>();
         tempList.addAll(catalog.getProductionList().values());
         return tempList;
+    }
+
+    public User getUser(String username) {
+        ResultSet resultSet = persistanceHandler.getLogin(username);
+
+        try {
+            resultSet.next();
+            User user = new User(resultSet.getString("username"), resultSet.getString("password"), resultSet.getString("role"), resultSet.getInt("userID"));
+            return user;
+
+        } catch (SQLException throwables) {
+            return null;
+        }
+
     }
 
 }

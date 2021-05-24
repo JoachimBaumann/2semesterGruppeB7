@@ -3,6 +3,7 @@ package Presentation;
 import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 import Domain.Facade;
+import Domain.Users.User;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -51,7 +52,7 @@ public class ProducerController implements Initializable {
     public TableColumn<Production, Integer> tID;
     public TableColumn<Production, String> tTitel;
     public TableColumn<Production, String> tDescription;
-    public TableColumn <Production, String>tReleaseDate;
+    public TableColumn<Production, String> tReleaseDate;
     public TableView<Production> tableView;
     public VBox vBoxLogIn;
     public TitledPane TAddProduction;
@@ -69,22 +70,30 @@ public class ProducerController implements Initializable {
     private Informationholder informationholder = Informationholder.getInstance();
 
     //configure the table
-    @FXML private TableView<Production> productionTableView;
-    @FXML private TableColumn<Production, Integer> pIDColumn;
-    @FXML private TableColumn<Production, String> pTitelColumn;
-    @FXML private TableColumn<Production, String> pDescriptionColumn;
-    @FXML private TableColumn<Production, String> pReleaseDateColumn;
+    @FXML
+    private TableView<Production> productionTableView;
+    @FXML
+    private TableColumn<Production, Integer> pIDColumn;
+    @FXML
+    private TableColumn<Production, String> pTitelColumn;
+    @FXML
+    private TableColumn<Production, String> pDescriptionColumn;
+    @FXML
+    private TableColumn<Production, String> pReleaseDateColumn;
 
     //These instance variables are used to create new Person objects
-    @FXML private TextField pIDTextfield;
-    @FXML private TextField pTitelTextField;
-    @FXML private TextField pDescriptionTextField;
-    @FXML private TextField pReleaseDateTextField;
+    @FXML
+    private TextField pIDTextfield;
+    @FXML
+    private TextField pTitelTextField;
+    @FXML
+    private TextField pDescriptionTextField;
+    @FXML
+    private TextField pReleaseDateTextField;
 
 
-
-    public void signIn(ActionEvent actionEvent) throws IOException {
-        if (userName.getText().equals("producer") && userPassword.getText().equals("1234")) {
+    public void signIn() {
+        if (informationholder.getUser().getRole().equals("Producer") || informationholder.getUser().getRole().equals("Systemadministrator"))  {
             tLogProd.setVisible(true);
             tBoxLogIn.setVisible(false);
             logInd.setVisible(false);
@@ -95,16 +104,7 @@ public class ProducerController implements Initializable {
             tBoxLogIn.toBack();
             //HUndeprutter lugter ik
         }
-        if (userName.getText().equals("systemadmin") && userPassword.getText().equals("5678")) {
-            tLogAdmin.setVisible(true);
-            logInd.setVisible(false);
-            bAddProduction.setVisible(true);
-            bAddCredit.setVisible(true);
-            bsignOut.setVisible(true);
-            tBoxLogIn.toBack();
-            tBoxLogIn.setVisible(false);
-        }
-        if (userName.getText().equals("bruger") && userPassword.getText().equals("91011")) {
+        if (informationholder.getUser().getRole().equals("User")) {
             tLogUser.setVisible(true);
             logInd.setVisible(false);
             bsignOut.setVisible(true);
@@ -127,12 +127,31 @@ public class ProducerController implements Initializable {
         bsignOut.setVisible(false);
         TAddProduction.setVisible(false);
         tBoxLogIn.toBack();
+        informationholder.setUser(null);
     }
 
     public void addProduction(ActionEvent actionEvent) {
     }
 
-    ;
+    public void checkLogin(){
+        User user = informationholder.getUser();
+       if(user != null) {
+           signIn();
+       }
+    }
+        // incomming spagetticode
+    public void loginBtn(){
+        if(userName != null && userPassword != null){
+            User user = facade.getUser(userName.getText());
+            if(user != null){
+                if(userName.getText().equals(user.getUsername()) && userPassword.getText().equals(user.getPassword())){
+                    informationholder.setUser(user);
+                    signIn();
+                }
+                else tPassword.setVisible(true);
+            } else tPassword.setVisible(true);
+        }
+    }
 
     public void logoClick(ActionEvent actionEvent) {
         tBoxLogIn.setVisible(false);
@@ -166,24 +185,26 @@ public class ProducerController implements Initializable {
     }
 
 
-    public void bDark(ActionEvent actionEvent){
-            if (darkBackground.isVisible() == true){
-                darkBackground.setVisible(false);
-                darkCredit.setVisible(false);
-                lightCredit.setVisible(true);
+    public void bDark(ActionEvent actionEvent) {
+        if (darkBackground.isVisible() == true) {
+            darkBackground.setVisible(false);
+            darkCredit.setVisible(false);
+            lightCredit.setVisible(true);
 
-            }else{
-                darkBackground.setVisible(true);
-                darkCredit.setVisible(true);
-                lightCredit.setVisible(false);
+        } else {
+            darkBackground.setVisible(true);
+            darkCredit.setVisible(true);
+            lightCredit.setVisible(false);
 
-            }
+        }
     }
-    public void addProductionButton(){
+
+    public void addProductionButton() {
         TAddProduction.setVisible(true);
         TAddProduction.toFront();
     }
-    public void closeAddProductionWindow(){
+
+    public void closeAddProductionWindow() {
         TAddProduction.setVisible(false);
     }
 
@@ -192,11 +213,14 @@ public class ProducerController implements Initializable {
         //Initializing tableview
         productionTableView = new TableView<Production>(getProduction());
 
+        if(informationholder.getUser() != null) {
+            signIn();
+        }
         // this makes it possible to doubleClick a row
         productionTableView.setRowFactory(tv -> {
             TableRow<Production> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Production rowData = row.getItem();
                     informationholder.setProduction(rowData);
                     Parent productionViewParent = null;
@@ -207,7 +231,7 @@ public class ProducerController implements Initializable {
                     }
                     Scene productionViewScene = new Scene(productionViewParent);
 
-                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
                     window.setScene(productionViewScene);
                     window.show();
@@ -215,7 +239,7 @@ public class ProducerController implements Initializable {
 
                 }
             });
-            return row ;
+            return row;
         });
 
         pIDColumn = new TableColumn<>("productionID");
@@ -264,7 +288,7 @@ public class ProducerController implements Initializable {
             }
         });
 
-        productionTableView.getColumns().addAll(pIDColumn,pTitelColumn,pDescriptionColumn,pReleaseDateColumn);
+        productionTableView.getColumns().addAll(pIDColumn, pTitelColumn, pDescriptionColumn, pReleaseDateColumn);
         mainPane.getChildren().addAll(productionTableView);
 
         FilteredList<Production> filteredData = new FilteredList<>(FXCollections.observableList(productions));
@@ -277,37 +301,33 @@ public class ProducerController implements Initializable {
 
     }
 
-    private Predicate<Production> createPredicate(String searchText){
+    private Predicate<Production> createPredicate(String searchText) {
         return Production -> {
             if (searchText == null || searchText.isEmpty()) return true;
             return searchFindsOrder(Production, searchText);
         };
     }
 
-    private boolean searchFindsOrder(Production production, String searchText){
+    private boolean searchFindsOrder(Production production, String searchText) {
         return (production.getProductionName().toLowerCase().contains(searchText.toLowerCase())) ||
                 Integer.valueOf(production.getProductionID()).toString().equals(searchText.toLowerCase());
     }
 
 
-
-    public ObservableList<Production>  getProduction()
-    {
+    public ObservableList<Production> getProduction() {
         productions = FXCollections.observableArrayList();
 
-    facade.updateCatalog();
+        facade.updateCatalog();
 
-    updateList();
+        updateList();
 
         return productions;
     }
 
 
-
-
-    public void updateList(){
+    public void updateList() {
         productions.clear();
-        for(Production p : facade.getCatalog().getProductionList().values()) {
+        for (Production p : facade.getCatalog().getProductionList().values()) {
             productions.add(p);
         }
     }
@@ -317,14 +337,15 @@ public class ProducerController implements Initializable {
         String releaseDate = tpReleaseDate.getText();
         String title = tpTitel.getText();
         String description = tpBeskrivelse.getText();
-        facade.addProduction(releaseDate,title,description);
+        facade.addProduction(releaseDate, title, description);
 
         updateList();
         confirmPopUp.setVisible(false);
         confirmPopUp.toBack();
 
     }
-    public void openPersonWindow(ActionEvent event){
+
+    public void openPersonWindow(ActionEvent event) {
         Parent personsViewParent = null;
         try {
             personsViewParent = FXMLLoader.load(getClass().getResource("Persons.fxml"));
@@ -333,7 +354,7 @@ public class ProducerController implements Initializable {
         }
         Scene personsViewScene = new Scene(personsViewParent);
 
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         window.setScene(personsViewScene);
         window.show();
