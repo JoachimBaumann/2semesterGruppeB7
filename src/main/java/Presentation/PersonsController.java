@@ -195,7 +195,7 @@ public class PersonsController implements Initializable {
         confirmPopUp.setVisible(true);
     }
 
-    public void acceptOpretKreditering() {
+    public void acceptOpretKreditering(ActionEvent event) {
         //Todo Add information parse to DB
         bPConfirmchanges();
         tPersonName.setText(informationholder.getPerson().getfName());
@@ -204,6 +204,18 @@ public class PersonsController implements Initializable {
         confirmPopUp1.setVisible(false);
         confirmPopUp1.toBack();
         facade.updateCatalog();
+        Parent productionViewParent = null;
+        try {
+            productionViewParent = FXMLLoader.load(getClass().getResource("Production.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene productionViewScene = new Scene(productionViewParent, 838,540);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene(productionViewScene);
+        window.show();
     }
 
     public void cancelOpretKreditering() {
@@ -260,6 +272,4 @@ public class PersonsController implements Initializable {
         return observableList;
 
     }
-
-
 }
