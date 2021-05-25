@@ -42,6 +42,18 @@ public class Production {
         return creditList;
     }
 
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public void setProductionName(String productionName) {
+        this.productionName = productionName;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Production{" +
