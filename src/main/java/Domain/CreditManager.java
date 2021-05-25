@@ -9,8 +9,6 @@ public interface CreditManager {
 
     public List<Production> viewProductions();
 
-    public void ViewAllProductions();
-
     public Production chooseProduction(int productionID);
 
     public void addCredit(int productionID, int personID, String jobrole);

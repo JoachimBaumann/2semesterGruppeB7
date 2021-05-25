@@ -71,10 +71,6 @@ public final class Facade implements CreditManager {
         } else return false;
     }
 
-    @Override
-    public void ViewAllProductions() {
-        throw new UnsupportedOperationException();
-    }
 
     @Override
     public Production chooseProduction(int productionID) {
