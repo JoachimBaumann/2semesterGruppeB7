@@ -28,5 +28,9 @@ public interface CreditManager {
     public void updateCatalog();
 
     public boolean updateProduction(int productionID, String releaseDate, String productionName, String description);
+
+    public boolean updateCredit(int creditID, String jobtitle,int productionID);
+
+    public boolean deleteCredit(int creditID);
 }
 

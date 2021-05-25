@@ -29,6 +29,11 @@ public final class Facade implements CreditManager {
     }
 
     @Override
+    public boolean deleteCredit(int creditID) {
+        return false;
+    }
+
+    @Override
     public void updateCatalog() {
         //update production
         List<Production> tempProduction = persistanceHandler.getProductions();
@@ -59,7 +64,7 @@ public final class Facade implements CreditManager {
     @Override
     public boolean updateProduction(int productionID, String releaseDate, String productionName, String description) {
         if (persistanceHandler.updateProduction(productionID, releaseDate, productionName, description)) {
-            updateCatalog();
+            catalog.getProduction(productionID)
             return true;
         } else return false;
     }
@@ -115,6 +120,15 @@ public final class Facade implements CreditManager {
 
     }
 
+    @Override
+    public boolean updateCredit(int creditID, String jobtitle,int productionID) {
+        if(persistanceHandler.updateCredit(creditID,jobtitle)){
+            catalog.getProduction(productionID).getCreditList().get(creditID).setJobTitle(jobtitle);
+            return true;
+        } else return false;
+    }
+
+
     public Person getPerson(int personID){
         return catalog.getPersons().get(personID);
     }
@@ -125,12 +139,12 @@ public final class Facade implements CreditManager {
 
     @Override
     public void generateReport(int productionID, Date releaseDate) {
-
+    throw new UnsupportedOperationException();
     }
 
     @Override
     public void saveReport() {
-
+    throw new UnsupportedOperationException();
     }
 
     @Override
