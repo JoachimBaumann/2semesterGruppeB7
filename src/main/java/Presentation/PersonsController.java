@@ -48,6 +48,7 @@ public class PersonsController implements Initializable {
     public TextField searchField;
     public TextField tPersonRole;
     public TitledPane confirmPopUp1;
+    private Person selectedPerson = null;
 
     Informationholder informationholder = Informationholder.getInstance();
     private Facade facade = Facade.getInstance();
@@ -67,6 +68,9 @@ public class PersonsController implements Initializable {
                         tpOpretKreditering.setVisible(true);
                         tPersonName.setText(rowData.getfName() + " " + rowData.getlName());
                     }
+                }
+                if(row.selectedProperty() != null){
+                    selectedPerson = row.getItem();
                 }
             });
             return row;
