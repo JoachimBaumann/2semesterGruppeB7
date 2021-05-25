@@ -13,11 +13,11 @@ public interface CreditManager {
 
     public Production chooseProduction(int productionID);
 
-    public void addCredit(int personID, String jobtitle);
+    public void addCredit(int productionID, int personID, String jobrole);
 
     public int addPerson(String mail, String fName, String lName, int phonenumber, String description);
 
-    public int addProduction(String releaseDate, String title,String description);
+    public int addProduction(String releaseDate, String title, String description);
 
     public void findProduction();
 
@@ -27,6 +27,6 @@ public interface CreditManager {
 
     public void updateCatalog();
 
-    public boolean updateProduction(int productionID, String releaseDate, String productionName,String description);
+    public boolean updateProduction(int productionID, String releaseDate, String productionName, String description);
 }
 

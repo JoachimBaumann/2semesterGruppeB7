@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ProductionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ProductionController">
    <children>
       <Text fx:id="tProductionTitle" layoutX="404.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="tProductionReleaseDate" layoutX="404.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
@@ -24,10 +24,10 @@
          </image></ImageView>
       <TableView fx:id="CreditTV" layoutX="14.0" layoutY="276.0" prefHeight="276.0" prefWidth="302.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="CreditID" />
-          <TableColumn prefWidth="75.0" text="JobRole" />
-            <TableColumn prefWidth="75.0" text="First Name" />
-            <TableColumn prefWidth="75.0" text="Last Name" />
+          <TableColumn fx:id="creditIDColumn" prefWidth="75.0" text="CreditID" />
+          <TableColumn fx:id="jobroleColumn" prefWidth="75.0" text="JobRole" />
+            <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="First Name" />
+            <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Last Name" />
         </columns>
       </TableView>
       <Text layoutX="371.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" wrappingWidth="29.33673095703125" />

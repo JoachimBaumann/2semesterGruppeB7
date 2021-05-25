@@ -20,7 +20,7 @@ public class Production {
 
 
     public void addToProduction(Credit credit){
-        creditList.put(credit.getPerson().getuID(),credit);
+        creditList.put(credit.getCreditID(),credit);
 
     }
 

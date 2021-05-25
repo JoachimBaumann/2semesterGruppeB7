@@ -1,6 +1,7 @@
 package Domain;
 
 import Domain.Catalog.Catalog;
+import Domain.Catalog.Credit;
 import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 import Domain.Users.User;
@@ -19,12 +20,14 @@ public final class Facade implements CreditManager {
     private Catalog catalog;
 
 
-    public static Facade getInstance(){
+    public static Facade getInstance() {
         return INSTANCE;
     }
-    private Facade(){
+
+    private Facade() {
         catalog = new Catalog();
     }
+
     @Override
     public void updateCatalog() {
         //update production
@@ -42,6 +45,12 @@ public final class Facade implements CreditManager {
 
         for (Person person : pers) {
             catalog.getPersons().put(person.getuID(), person);
+        }
+
+        List<Credit> templist = persistanceHandler.getCredits();
+        for (Credit c: templist) {
+            catalog.addToProduction(c.getProductionID(), c);
+
         }
 
 
@@ -66,8 +75,12 @@ public final class Facade implements CreditManager {
     }
 
     @Override
-    public void addCredit(int personID, String jobtitle) {
-        persistanceHandler.addCredit(personID, jobtitle);
+    public void addCredit(int productionID, int personID, String jobrole) {
+        int tempID = persistanceHandler.addCredit(productionID, personID, jobrole);
+
+        if (tempID != -1) {
+            catalog.addToProduction(productionID,new Credit(tempID,jobrole,productionID,personID));
+        }
     }
 
     /**
@@ -100,6 +113,10 @@ public final class Facade implements CreditManager {
     @Override
     public void findProduction() {
 
+    }
+
+    public Person getPerson(int personID){
+        return catalog.getPersons().get(personID);
     }
 
     public Catalog getCatalog() {
