@@ -127,7 +127,7 @@ public class PersonsController implements Initializable {
         if (informationholder.getPerson() != null && informationholder.getProduction() != null) {
             if (!tPersonRole.getText().isEmpty()) {
                 facade.addCredit(informationholder.getProduction().getProductionID(), informationholder.getPerson().getuID(), tPersonRole.getText());
-            } else System.out.println("Emty textfield");
+            } else System.out.println("Empty textfield");
         }
 
     }
@@ -204,6 +204,9 @@ public class PersonsController implements Initializable {
         confirmPopUp1.setVisible(false);
         confirmPopUp1.toBack();
         facade.updateCatalog();
+        int productionID = informationholder.getProduction().getProductionID();
+        informationholder.setProduction(facade.getCatalog().getProduction(productionID));
+
         Parent productionViewParent = null;
         try {
             productionViewParent = FXMLLoader.load(getClass().getResource("Production.fxml"));

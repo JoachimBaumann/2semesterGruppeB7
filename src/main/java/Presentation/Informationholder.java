@@ -8,7 +8,7 @@ public final class Informationholder {
 
 private Production production;
 private final static Informationholder INSTANCE = new Informationholder();
-private User user = new User("systemadmin", "5678","Systemadministrator",200);
+private User user = null;
 private Person person;
 
 
