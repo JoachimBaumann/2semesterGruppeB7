@@ -31,8 +31,8 @@
             <Image url="@../Images/TV2CREDITS.png" />
          </image>
       </ImageView>
-      <Text fx:id="tLogProd" fill="#1c4e2c" layoutX="657.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du er logget ind som: Producer" visible="false" />
-      <SplitMenuButton fx:id="logInd" layoutX="782.0" layoutY="23.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Log ind">
+      <Text fx:id="tLogProd" fill="#1c4e2c" layoutX="600.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du er logget ind som: Producer" visible="false" />
+      <SplitMenuButton fx:id="logInd" layoutX="756.0" layoutY="23.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Log ind">
          <items>
             <MenuItem fx:id="action1" mnemonicParsing="false" onAction="#actionOne" text="Log ind" />
             <MenuItem fx:id="action2" mnemonicParsing="false" onAction="#actionTwo" text="Opret bruger" />
@@ -68,7 +68,7 @@
             </VBox>
          </content>
       </TitledPane>
-      <HBox layoutX="601.0" layoutY="90.0" prefHeight="26.0" prefWidth="271.0">
+      <HBox layoutX="568.0" layoutY="90.0" prefHeight="26.0" prefWidth="271.0">
          <children>
             <TextField fx:id="searchField" prefHeight="26.0" prefWidth="270.0" promptText="Søgefelt" />
          </children>
@@ -103,7 +103,7 @@
             <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#rCancel" text="Cancel" />
          </children>
       </AnchorPane>
-      <TitledPane fx:id="TAddProduction" animated="false" layoutX="14.0" layoutY="132.0" text="Tilføj Produktion" visible="false">
+      <TitledPane fx:id="TAddProduction" animated="false" collapsible="false" layoutX="14.0" layoutY="132.0" text="Tilføj Produktion" visible="false">
         <content>
           <AnchorPane>
                <children>
