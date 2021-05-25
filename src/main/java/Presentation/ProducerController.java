@@ -97,7 +97,7 @@ public class ProducerController implements Initializable {
 
 
     public void signIn() {
-        if (informationholder.getUser().getRole().equals("Producer") || informationholder.getUser().getRole().equals("Systemadministrator"))  {
+        if (informationholder.getUser().getRole().equals("Producer"))  {
             tLogProd.setVisible(true);
             tLogProd.setText("Du er logget ind som: " + informationholder.getUser().getRole());
             tBoxLogIn.setVisible(false);
@@ -108,6 +108,18 @@ public class ProducerController implements Initializable {
             bsignOut.setVisible(true);
             tBoxLogIn.toBack();
             //HUndeprutter lugter ik
+        }
+        if (informationholder.getUser().getRole().equals("Systemadministrator")){
+            tLogProd.setVisible(true);
+            tLogProd.setText("Du er logget ind som: " + informationholder.getUser().getRole());
+            tBoxLogIn.setVisible(false);
+            logInd.setVisible(false);
+            tBoxLogIn.setVisible(false);
+            bAddProduction.setVisible(true);
+            bAddCredit.setVisible(true);
+            bsignOut.setVisible(true);
+            tBoxLogIn.toBack();
+            bFjernProduktion.setVisible(true);
         }
         if (informationholder.getUser().getRole().equals("Bruger")) {
             logInd.setVisible(false);
@@ -130,8 +142,10 @@ public class ProducerController implements Initializable {
         tPassword.setVisible(false);
         bsignOut.setVisible(false);
         TAddProduction.setVisible(false);
+        bFjernProduktion.setVisible(false);
         tBoxLogIn.toBack();
         informationholder.setUser(null);
+
     }
 
     public void addProduction(ActionEvent actionEvent) {
