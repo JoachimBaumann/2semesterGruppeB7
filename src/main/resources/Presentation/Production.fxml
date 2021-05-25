@@ -24,6 +24,10 @@
          </image></ImageView>
       <TableView fx:id="CreditTV" layoutX="477.0" layoutY="227.0" prefHeight="262.0" prefWidth="346.0">
         <columns>
+          <TableColumn fx:id="creditIDColumn" prefWidth="75.0" text="CreditID" />
+          <TableColumn fx:id="jobroleColumn" prefWidth="75.0" text="JobRole" />
+            <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="First Name" />
+            <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Last Name" />
           <TableColumn prefWidth="52.79998779296875" text="CreditID" />
           <TableColumn prefWidth="78.39996337890625" text="JobRole" />
             <TableColumn prefWidth="88.00006103515625" text="First Name" />

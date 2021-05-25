@@ -48,7 +48,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             ResultSet sqlReturnProductions = statement.executeQuery();
             while (sqlReturnProductions.next()) {
                 returnValue.add(new Production(sqlReturnProductions.getInt(1), sqlReturnProductions.getString(2),
-                        sqlReturnProductions.getString(3),sqlReturnProductions.getString(4)));
+                        sqlReturnProductions.getString(3), sqlReturnProductions.getString(4)));
             }
             return returnValue;
         } catch (SQLException e) {
@@ -66,7 +66,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             if (!sqlReturnValues.next()) {
                 return null;
             }
-            return new Production(sqlReturnValues.getInt(1), sqlReturnValues.getString(2), sqlReturnValues.getString(3),sqlReturnValues.getString(4));
+            return new Production(sqlReturnValues.getInt(1), sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getString(4));
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -94,13 +94,13 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public boolean updateProduction(int productionID, String releaseDate, String productionName,String description) {
+    public boolean updateProduction(int productionID, String releaseDate, String productionName, String description) {
         try {
             PreparedStatement statement = connection.prepareStatement("UPDATE production SET releaseDate = ?, productionName = ?, Description = ?" +
                     "WHERE productionID = ?");
             statement.setString(1, releaseDate);
             statement.setString(2, productionName);
-            statement.setString(3,description);
+            statement.setString(3, description);
             statement.setInt(4, productionID);
             statement.executeUpdate();
             return true;
@@ -150,8 +150,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM credit");
             ResultSet sqlReturnCredits = statement.executeQuery();
             while (sqlReturnCredits.next()) {
-                returnValue.add(new Credit(sqlReturnCredits.getString(1), sqlReturnCredits.getInt(2), new Person(sqlReturnCredits.getString(1), sqlReturnCredits.getString(2),
-                        sqlReturnCredits.getString(3), sqlReturnCredits.getInt(4), sqlReturnCredits.getInt(5), sqlReturnCredits.getString(6))));
+                returnValue.add(new Credit(sqlReturnCredits.getInt("creditID"),sqlReturnCredits.getString("jobrole"),sqlReturnCredits.getInt("productionid"),sqlReturnCredits.getInt("personid")));
             }
             return returnValue;
         } catch (SQLException e) {
@@ -169,9 +168,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             if (!sqlReturnCredit.next()) {
                 return null;
             }
-            return new Credit(sqlReturnCredit.getString(1), sqlReturnCredit.getInt(2), new Person(sqlReturnCredit.getString(1), sqlReturnCredit.getString(2),
-                    sqlReturnCredit.getString(3), sqlReturnCredit.getInt(4), sqlReturnCredit.getInt(5), sqlReturnCredit.getString(6)));
-            //Er i tvivl om jeg har gjort ovenstående rigtigt...? Indtil videre fungerer det
+            return new Credit(sqlReturnCredit.getInt("creditID"),sqlReturnCredit.getString("jobtitle"),sqlReturnCredit.getInt("productionid"),sqlReturnCredit.getInt("personid"));
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -207,16 +204,22 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public boolean addCredit(int personID, String jobtitle) {
+    public int addCredit(int productionID, int personID, String jobrole) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (personID, jobtitle)" + " VALUES (?,?)");
-            statement.setInt(1, personID);
-            statement.setString(2, jobtitle);
-            return true;
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit (productionid,personid,jobrole)" + " VALUES (?,?,?) RETURNING creditID;");
+            statement.setInt(1, productionID);
+            statement.setInt(2, personID);
+            statement.setString(3, jobrole);
+            statement.execute();
+            ResultSet last_updated_credit = statement.getResultSet();
+            last_updated_credit.next();
+            int creditID = last_updated_credit.getInt(1);
+            return creditID;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return -1;
     }
 
 
@@ -288,7 +291,7 @@ public class PersistanceHandler implements IPersistanceHandler {
     }
 
     @Override
-    public int addPerson(String mail, String fname, String lname, int phonenumber,String description) {
+    public int addPerson(String mail, String fname, String lname, int phonenumber, String description) {
         try {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO person (mail,fname,lname,phonenumber,description)"
                     + " VALUES (?,?,?,?,?) RETURNING uid;");
@@ -308,15 +311,15 @@ public class PersistanceHandler implements IPersistanceHandler {
         }
     }
 
-    public ResultSet getLogin(String username){
+    public ResultSet getLogin(String username) {
         try {
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM Users WHERE Username = ?");
-        statement.setString(1, username);
-        statement.execute();
-        ResultSet user = statement.getResultSet();
-        return user;
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Users WHERE Username = ?");
+            statement.setString(1, username);
+            statement.execute();
+            ResultSet user = statement.getResultSet();
+            return user;
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }

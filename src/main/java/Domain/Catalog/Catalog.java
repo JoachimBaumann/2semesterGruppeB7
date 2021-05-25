@@ -4,20 +4,20 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Catalog {
-    private HashMap<Integer,Production> productions;
-    private HashMap<Integer,Person> persons;
+    private HashMap<Integer, Production> productions;
+    private HashMap<Integer, Person> persons;
 
     public Catalog() {
         this.productions = new HashMap<>();
         this.persons = new HashMap<>();
     }
 
-    public HashMap<Integer, Production> getProductionList(){
+    public HashMap<Integer, Production> getProductionList() {
         return productions;
     }
 
-    public void createProduction(Integer productionID, String date, String productionName, String description){
-        productions.put(productionID,new Production(productionID,date,productionName,description));
+    public void createProduction(Integer productionID, String date, String productionName, String description) {
+        productions.put(productionID, new Production(productionID, date, productionName, description));
     }
 
     public void getProductions(int productionID, Date releasedate) {
@@ -43,7 +43,6 @@ public class Catalog {
     }
 
 
-
     public HashMap<Integer, Person> getPersons() {
         return persons;
     }
@@ -57,7 +56,7 @@ public class Catalog {
         return productions.get(productionName);
     }
 
-    public void addToProduction(int productionID, Credit credit){
+    public void addToProduction(int productionID, Credit credit) {
         productions.get(productionID).addToProduction(credit);
     }
 

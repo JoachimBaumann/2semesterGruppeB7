@@ -1,7 +1,13 @@
 package Presentation;
 
+import Domain.Catalog.Credit;
+import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 import Domain.Facade;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,9 +18,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ProductionController implements Initializable {
@@ -22,7 +30,6 @@ public class ProductionController implements Initializable {
     public Text tProductionReleaseDate;
     public Text tProductionID;
     public Text tProduktionBeskrivelse;
-    public TableView CreditTV;
     public TextArea BeskrivelseTextArea;
     public TextField TitleTextField;
     public TextField ReleaseDateTextField;
@@ -35,6 +42,13 @@ public class ProductionController implements Initializable {
     public VBox vboxRediger;
     public Button bTilføjKreditering;
     private Facade facade = Facade.getInstance();
+    public TableView CreditTV;
+
+    public TableColumn creditIDColumn;
+    public TableColumn jobroleColumn;
+    public TableColumn firstNameColumn;
+    public TableColumn lastNameColumn;
+
 
 
     @Override
@@ -43,7 +57,44 @@ public class ProductionController implements Initializable {
         confirmPopUp.setVisible(false);
         confirmPopUp.toBack();
         checkRole();
+        CreditTV.setItems(getCredit());
+
+
+        creditIDColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Credit, Integer>, ObservableValue<Integer>>() {
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Credit, Integer> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getCreditID());
+            }
+
+        });
+        jobroleColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Credit, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Credit, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getJobTitle());
+            }
+        });
+        firstNameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Credit, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Credit, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getPerson(p.getValue().getPersonID()).getfName());
+            }
+        });
+        lastNameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Credit, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Credit, String> p) {
+                return new ReadOnlyObjectWrapper(p.getValue().getPerson(p.getValue().getPersonID()).getlName());
+            }
+        });
     }
+
+    public ObservableList<Credit> getCredit() {
+        ArrayList<Credit> tempList = new ArrayList<>();
+        for (Credit c : informationholder.getProduction().getCreditList().values()) {
+            tempList.add(c);
+        }
+
+        ObservableList observableList = FXCollections.observableArrayList(tempList);
+        return observableList;
+
+    }
+
+
 
     public void cancelProduction(ActionEvent event) throws IOException {
         Parent producerViewParent = FXMLLoader.load(getClass().getResource("producer.fxml"));
