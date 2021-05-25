@@ -55,8 +55,7 @@
          </content>
       </TitledPane>
       <Button layoutX="20.0" layoutY="489.0" mnemonicParsing="false" onAction="#showAddPersonWindow" text="Opret Person" />
-      <Button layoutX="632.0" layoutY="489.0" mnemonicParsing="false" onAction="#closePersonWindow" text="Annuller" />
-      <Button layoutX="700.0" layoutY="489.0" mnemonicParsing="false" text="Tilføj til Produktion" />
+      <Button layoutX="768.0" layoutY="489.0" mnemonicParsing="false" onAction="#closePersonWindow" text="Tilbage" />
       <TitledPane fx:id="tpOpretKreditering" animated="false" collapsible="false" layoutX="177.0" layoutY="120.0" text="Opret Kreditering" visible="false">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
