@@ -32,5 +32,7 @@ public interface CreditManager {
     public boolean deleteCredit(int creditID);
 
     public boolean deletePerson(int personID);
+
+    public boolean deleteProduction(int productionID);
 }
 

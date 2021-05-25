@@ -172,7 +172,7 @@ public final class Facade implements CreditManager {
         }
 
     }
-/*
+
     @Override
     public boolean deleteProduction(int productionID) {
         if(persistanceHandler.deleteProduction(productionID)){
@@ -183,5 +183,5 @@ public final class Facade implements CreditManager {
         return false;
     }
 
- */
+
 }

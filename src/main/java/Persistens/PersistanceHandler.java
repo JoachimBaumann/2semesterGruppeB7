@@ -114,14 +114,25 @@ public class PersistanceHandler implements IPersistanceHandler {
     @Override
     public boolean deleteProduction(int productionID) {
         try {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM production WHERE productionID = ?");
-            statement.setInt(1, productionID);
-            return statement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            PreparedStatement statement1 = connection.prepareStatement("DELETE FROM Credit WHERE productionID = ?");
+            statement1.setInt(1, productionID);
+            statement1.execute();
+        }catch(SQLException e){
+                e.printStackTrace();
+                return false;
+            }
+            try {
+                PreparedStatement statement = connection.prepareStatement("DELETE FROM production WHERE productionID = ?");
+                statement.setInt(1, productionID);
+                return statement.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
-    }
+
+
+
 
     @Override
     public int addProduction(String releaseDate, String productionName, String description) {

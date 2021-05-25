@@ -155,7 +155,7 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <Button layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#pProduktionSletAnnuller" text="Annuller" />
-                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" text="Bekræft" />
+                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" onAction="#confirmDeleteProduction" text="Bekræft" />
                   <Text fill="RED" layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Er du sikker på du vil slette denne produktion?" wrappingWidth="135.92578125" />
                </children>
             </AnchorPane>

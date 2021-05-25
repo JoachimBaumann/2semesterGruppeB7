@@ -413,5 +413,10 @@ public class ProducerController implements Initializable {
         tBekræftSletProduktion.toBack();
     }
 
+    public void confirmDeleteProduction(ActionEvent event) {
+        if(!facade.deleteProduction(selectedProduction.getProductionID())){
+            pProduktionSletAnnuller();
+        }
+    }
 }
 
