@@ -335,6 +335,9 @@ public class ProducerController implements Initializable {
         updateList();
         confirmPopUp.setVisible(false);
         confirmPopUp.toBack();
+        TAddProduction.setVisible(false);
+        TAddProduction.toBack();
+
 
     }
 
