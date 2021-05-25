@@ -30,5 +30,7 @@ public interface CreditManager {
     public boolean updateCredit(int creditID, String jobtitle,int productionID);
 
     public boolean deleteCredit(int creditID);
+
+    public boolean deletePerson(int personID);
 }
 

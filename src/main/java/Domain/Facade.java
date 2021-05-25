@@ -71,6 +71,14 @@ public final class Facade implements CreditManager {
         } else return false;
     }
 
+    @Override
+    public boolean deletePerson(int personID) {
+        if(persistanceHandler.deletePerson(personID)){
+            catalog.getPersons().remove(personID);
+            return true;
+        }
+        else return false;
+    }
 
     @Override
     public Production chooseProduction(int productionID) {
