@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ProductionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ProductionController">
    <children>
       <Text fx:id="tProductionTitle" layoutX="548.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="tProductionReleaseDate" layoutX="548.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
@@ -43,7 +43,7 @@
             <TextArea fx:id="BeskrivelseTextArea" prefHeight="130.0" prefWidth="233.0" />
          </children>
       </VBox>
-      <Button layoutX="477.0" layoutY="499.0" mnemonicParsing="false" onAction="#cancelProduction" prefHeight="26.0" prefWidth="48.0" text="Luk" />
+      <Button layoutX="477.0" layoutY="499.0" mnemonicParsing="false" onAction="#cancelProduction" prefHeight="26.0" prefWidth="58.0" text="Tilbage" />
       <Button fx:id="bTilføjKreditering" layoutX="610.0" layoutY="500.0" mnemonicParsing="false" onAction="#bAddCredit" text="Tilføj Kreditering" visible="false" />
       <TitledPane fx:id="confirmPopUp" animated="false" layoutX="241.0" layoutY="224.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
         <content>

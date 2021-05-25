@@ -148,15 +148,7 @@ public class ProducerController implements Initializable {
 
     }
 
-    public void addProduction(ActionEvent actionEvent) {
-    }
 
-    public void checkLogin(){
-        User user = informationholder.getUser();
-       if(user != null) {
-           signIn();
-       }
-    }
         // incomming spagetticode
     public void loginBtn(){
         if(userName != null && userPassword != null){
@@ -169,10 +161,6 @@ public class ProducerController implements Initializable {
                 else tPassword.setVisible(true);
             } else tPassword.setVisible(true);
         }
-    }
-
-    public void logoClick(ActionEvent actionEvent) {
-        tBoxLogIn.setVisible(false);
     }
 
     public void actionOne(ActionEvent actionEvent) {
@@ -196,25 +184,6 @@ public class ProducerController implements Initializable {
     public void bCancel(ActionEvent actionEvent) {
         tBoxLogIn.setVisible(false);
         tBoxLogIn.toBack();
-    }
-
-    public void viewAllProductions() {
-        updateList();
-    }
-
-
-    public void bDark(ActionEvent actionEvent) {
-        if (darkBackground.isVisible() == true) {
-            darkBackground.setVisible(false);
-            darkCredit.setVisible(false);
-            lightCredit.setVisible(true);
-
-        } else {
-            darkBackground.setVisible(true);
-            darkCredit.setVisible(true);
-            lightCredit.setVisible(false);
-
-        }
     }
 
     public void addProductionButton() {

@@ -103,7 +103,7 @@
             <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#rCancel" text="Cancel" />
          </children>
       </AnchorPane>
-      <TitledPane fx:id="TAddProduction" animated="false" collapsible="false" layoutX="14.0" layoutY="132.0" text="Tilføj Produktion" visible="false">
+      <TitledPane fx:id="TAddProduction" animated="false" collapsible="false" layoutX="7.0" layoutY="132.0" text="Tilføj Produktion" visible="false">
         <content>
           <AnchorPane>
                <children>
@@ -137,8 +137,8 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <Button fx:id="bAddProduction" layoutX="7.0" layoutY="132.0" mnemonicParsing="false" onAction="#addProductionButton" text="Tilføj produktion" visible="false" />
-      <TitledPane fx:id="confirmPopUp" animated="false" layoutX="419.0" layoutY="202.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
+      <Button fx:id="bAddProduction" layoutX="7.0" layoutY="132.0" mnemonicParsing="false" onAction="#addProductionButton" text="Tilføj produktion" />
+      <TitledPane fx:id="confirmPopUp" animated="false" collapsible="false" layoutX="338.0" layoutY="150.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
