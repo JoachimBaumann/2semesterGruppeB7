@@ -64,7 +64,9 @@ public final class Facade implements CreditManager {
     @Override
     public boolean updateProduction(int productionID, String releaseDate, String productionName, String description) {
         if (persistanceHandler.updateProduction(productionID, releaseDate, productionName, description)) {
-            catalog.getProduction(productionID)
+            catalog.getProduction(productionID).setDescription(description);
+            catalog.getProduction(productionID).setReleaseDate(releaseDate);
+            catalog.getProduction(productionID).setProductionName(productionName);
             return true;
         } else return false;
     }
