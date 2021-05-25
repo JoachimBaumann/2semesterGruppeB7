@@ -69,6 +69,7 @@ public class ProducerController implements Initializable {
     private Facade facade = Facade.getInstance();
     ObservableList<Production> productions;
     private Informationholder informationholder = Informationholder.getInstance();
+    private Production selectedProduction = null;
 
     //configure the table
     @FXML
@@ -300,6 +301,8 @@ public class ProducerController implements Initializable {
                     window.show();
 
 
+                } if(event.getClickCount() == 1) {
+                    selectedProduction = row.getItem();
                 }
             });
             return row;
