@@ -114,6 +114,15 @@ public class PersonsController implements Initializable {
         );
     }
 
+    public void bPConfirmchanges() {
+        if (informationholder.getPerson() != null && informationholder.getProduction() != null) {
+            if (!tPersonRole.getText().isEmpty()) {
+                facade.addCredit(informationholder.getProduction().getProductionID(), informationholder.getPerson().getuID(), tPersonRole.getText());
+            } else System.out.println("Emty textfield");
+        }
+
+    }
+
     private Predicate<Person> createPredicate(String searchText) {
         return Person -> {
             if (searchText == null || searchText.isEmpty()) return true;
@@ -144,7 +153,7 @@ public class PersonsController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene producerViewScene = new Scene(producerViewParent,838,540);
+        Scene producerViewScene = new Scene(producerViewParent, 838, 540);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -178,6 +187,7 @@ public class PersonsController implements Initializable {
 
     public void acceptOpretKreditering() {
         //Todo Add information parse to DB
+        bPConfirmchanges();
         tPersonName.setText(informationholder.getPerson().getfName());
         tpOpretKreditering.setVisible(false);
         tpOpretKreditering.toBack();
@@ -190,11 +200,13 @@ public class PersonsController implements Initializable {
         tpOpretKreditering.setVisible(false);
         tpOpretKreditering.toBack();
     }
-    public void opretKreditering(){
+
+    public void opretKreditering() {
         confirmPopUp1.setVisible(true);
         confirmPopUp1.toFront();
     }
-    public void cancelConfirm(){
+
+    public void cancelConfirm() {
         confirmPopUp1.setVisible(false);
         confirmPopUp1.toBack();
     }
