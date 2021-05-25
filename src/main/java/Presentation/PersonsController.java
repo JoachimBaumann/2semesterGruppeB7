@@ -144,7 +144,7 @@ public class PersonsController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene producerViewScene = new Scene(producerViewParent);
+        Scene producerViewScene = new Scene(producerViewParent,838,540);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

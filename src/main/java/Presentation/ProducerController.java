@@ -291,7 +291,7 @@ public class ProducerController implements Initializable {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    Scene productionViewScene = new Scene(productionViewParent);
+                    Scene productionViewScene = new Scene(productionViewParent, 838, 540);
 
                     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -356,7 +356,7 @@ public class ProducerController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene personsViewScene = new Scene(personsViewParent);
+        Scene personsViewScene = new Scene(personsViewParent, 838,540);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

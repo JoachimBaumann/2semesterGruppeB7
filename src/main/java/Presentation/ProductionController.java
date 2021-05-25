@@ -47,7 +47,7 @@ public class ProductionController implements Initializable {
 
     public void cancelProduction(ActionEvent event) throws IOException {
         Parent producerViewParent = FXMLLoader.load(getClass().getResource("producer.fxml"));
-        Scene producerViewScene = new Scene(producerViewParent);
+        Scene producerViewScene = new Scene(producerViewParent, 838, 540);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
