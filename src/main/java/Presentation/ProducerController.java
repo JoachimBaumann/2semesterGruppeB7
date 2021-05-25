@@ -58,7 +58,7 @@ public class ProducerController implements Initializable {
     public TitledPane TAddProduction;
     public TextField tpTitel;
     public TextField tpBeskrivelse;
-    public TextField tpReleaseDate;
+    public DatePicker tpReleaseDate;
     public AnchorPane mainPane;
     public TextField searchField;
     public TitledPane tBoxLogIn;
@@ -327,7 +327,7 @@ public class ProducerController implements Initializable {
 
     public void bCreateProduction(ActionEvent actionEvent) {
         //TODO Add information parse to database
-        String releaseDate = tpReleaseDate.getText();
+        String releaseDate = tpReleaseDate.getEditor().getText();
         String title = tpTitel.getText();
         String description = tpBeskrivelse.getText();
         facade.addProduction(releaseDate, title, description);
