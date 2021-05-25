@@ -149,6 +149,27 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Button fx:id="bFjernProduktion" layoutX="136.0" layoutY="132.0" mnemonicParsing="false" text="Fjern produktion" />
+      <Button fx:id="bFjernProduktion" layoutX="136.0" layoutY="132.0" mnemonicParsing="false" onAction="#sletProductionConfirm" text="Slet Produktion" />
+      <TitledPane fx:id="tBekræftSletProduktion" animated="false" collapsible="false" layoutX="335.0" layoutY="210.0" prefHeight="130.0" prefWidth="190.0" text="Slet Produktion" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#pProduktionSletAnnuller" text="Annuller" />
+                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" text="Bekræft" />
+                  <Text fill="RED" layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Er du sikker på du vil slette denne produktion?" wrappingWidth="135.92578125" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane fx:id="tFejlProduktion" animated="false" collapsible="false" layoutX="335.0" layoutY="171.0" text="Fejl" visible="false">
+        <content>
+          <AnchorPane layoutX="320.0" layoutY="225.0" minHeight="0.0" minWidth="0.0" prefHeight="97.0" prefWidth="179.0">
+               <children>
+                  <Text fill="RED" layoutX="6.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du har ikke valgt en produktion" />
+                  <Button layoutX="129.0" layoutY="56.0" mnemonicParsing="false" onAction="#pFejlProduktionOK" text="OK" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
    </children>
 </AnchorPane>

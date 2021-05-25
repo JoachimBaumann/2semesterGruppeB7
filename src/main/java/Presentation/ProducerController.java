@@ -66,6 +66,8 @@ public class ProducerController implements Initializable {
     public TitledPane confirmPopUp;
     public Button cancelledPopUp;
     public Button bFjernProduktion;
+    public TitledPane tBekræftSletProduktion;
+    public TitledPane tFejlProduktion;
     private Facade facade = Facade.getInstance();
     ObservableList<Production> productions;
     private Informationholder informationholder = Informationholder.getInstance();
@@ -371,11 +373,30 @@ public class ProducerController implements Initializable {
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
 
-
     }
     public void cancelledPopUp(){
         confirmPopUp.setVisible(false);
         confirmPopUp.toBack();
+    }
+
+
+    public void sletProductionConfirm(){
+        if (selectedProduction != null) {
+            tBekræftSletProduktion.setVisible(true);
+            tBekræftSletProduktion.toFront();
+        } else
+            tFejlProduktion.setVisible(true);
+            tFejlProduktion.toFront();
+    }
+
+    public void pFejlProduktionOK(){
+        tFejlProduktion.setVisible(false);
+        tFejlProduktion.toBack();
+    }
+
+    public void pProduktionSletAnnuller(){
+        tBekræftSletProduktion.setVisible(false);
+        tBekræftSletProduktion.toBack();
     }
 
 }
