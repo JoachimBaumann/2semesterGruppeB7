@@ -156,6 +156,7 @@ public class PersonsController implements Initializable {
     }
 
     public void closePersonWindow(ActionEvent event) {
+        informationholder.setUser(null);
         Parent producerViewParent = null;
         try {
             producerViewParent = FXMLLoader.load(getClass().getResource("producer.fxml"));
