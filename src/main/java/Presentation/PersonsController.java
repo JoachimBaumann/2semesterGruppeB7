@@ -74,7 +74,7 @@ public class PersonsController implements Initializable {
                         tPersonName.setText(rowData.getfName() + " " + rowData.getlName());
                     }
                 }
-                if(row.selectedProperty() != null){
+                if (row.selectedProperty() != null) {
                     selectedPerson = row.getItem();
                 }
             });
@@ -229,7 +229,6 @@ public class PersonsController implements Initializable {
         if (selectedPerson != null) {
             bBekræftSlet.setVisible(true);
             bBekræftSlet.toFront();
-            System.out.println(selectedPerson);
         } else
             tFejl.setVisible(true);
         tFejl.toFront();
