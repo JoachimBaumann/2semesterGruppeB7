@@ -236,11 +236,18 @@ public class PersonsController implements Initializable {
 
     }
 
+    public void confirmDeletePerson(ActionEvent event) {
+        if (!facade.deletePerson(selectedPerson.getuID())) {
+            annullerSletConfirm();
+        } else {
+            System.out.println("something went wrong");
+        }
+    }
+
     public void annullerSletConfirm() {
         bBekræftSlet.setVisible(false);
         bBekræftSlet.toBack();
     }
-
 
     public ObservableList<Person> getPersons() {
         ArrayList<Person> tempList = new ArrayList<>();
@@ -253,4 +260,6 @@ public class PersonsController implements Initializable {
         return observableList;
 
     }
+
+
 }

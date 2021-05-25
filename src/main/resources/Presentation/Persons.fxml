@@ -87,7 +87,7 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <Button layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#annullerSletConfirm" text="Annuller" />
-                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" text="Bekræft" />
+                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" onAction="#confirmDeletePerson" text="Bekræft" />
                   <Text fill="RED" layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Er du sikker på du vil slette denne person?" wrappingWidth="135.92578125" />
                </children>
             </AnchorPane>
