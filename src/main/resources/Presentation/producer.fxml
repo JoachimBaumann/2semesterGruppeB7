@@ -149,5 +149,6 @@
             </AnchorPane>
          </content>
       </TitledPane>
+      <Button fx:id="bFjernProduktion" layoutX="136.0" layoutY="132.0" mnemonicParsing="false" text="Fjern produktion" />
    </children>
 </AnchorPane>

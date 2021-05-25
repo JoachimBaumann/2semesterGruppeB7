@@ -48,7 +48,12 @@ public class PersonsController implements Initializable {
     public TextField searchField;
     public TextField tPersonRole;
     public TitledPane confirmPopUp1;
+    public Button bSletPerson;
+    public Button bFejlOK;
+    public TitledPane tFejl;
     private Person selectedPerson = null;
+    public TitledPane bBekræftSlet;
+    public Button cancelledPopUp1;
 
     Informationholder informationholder = Informationholder.getInstance();
     private Facade facade = Facade.getInstance();
@@ -214,6 +219,28 @@ public class PersonsController implements Initializable {
         confirmPopUp1.setVisible(false);
         confirmPopUp1.toBack();
     }
+
+    public void setbFejlOK() {
+        tFejl.setVisible(false);
+        tFejl.toBack();
+    }
+
+    public void sletConfirm() {
+        if (selectedPerson != null) {
+            bBekræftSlet.setVisible(true);
+            bBekræftSlet.toFront();
+            System.out.println(selectedPerson);
+        } else
+            tFejl.setVisible(true);
+        tFejl.toFront();
+
+    }
+
+    public void annullerSletConfirm() {
+        bBekræftSlet.setVisible(false);
+        bBekræftSlet.toBack();
+    }
+
 
     public ObservableList<Person> getPersons() {
         ArrayList<Person> tempList = new ArrayList<>();

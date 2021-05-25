@@ -164,5 +164,16 @@ public final class Facade implements CreditManager {
         }
 
     }
+/*
+    @Override
+    public boolean deleteProduction(int productionID) {
+        if(persistanceHandler.deleteProduction(productionID)){
+            catalog.getProductionList().remove(productionID);
+        return true;
+        }
+       else
+        return false;
+    }
 
+ */
 }
