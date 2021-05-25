@@ -137,7 +137,7 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <Button fx:id="bAddProduction" layoutX="7.0" layoutY="132.0" mnemonicParsing="false" onAction="#addProductionButton" text="Tilføj Produktion" />
+      <Button fx:id="bAddProduction" layoutX="7.0" layoutY="132.0" mnemonicParsing="false" onAction="#addProductionButton" text="Tilføj Produktion" visible="false" />
       <TitledPane fx:id="confirmPopUp" animated="false" collapsible="false" layoutX="338.0" layoutY="150.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
