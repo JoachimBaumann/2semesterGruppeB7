@@ -280,6 +280,16 @@ public class PersistanceHandler implements IPersistanceHandler {
 
     @Override
     public boolean deletePerson(int personID) {
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM credit where personid = ?");
+            preparedStatement.setInt(1, personID);
+            preparedStatement.execute();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         try {
             PreparedStatement statement = connection.prepareStatement("DELETE FROM person WHERE uid = ?");
             statement.setInt(1, personID);
