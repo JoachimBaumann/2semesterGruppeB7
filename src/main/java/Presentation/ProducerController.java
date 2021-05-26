@@ -374,7 +374,7 @@ public class ProducerController implements Initializable {
     }
 
     public void acceptDeleteProduction(ActionEvent event) {
-        if(!facade.deleteProduction(selectedProduction.getProductionID())){
+        if(facade.deleteProduction(selectedProduction.getProductionID())){
             pProduktionSletAnnuller();
             updateList();
         }
