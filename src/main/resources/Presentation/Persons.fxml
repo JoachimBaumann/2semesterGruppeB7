@@ -81,13 +81,13 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Button fx:id="bSletPerson" layoutX="124.0" layoutY="489.0" mnemonicParsing="false" onAction="#sletConfirm" text="Slet Person" />
+      <Button fx:id="bSletPerson" layoutX="124.0" layoutY="489.0" mnemonicParsing="false" onAction="#deletePerson" text="Slet Person" />
       <TitledPane fx:id="bBekræftSlet" animated="false" collapsible="false" layoutX="325.0" layoutY="200.0" prefHeight="130.0" prefWidth="190.0" text="Slet Person" visible="false">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <Button layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#annullerSletConfirm" text="Annuller" />
-                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" onAction="#confirmDeletePerson" text="Bekræft" />
+                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" onAction="#acceptDeletePerson" text="Bekræft" />
                   <Text fill="RED" layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Er du sikker på du vil slette denne person?" wrappingWidth="135.92578125" />
                </children>
             </AnchorPane>

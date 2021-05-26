@@ -240,7 +240,7 @@ public class PersonsController implements Initializable {
         tFejl.toBack();
     }
 
-    public void sletConfirm() {
+    public void deletePerson() {
         if (selectedPerson != null) {
             bBekræftSlet.setVisible(true);
             bBekræftSlet.toFront();
@@ -250,7 +250,7 @@ public class PersonsController implements Initializable {
 
     }
 
-    public void confirmDeletePerson(ActionEvent event) {
+    public void acceptDeletePerson(ActionEvent event) {
         if (!facade.deletePerson(selectedPerson.getuID())) {
             annullerSletConfirm();
         } else {

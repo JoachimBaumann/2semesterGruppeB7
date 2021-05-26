@@ -145,7 +145,7 @@ public class ProducerController implements Initializable {
 
 
         // incomming spagetticode
-    public void loginBtn(){
+    public void login(){
         if(userName != null && userPassword != null){
             User user = facade.getUser(userName.getText());
             if(user != null){
@@ -158,7 +158,7 @@ public class ProducerController implements Initializable {
         }
     }
 
-    public void actionOne(ActionEvent actionEvent) {
+    public void openLogin(ActionEvent actionEvent) {
         tBoxLogIn.setVisible(true);
         newMember.setVisible(false);
         tBoxLogIn.toFront();
