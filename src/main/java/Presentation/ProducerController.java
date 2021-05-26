@@ -64,9 +64,10 @@ public class ProducerController implements Initializable {
     public TitledPane tBekræftSletProduktion;
     public TitledPane tFejlProduktion;
     private Facade facade = Facade.getInstance();
-    ObservableList<Production> productions;
+    ObservableList<Production> productions = FXCollections.observableArrayList(facade.viewProductions());
     private Informationholder informationholder = Informationholder.getInstance();
     private Production selectedProduction = null;
+
 
     //configure the table
     @FXML
@@ -192,8 +193,10 @@ public class ProducerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Initializing tableview
-        productionTableView = new TableView<Production>(getProductions());
+             //Initializing tableview
+        facade.updateCatalog();
+        updateList();
+        productionTableView = new TableView<Production>(productions);
 
         if(informationholder.getUser() != null) {
             signIn();
@@ -250,7 +253,7 @@ public class ProducerController implements Initializable {
         productionTableView.getColumns().addAll(pIDColumn, pTitelColumn, pDescriptionColumn, pReleaseDateColumn);
         mainPane.getChildren().addAll(productionTableView);
 
-        FilteredList<Production> filteredData = new FilteredList<>(FXCollections.observableList(productions));
+        FilteredList<Production> filteredData = new FilteredList<>(productions);
         productionTableView.setItems(filteredData);
 
         searchField.textProperty().addListener((observable, oldValue, newValue) ->
@@ -302,20 +305,10 @@ public class ProducerController implements Initializable {
     }
 
 
-    public ObservableList<Production> getProductions() {
-        productions = FXCollections.observableArrayList();
-
-        facade.updateCatalog();
-
-        updateList();
-
-        return productions;
-    }
-
-
     public void updateList() {
+
         productions.clear();
-        for (Production p : facade.getCatalog().getProductionList().values()) {
+        for (Production p : facade.viewProductions()) {
             productions.add(p);
         }
     }
@@ -381,8 +374,9 @@ public class ProducerController implements Initializable {
     }
 
     public void acceptDeleteProduction(ActionEvent event) {
-        if(!facade.deleteProduction(selectedProduction.getProductionID())){
+        if(facade.deleteProduction(selectedProduction.getProductionID())){
             pProduktionSletAnnuller();
+            updateList();
         }
     }
 }
