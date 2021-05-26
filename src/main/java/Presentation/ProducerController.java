@@ -193,7 +193,7 @@ public class ProducerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initializing tableview
-        productionTableView = new TableView<Production>(getProduction());
+        productionTableView = new TableView<Production>(getProductions());
 
         if(informationholder.getUser() != null) {
             signIn();
@@ -302,7 +302,7 @@ public class ProducerController implements Initializable {
     }
 
 
-    public ObservableList<Production> getProduction() {
+    public ObservableList<Production> getProductions() {
         productions = FXCollections.observableArrayList();
 
         facade.updateCatalog();
