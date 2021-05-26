@@ -53,7 +53,7 @@ public final class Facade implements CreditManager {
         }
 
         List<Credit> templist = persistanceHandler.getCredits();
-        for (Credit c: templist) {
+        for (Credit c : templist) {
             catalog.addToProduction(c.getProductionID(), c);
 
         }
@@ -63,7 +63,7 @@ public final class Facade implements CreditManager {
 
     @Override
     public boolean updateProduction(int productionID, String releaseDate, String productionName, String description) {
-        if (persistanceHandler.updateProduction(productionID, releaseDate, productionName, description)) {
+        if (!persistanceHandler.updateProduction(productionID, releaseDate, productionName, description)) {
             catalog.getProduction(productionID).setDescription(description);
             catalog.getProduction(productionID).setReleaseDate(releaseDate);
             catalog.getProduction(productionID).setProductionName(productionName);
@@ -73,11 +73,10 @@ public final class Facade implements CreditManager {
 
     @Override
     public boolean deletePerson(int personID) {
-        if(persistanceHandler.deletePerson(personID)){
+        if (!persistanceHandler.deletePerson(personID)) {
             catalog.getPersons().remove(personID);
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
     @Override
@@ -90,7 +89,7 @@ public final class Facade implements CreditManager {
         int tempID = persistanceHandler.addCredit(productionID, personID, jobrole);
 
         if (tempID != -1) {
-            catalog.addToProduction(productionID,new Credit(tempID,jobrole,productionID,personID));
+            catalog.addToProduction(productionID, new Credit(tempID, jobrole, productionID, personID));
         }
     }
 
@@ -127,15 +126,24 @@ public final class Facade implements CreditManager {
     }
 
     @Override
-    public boolean updateCredit(int creditID, String jobtitle,int productionID) {
-        if(persistanceHandler.updateCredit(creditID,jobtitle)){
+    public boolean updateCredit(int creditID, String jobtitle, int productionID) {
+        if (persistanceHandler.updateCredit(creditID, jobtitle)) {
             catalog.getProduction(productionID).getCreditList().get(creditID).setJobTitle(jobtitle);
             return true;
         } else return false;
     }
 
 
-    public Person getPerson(int personID){
+    public List<Person> viewAllPersons() {
+
+        List<Person> templist = new ArrayList<>();
+        for (Person p : catalog.getPersons().values()) {
+            templist.add(p);
+        }
+        return templist;
+    }
+
+    public Person getPerson(int personID) {
         return catalog.getPersons().get(personID);
     }
 
@@ -145,12 +153,12 @@ public final class Facade implements CreditManager {
 
     @Override
     public void generateReport(int productionID, Date releaseDate) {
-    throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void saveReport() {
-    throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -175,12 +183,11 @@ public final class Facade implements CreditManager {
 
     @Override
     public boolean deleteProduction(int productionID) {
-        if(persistanceHandler.deleteProduction(productionID)){
+        if (!persistanceHandler.deleteProduction(productionID)) {
             catalog.getProductionList().remove(productionID);
-        return true;
-        }
-       else
-        return false;
+            return true;
+        } else
+            return false;
     }
 
 
