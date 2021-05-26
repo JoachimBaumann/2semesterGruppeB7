@@ -34,7 +34,7 @@
       <Text layoutX="477.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ReleaseDate:" wrappingWidth="70.936767578125" />
       <Text layoutX="472.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProduktionID:" wrappingWidth="77.3367919921875" />
       <Text layoutX="484.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beskrivelse:" wrappingWidth="62.13671875" />
-      <Button fx:id="bConfirmed" layoutX="723.0" layoutY="500.0" mnemonicParsing="false" onAction="#updateProductions" text="Gem ændringer" visible="false" />
+      <Button fx:id="bConfirmed" layoutX="723.0" layoutY="500.0" mnemonicParsing="false" onAction="#saveProductionChanges" text="Gem ændringer" visible="false" />
       <VBox fx:id="vboxRediger" layoutX="548.0" layoutY="10.0" prefHeight="210.0" prefWidth="275.0" visible="false">
          <children>
             <TextField fx:id="TitleTextField" prefHeight="25.0" prefWidth="233.0" />
@@ -49,13 +49,13 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#bConfirmedClicked" text="Bekræft" />
+                  <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#acceptProductionChanges" text="Bekræft" />
                   <Button fx:id="cancelledPopUp" layoutX="12.0" layoutY="65.0" mnemonicParsing="false" onAction="#cancelledPopUp" text="Annuller" />
                   <Text fill="#ff0101" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vil du gemme dine ændringer?" />
                </children>
             </AnchorPane>
         </content>
       </TitledPane>
-      <Button fx:id="bRediger" layoutX="541.0" layoutY="500.0" mnemonicParsing="false" onAction="#vBoxRedigerToggle" text="Rediger" visible="false" />
+      <Button fx:id="bRediger" layoutX="541.0" layoutY="500.0" mnemonicParsing="false" onAction="#editProduction" text="Rediger" visible="false" />
    </children>
 </AnchorPane>

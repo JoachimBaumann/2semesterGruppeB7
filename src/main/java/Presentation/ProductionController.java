@@ -107,12 +107,12 @@ public class ProductionController implements Initializable {
         window.show();
     }
 
-    public void updateProductions() {
+    public void saveProductionChanges() {
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
     }
 
-    public void bConfirmedClicked() {
+    public void acceptProductionChanges() {
         Production production = informationholder.getProduction();
         if (production != null) {
             if (!TitleTextField.getText().isEmpty() && !ReleaseDateTextField.getText().isEmpty() && !ProductionIDTextField.getText().isEmpty() && !BeskrivelseTextArea.getText().isEmpty()) {
@@ -157,7 +157,7 @@ public class ProductionController implements Initializable {
         window.setScene(personsViewScene);
         window.show();
     }
-    public void vBoxRedigerToggle(){
+    public void editProduction(){
         vboxRediger.setVisible(true);
         vboxRediger.toFront();
     }

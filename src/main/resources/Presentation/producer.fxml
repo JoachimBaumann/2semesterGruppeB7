@@ -150,13 +150,13 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Button fx:id="bFjernProduktion" layoutX="116.0" layoutY="132.0" mnemonicParsing="false" onAction="#sletProductionConfirm" text="Slet Produktion" visible="false" />
+      <Button fx:id="bFjernProduktion" layoutX="116.0" layoutY="132.0" mnemonicParsing="false" onAction="#deleteProduction" text="Slet Produktion" visible="false" />
       <TitledPane fx:id="tBekræftSletProduktion" animated="false" collapsible="false" layoutX="335.0" layoutY="210.0" prefHeight="130.0" prefWidth="190.0" text="Slet Produktion" visible="false">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <Button layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#pProduktionSletAnnuller" text="Annuller" />
-                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" onAction="#confirmDeleteProduction" text="Bekræft" />
+                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" onAction="#acceptDeleteProduction" text="Bekræft" />
                   <Text fill="RED" layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Er du sikker på du vil slette denne produktion?" wrappingWidth="135.92578125" />
                </children>
             </AnchorPane>

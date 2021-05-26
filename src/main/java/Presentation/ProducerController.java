@@ -361,7 +361,7 @@ public class ProducerController implements Initializable {
     }
 
 
-    public void sletProductionConfirm(){
+    public void deleteProduction(){
         if (selectedProduction != null) {
             tBekræftSletProduktion.setVisible(true);
             tBekræftSletProduktion.toFront();
@@ -380,7 +380,7 @@ public class ProducerController implements Initializable {
         tBekræftSletProduktion.toBack();
     }
 
-    public void confirmDeleteProduction(ActionEvent event) {
+    public void acceptDeleteProduction(ActionEvent event) {
         if(!facade.deleteProduction(selectedProduction.getProductionID())){
             pProduktionSletAnnuller();
         }
