@@ -1,6 +1,7 @@
 package Presentation;
 
 import Domain.Catalog.Person;
+import Domain.Catalog.Production;
 import Domain.Facade;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -25,7 +26,7 @@ import java.util.function.Predicate;
 
 public class PersonsController implements Initializable {
 
-    public TableView personsTV;
+    public TableView<Person> personsTV;
     public TitledPane tAddPerson;
     public TitledPane confirmPopUp;
     public TitledPane tpOpretKreditering;
@@ -50,17 +51,16 @@ public class PersonsController implements Initializable {
     private Person selectedPerson = null;
     public TitledPane bBekræftSlet;
     public Button cancelledPopUp1;
-
     Informationholder informationholder = Informationholder.getInstance();
     private Facade facade = Facade.getInstance();
-
+    ObservableList<Person> persons = FXCollections.observableArrayList(facade.viewAllPersons());
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        facade.updateCatalog();
+
         choosePerson();
 
-        if(informationholder.getUser().getRole().equals("Producer")){
+        if (informationholder.getUser().getRole().equals("Producer")) {
             bSletPerson.setVisible(false);
             bSletPerson.toBack();
         }
@@ -99,7 +99,7 @@ public class PersonsController implements Initializable {
             }
         });
 
-        FilteredList<Person> filteredData = new FilteredList<>(FXCollections.observableList(getPersons()));
+        FilteredList<Person> filteredData = new FilteredList<>(persons);
         personsTV.setItems(filteredData);
 
         searchField.textProperty().addListener((observable, oldValue, newValue) ->
@@ -180,12 +180,13 @@ public class PersonsController implements Initializable {
         //Todo Add information parse to DB
         if (facade.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText()) != -1) {
             hideAddPersonWindow();
+
         }
         confirmPopUp.toBack();
         confirmPopUp.setVisible(false);
         tAddPerson.setVisible(false);
         tAddPerson.toBack();
-
+        updateList();
 
     }
 
@@ -208,7 +209,6 @@ public class PersonsController implements Initializable {
         tpOpretKreditering.toBack();
         confirmPopUp1.setVisible(false);
         confirmPopUp1.toBack();
-        facade.updateCatalog();
         int productionID = informationholder.getProduction().getProductionID();
         informationholder.setProduction(facade.getCatalog().getProduction(productionID));
 
@@ -218,12 +218,21 @@ public class PersonsController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene productionViewScene = new Scene(productionViewParent, 838,540);
+        Scene productionViewScene = new Scene(productionViewParent, 838, 540);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         window.setScene(productionViewScene);
         window.show();
+    }
+
+    public void updateList(){
+        persons.clear();
+        for (Person p : facade.viewAllPersons()){
+            persons.add(p);
+        }
+
+
     }
 
     public void cancelOpretKreditering() {
@@ -257,8 +266,9 @@ public class PersonsController implements Initializable {
     }
 
     public void acceptDeletePerson(ActionEvent event) {
-        if (!facade.deletePerson(selectedPerson.getuID())) {
+        if (facade.deletePerson(selectedPerson.getuID())) {
             annullerSletConfirm();
+            updateList();
         } else {
             System.out.println("something went wrong");
         }
@@ -269,15 +279,5 @@ public class PersonsController implements Initializable {
         bBekræftSlet.toBack();
     }
 
-    public ObservableList<Person> getPersons() {
-        ArrayList<Person> tempList = new ArrayList<>();
 
-        for (Person p : facade.getCatalog().getPersons().values()) {
-            tempList.add(p);
-        }
-
-        ObservableList observableList = FXCollections.observableArrayList(tempList);
-        return observableList;
-
-    }
 }
