@@ -106,8 +106,9 @@ public class PersistanceHandler implements IPersistanceHandler {
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
+
     }
 
 
@@ -117,21 +118,19 @@ public class PersistanceHandler implements IPersistanceHandler {
             PreparedStatement statement1 = connection.prepareStatement("DELETE FROM Credit WHERE productionID = ?");
             statement1.setInt(1, productionID);
             statement1.execute();
-        }catch(SQLException e){
-                e.printStackTrace();
-                return false;
-            }
-            try {
-                PreparedStatement statement = connection.prepareStatement("DELETE FROM production WHERE productionID = ?");
-                statement.setInt(1, productionID);
-                return statement.execute();
-            } catch (SQLException e) {
-                e.printStackTrace();
-                return false;
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
-
-
+        try {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM production WHERE productionID = ?");
+            statement.setInt(1, productionID);
+            return statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
     @Override
@@ -161,7 +160,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM credit");
             ResultSet sqlReturnCredits = statement.executeQuery();
             while (sqlReturnCredits.next()) {
-                returnValue.add(new Credit(sqlReturnCredits.getInt("creditID"),sqlReturnCredits.getString("jobrole"),sqlReturnCredits.getInt("productionid"),sqlReturnCredits.getInt("personid")));
+                returnValue.add(new Credit(sqlReturnCredits.getInt("creditID"), sqlReturnCredits.getString("jobrole"), sqlReturnCredits.getInt("productionid"), sqlReturnCredits.getInt("personid")));
             }
             return returnValue;
         } catch (SQLException e) {
@@ -179,7 +178,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             if (!sqlReturnCredit.next()) {
                 return null;
             }
-            return new Credit(sqlReturnCredit.getInt("creditID"),sqlReturnCredit.getString("jobtitle"),sqlReturnCredit.getInt("productionid"),sqlReturnCredit.getInt("personid"));
+            return new Credit(sqlReturnCredit.getInt("creditID"), sqlReturnCredit.getString("jobtitle"), sqlReturnCredit.getInt("productionid"), sqlReturnCredit.getInt("personid"));
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -196,8 +195,8 @@ public class PersistanceHandler implements IPersistanceHandler {
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     @Override
@@ -296,8 +295,7 @@ public class PersistanceHandler implements IPersistanceHandler {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM credit where personid = ?");
             preparedStatement.setInt(1, personID);
             preparedStatement.execute();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
