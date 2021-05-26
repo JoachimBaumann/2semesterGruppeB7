@@ -148,7 +148,7 @@ public class ProductionController implements Initializable {
 
     }
 
-    public void bAddCredit(ActionEvent event2) throws IOException {
+    public void createCredit(ActionEvent event2) throws IOException {
         Parent personsViewParent = FXMLLoader.load(getClass().getResource("Persons.fxml"));
         Scene personsViewScene = new Scene(personsViewParent);
 

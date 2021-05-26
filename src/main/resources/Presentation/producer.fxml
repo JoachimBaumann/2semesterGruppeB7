@@ -129,7 +129,7 @@
                            <children>
                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#closeAddProductionWindow" prefHeight="25.0" prefWidth="99.0" text="Luk" textAlignment="JUSTIFY" />
                               <TextField prefHeight="25.0" prefWidth="273.0" promptText="releaseDate" visible="false" />
-                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#bAddClicked" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#addProduction" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
                            </children>
                         </HBox>
                      </children>
@@ -138,12 +138,12 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <Button fx:id="bAddProduction" layoutX="7.0" layoutY="132.0" mnemonicParsing="false" onAction="#addProductionButton" text="Tilføj Produktion" visible="false" />
+      <Button fx:id="bAddProduction" layoutX="7.0" layoutY="132.0" mnemonicParsing="false" onAction="#createProduction" text="Tilføj Produktion" visible="false" />
       <TitledPane fx:id="confirmPopUp" animated="false" collapsible="false" layoutX="338.0" layoutY="150.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#bCreateProduction" text="Bekræft" />
+                  <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#acceptCreateProduction" text="Bekræft" />
                   <Button fx:id="cancelledPopUp" layoutX="12.0" layoutY="65.0" mnemonicParsing="false" onAction="#cancelledPopUp" text="Annuller" />
                   <Text fill="#ff0101" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vil du gemme dine ændringer?" />
                </children>

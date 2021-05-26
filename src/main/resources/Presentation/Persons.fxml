@@ -32,7 +32,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="266.0">
                <children>
-                  <Button layoutX="210.0" layoutY="196.0" mnemonicParsing="false" onAction="#updatePersons" text="Tilføj" />
+                  <Button layoutX="210.0" layoutY="196.0" mnemonicParsing="false" onAction="#addPerson" text="Tilføj" />
                   <TextField fx:id="pFirstName" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="238.0" promptText="Fornavn" />
                   <TextField fx:id="pLastName" layoutX="14.0" layoutY="51.0" prefHeight="26.0" prefWidth="238.0" promptText="Efternavn" />
                   <TextField fx:id="pPhone" layoutX="14.0" layoutY="84.0" prefHeight="26.0" prefWidth="238.0" promptText="Telefon" />
@@ -43,7 +43,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#bConfirmedClicked" text="Bekræft" />
+                              <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#acceptCreatePerson" text="Bekræft" />
                               <Button fx:id="cancelledPopUp" layoutX="12.0" layoutY="65.0" mnemonicParsing="false" onAction="#cancelledPopUp" text="Annuller" />
                               <Text fill="#ff0101" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vil du gemme dine ændringer?" />
                            </children>
@@ -54,7 +54,7 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Button layoutX="20.0" layoutY="489.0" mnemonicParsing="false" onAction="#showAddPersonWindow" text="Opret Person" />
+      <Button layoutX="20.0" layoutY="489.0" mnemonicParsing="false" onAction="#createPerson" text="Opret Person" />
       <Button layoutX="768.0" layoutY="489.0" mnemonicParsing="false" onAction="#closePersonWindow" text="Tilbage" />
       <TitledPane fx:id="tpOpretKreditering" animated="false" collapsible="false" layoutX="177.0" layoutY="120.0" text="Opret Kreditering" visible="false">
         <content>
@@ -64,7 +64,7 @@
                   <TextField fx:id="tPersonRole" layoutX="26.0" layoutY="90.0" />
                   <Text layoutX="26.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JobRolle:" />
                   <Text layoutX="26.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Navn:" />
-                  <Button layoutX="84.0" layoutY="142.0" mnemonicParsing="false" onAction="#opretKreditering" text="Opret Kreditering" />
+                  <Button layoutX="84.0" layoutY="142.0" mnemonicParsing="false" onAction="#addCredit" text="Opret Kreditering" />
                   <Button layoutX="15.0" layoutY="142.0" mnemonicParsing="false" onAction="#cancelOpretKreditering" text="Annuller" />
                </children>
             </AnchorPane>
@@ -74,7 +74,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#acceptOpretKreditering" text="Bekræft" />
+                  <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#acceptCreateCredit" text="Bekræft" />
                   <Button fx:id="cancelledPopUp1" layoutX="12.0" layoutY="65.0" mnemonicParsing="false" onAction="#cancelConfirm" text="Annuller" />
                   <Text fill="#ff0101" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vil du gemme dine ændringer?" />
                </children>

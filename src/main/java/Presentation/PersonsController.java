@@ -1,30 +1,25 @@
 package Presentation;
 
 import Domain.Catalog.Person;
-import Domain.Catalog.Production;
 import Domain.Facade;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -62,24 +57,7 @@ public class PersonsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         facade.updateCatalog();
-        personsTV.setRowFactory(tv -> {
-            TableRow<Person> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    tpOpretKreditering.toFront();
-                    Person rowData = row.getItem();
-                    informationholder.setPerson(rowData);
-                    if (informationholder.getProduction() != null) {
-                        tpOpretKreditering.setVisible(true);
-                        tPersonName.setText(rowData.getfName() + " " + rowData.getlName());
-                    }
-                }
-                if (row.selectedProperty() != null) {
-                    selectedPerson = row.getItem();
-                }
-            });
-            return row;
-        });
+        choosePerson();
 
 
         uIDcolumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Person, Integer>, ObservableValue<Integer>>() {
@@ -119,8 +97,29 @@ public class PersonsController implements Initializable {
         personsTV.setItems(filteredData);
 
         searchField.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredData.setPredicate(createPredicate(newValue))
+                filteredData.setPredicate(searchForPerson(newValue))
         );
+    }
+
+    private void choosePerson() {
+        personsTV.setRowFactory(tv -> {
+            TableRow<Person> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    tpOpretKreditering.toFront();
+                    Person rowData = row.getItem();
+                    informationholder.setPerson(rowData);
+                    if (informationholder.getProduction() != null) {
+                        tpOpretKreditering.setVisible(true);
+                        tPersonName.setText(rowData.getfName() + " " + rowData.getlName());
+                    }
+                }
+                if (row.selectedProperty() != null) {
+                    selectedPerson = row.getItem();
+                }
+            });
+            return row;
+        });
     }
 
     public void bPConfirmchanges() {
@@ -132,7 +131,7 @@ public class PersonsController implements Initializable {
 
     }
 
-    private Predicate<Person> createPredicate(String searchText) {
+    private Predicate<Person> searchForPerson(String searchText) {
         return Person -> {
             if (searchText == null || searchText.isEmpty()) return true;
             return searchFindsOrder(Person, searchText);
@@ -145,7 +144,7 @@ public class PersonsController implements Initializable {
                 Integer.valueOf(person.getuID()).toString().equals(searchText.toLowerCase());
     }
 
-    public void showAddPersonWindow() {
+    public void createPerson() {
         tAddPerson.setVisible(true);
         tAddPerson.toFront();
     }
@@ -171,7 +170,7 @@ public class PersonsController implements Initializable {
         window.show();
     }
 
-    public void bConfirmedClicked() {
+    public void acceptCreatePerson() {
         //Todo Add information parse to DB
         if (facade.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText()) != -1) {
             hideAddPersonWindow();
@@ -189,13 +188,13 @@ public class PersonsController implements Initializable {
         confirmPopUp.toBack();
     }
 
-    public void updatePersons() {
+    public void addPerson() {
 
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
     }
 
-    public void acceptOpretKreditering(ActionEvent event) {
+    public void acceptCreateCredit(ActionEvent event) {
         //Todo Add information parse to DB
         bPConfirmchanges();
         tPersonName.setText(informationholder.getPerson().getfName());
@@ -226,7 +225,7 @@ public class PersonsController implements Initializable {
         tpOpretKreditering.toBack();
     }
 
-    public void opretKreditering() {
+    public void addCredit() {
         confirmPopUp1.setVisible(true);
         confirmPopUp1.toFront();
     }

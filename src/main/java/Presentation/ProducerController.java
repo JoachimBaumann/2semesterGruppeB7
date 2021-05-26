@@ -1,6 +1,5 @@
 package Presentation;
 
-import Domain.Catalog.Person;
 import Domain.Catalog.Production;
 import Domain.Facade;
 import Domain.Users.User;
@@ -13,20 +12,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -186,7 +181,7 @@ public class ProducerController implements Initializable {
         tBoxLogIn.toBack();
     }
 
-    public void addProductionButton() {
+    public void createProduction() {
         TAddProduction.setVisible(true);
         TAddProduction.toFront();
     }
@@ -259,7 +254,7 @@ public class ProducerController implements Initializable {
         productionTableView.setItems(filteredData);
 
         searchField.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredData.setPredicate(createPredicate(newValue))
+                filteredData.setPredicate(searchForProduction(newValue))
         );
 
 
@@ -294,7 +289,7 @@ public class ProducerController implements Initializable {
         });
     }
 
-    private Predicate<Production> createPredicate(String searchText) {
+    private Predicate<Production> searchForProduction(String searchText) {
         return Production -> {
             if (searchText == null || searchText.isEmpty()) return true;
             return searchFindsOrder(Production, searchText);
@@ -325,7 +320,7 @@ public class ProducerController implements Initializable {
         }
     }
 
-    public void bCreateProduction(ActionEvent actionEvent) {
+    public void acceptCreateProduction(ActionEvent actionEvent) {
         //TODO Add information parse to database
         String releaseDate = tpReleaseDate.getEditor().getText();
         String title = tpTitel.getText();
@@ -355,7 +350,7 @@ public class ProducerController implements Initializable {
         window.setScene(personsViewScene);
         window.show();
     }
-    public void bAddClicked(){
+    public void addProduction(){
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
 
