@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
 public class PersonsController implements Initializable {
+
     public TableView personsTV;
     public TitledPane tAddPerson;
     public TitledPane confirmPopUp;
@@ -58,6 +59,11 @@ public class PersonsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         facade.updateCatalog();
         choosePerson();
+
+        if(informationholder.getUser().getRole().equals("Producer")){
+            bSletPerson.setVisible(false);
+            bSletPerson.toBack();
+        }
 
 
         uIDcolumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Person, Integer>, ObservableValue<Integer>>() {
