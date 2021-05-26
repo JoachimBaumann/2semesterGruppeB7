@@ -116,7 +116,7 @@ public class ProductionController implements Initializable {
         Production production = informationholder.getProduction();
         if (production != null) {
             if (!TitleTextField.getText().isEmpty() && !ReleaseDateTextField.getText().isEmpty() && !ProductionIDTextField.getText().isEmpty() && !BeskrivelseTextArea.getText().isEmpty()) {
-                if(!facade.updateProduction(informationholder.getProduction().getProductionID(), ReleaseDateTextField.getText(), TitleTextField.getText(), BeskrivelseTextArea.getText())){
+                if(facade.updateProduction(informationholder.getProduction().getProductionID(), ReleaseDateTextField.getText(), TitleTextField.getText(), BeskrivelseTextArea.getText())){
                     System.out.println("something went wrong");
                 }
             }
