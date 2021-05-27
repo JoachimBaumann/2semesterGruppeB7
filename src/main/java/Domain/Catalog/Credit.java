@@ -1,15 +1,13 @@
 package Domain.Catalog;
 
-import Domain.Facade;
-
-import java.util.ArrayList;
+import Domain.Creditmanager;
 
 public class Credit {
     private int creditID;
     private String jobTitle;
     private int productionID;
     private int PersonID;
-    Facade facade = Facade.getInstance();
+    Creditmanager creditmanager = Creditmanager.getInstance();
 
     public Credit(int creditID, String jobTitle, int productionID, int personID) {
         this.creditID = creditID;
@@ -19,7 +17,7 @@ public class Credit {
     }
 
     public Person getPerson(int personID){
-        return facade.getPerson(personID);
+        return creditmanager.getPerson(personID);
     }
 
     public int getCreditID() {

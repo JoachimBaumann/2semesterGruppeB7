@@ -1,9 +1,8 @@
 package Presentation;
 
 import Domain.Catalog.Credit;
-import Domain.Catalog.Person;
 import Domain.Catalog.Production;
-import Domain.Facade;
+import Domain.Creditmanager;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -41,7 +40,7 @@ public class ProductionController implements Initializable {
     public Button bRediger;
     public VBox vboxRediger;
     public Button bTilføjKreditering;
-    private Facade facade = Facade.getInstance();
+    private Creditmanager creditmanager = Creditmanager.getInstance();
     public TableView CreditTV;
 
     public TableColumn creditIDColumn;
@@ -116,14 +115,14 @@ public class ProductionController implements Initializable {
         Production production = informationholder.getProduction();
         if (production != null) {
             if (!TitleTextField.getText().isEmpty() && !ReleaseDateTextField.getText().isEmpty() && !ProductionIDTextField.getText().isEmpty() && !BeskrivelseTextArea.getText().isEmpty()) {
-                if(facade.updateProduction(informationholder.getProduction().getProductionID(), ReleaseDateTextField.getText(), TitleTextField.getText(), BeskrivelseTextArea.getText())){
+                if(creditmanager.updateProduction(informationholder.getProduction().getProductionID(), ReleaseDateTextField.getText(), TitleTextField.getText(), BeskrivelseTextArea.getText())){
                     System.out.println("something went wrong");
                 }
             }
         }
 
         int temp = informationholder.getProduction().getProductionID();
-        informationholder.setProduction(facade.getCatalog().getProduction(temp));
+        informationholder.setProduction(creditmanager.getCatalog().getProduction(temp));
         confirmPopUp.toBack();
         confirmPopUp.setVisible(false);
         vboxRediger.setVisible(false);

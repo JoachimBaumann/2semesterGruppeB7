@@ -13,18 +13,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public final class Facade implements CreditManager {
+public final class Creditmanager implements iCreditManager {
 
     private final PersistanceHandler persistanceHandler = PersistanceHandler.getInstance();
-    private final static Facade INSTANCE = new Facade();
+    private final static Creditmanager INSTANCE = new Creditmanager();
     private Catalog catalog;
 
 
-    public static Facade getInstance() {
+    public static Creditmanager getInstance() {
         return INSTANCE;
     }
 
-    private Facade() {
+    private Creditmanager() {
         catalog = new Catalog();
     }
 
@@ -46,10 +46,10 @@ public final class Facade implements CreditManager {
         //update persons
         List<Person> pers = persistanceHandler.getPersons();
 
-        catalog.getPersons().clear();
+        catalog.getPersonsList().clear();
 
         for (Person person : pers) {
-            catalog.getPersons().put(person.getuID(), person);
+            catalog.getPersonsList().put(person.getuID(), person);
         }
 
         List<Credit> templist = persistanceHandler.getCredits();
@@ -74,7 +74,7 @@ public final class Facade implements CreditManager {
     @Override
     public boolean deletePerson(int personID) {
         if (!persistanceHandler.deletePerson(personID)) {
-            catalog.getPersons().remove(personID);
+            catalog.getPersonsList().remove(personID);
             return true;
         } else return false;
     }
@@ -85,11 +85,11 @@ public final class Facade implements CreditManager {
     }
 
     @Override
-    public void addCredit(int productionID, int personID, String jobrole) {
-        int tempID = persistanceHandler.addCredit(productionID, personID, jobrole);
+    public void addCredit(int productionID, int personID, String jobRole) {
+        int tempID = persistanceHandler.addCredit(productionID, personID, jobRole);
 
         if (tempID != -1) {
-            catalog.addToProduction(productionID, new Credit(tempID, jobrole, productionID, personID));
+            catalog.addToProduction(productionID, new Credit(tempID, jobRole, productionID, personID));
         }
     }
 
@@ -134,17 +134,17 @@ public final class Facade implements CreditManager {
     }
 
 
-    public List<Person> viewAllPersons() {
+    public List<Person> viewPersons() {
 
         List<Person> templist = new ArrayList<>();
-        for (Person p : catalog.getPersons().values()) {
+        for (Person p : catalog.getPersonsList().values()) {
             templist.add(p);
         }
         return templist;
     }
 
     public Person getPerson(int personID) {
-        return catalog.getPersons().get(personID);
+        return catalog.getPersonsList().get(personID);
     }
 
     public Catalog getCatalog() {

@@ -43,7 +43,7 @@ public class Catalog {
     }
 
 
-    public HashMap<Integer, Person> getPersons() {
+    public HashMap<Integer, Person> getPersonsList() {
         return persons;
     }
 

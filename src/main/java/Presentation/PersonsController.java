@@ -1,8 +1,7 @@
 package Presentation;
 
 import Domain.Catalog.Person;
-import Domain.Catalog.Production;
-import Domain.Facade;
+import Domain.Creditmanager;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,7 +19,6 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -52,8 +50,8 @@ public class PersonsController implements Initializable {
     public TitledPane bBekræftSlet;
     public Button cancelledPopUp1;
     Informationholder informationholder = Informationholder.getInstance();
-    private Facade facade = Facade.getInstance();
-    ObservableList<Person> persons = FXCollections.observableArrayList(facade.viewAllPersons());
+    private Creditmanager creditmanager = Creditmanager.getInstance();
+    ObservableList<Person> persons = FXCollections.observableArrayList(creditmanager.viewPersons());
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -131,7 +129,7 @@ public class PersonsController implements Initializable {
     public void bPConfirmchanges() {
         if (informationholder.getPerson() != null && informationholder.getProduction() != null) {
             if (!tPersonRole.getText().isEmpty()) {
-                facade.addCredit(informationholder.getProduction().getProductionID(), informationholder.getPerson().getuID(), tPersonRole.getText());
+                creditmanager.addCredit(informationholder.getProduction().getProductionID(), informationholder.getPerson().getuID(), tPersonRole.getText());
             } else System.out.println("Empty textfield");
         }
 
@@ -178,7 +176,7 @@ public class PersonsController implements Initializable {
 
     public void acceptCreatePerson() {
         //Todo Add information parse to DB
-        if (facade.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText()) != -1) {
+        if (creditmanager.addPerson(pMail.getText(), pFirstName.getText(), pLastName.getText(), Integer.valueOf(pPhone.getText()), pBeskrivelse.getText()) != -1) {
             hideAddPersonWindow();
 
         }
@@ -210,7 +208,7 @@ public class PersonsController implements Initializable {
         confirmPopUp1.setVisible(false);
         confirmPopUp1.toBack();
         int productionID = informationholder.getProduction().getProductionID();
-        informationholder.setProduction(facade.getCatalog().getProduction(productionID));
+        informationholder.setProduction(creditmanager.getCatalog().getProduction(productionID));
 
         Parent productionViewParent = null;
         try {
@@ -228,7 +226,7 @@ public class PersonsController implements Initializable {
 
     public void updateList(){
         persons.clear();
-        for (Person p : facade.viewAllPersons()){
+        for (Person p : creditmanager.viewPersons()){
             persons.add(p);
         }
 
@@ -266,7 +264,7 @@ public class PersonsController implements Initializable {
     }
 
     public void acceptDeletePerson(ActionEvent event) {
-        if (facade.deletePerson(selectedPerson.getuID())) {
+        if (creditmanager.deletePerson(selectedPerson.getuID())) {
             annullerSletConfirm();
             updateList();
         } else {

@@ -1,7 +1,7 @@
 package Presentation;
 
 import Domain.Catalog.Production;
-import Domain.Facade;
+import Domain.Creditmanager;
 import Domain.Users.User;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -63,8 +63,8 @@ public class ProducerController implements Initializable {
     public Button bFjernProduktion;
     public TitledPane tBekræftSletProduktion;
     public TitledPane tFejlProduktion;
-    private Facade facade = Facade.getInstance();
-    ObservableList<Production> productions = FXCollections.observableArrayList(facade.viewProductions());
+    private Creditmanager creditmanager = Creditmanager.getInstance();
+    ObservableList<Production> productions = FXCollections.observableArrayList(creditmanager.viewProductions());
     private Informationholder informationholder = Informationholder.getInstance();
     private Production selectedProduction = null;
 
@@ -148,7 +148,7 @@ public class ProducerController implements Initializable {
         // incomming spagetticode
     public void login(){
         if(userName != null && userPassword != null){
-            User user = facade.getUser(userName.getText());
+            User user = creditmanager.getUser(userName.getText());
             if(user != null){
                 if(userName.getText().equals(user.getUsername()) && userPassword.getText().equals(user.getPassword())){
                     informationholder.setUser(user);
@@ -194,7 +194,7 @@ public class ProducerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
              //Initializing tableview
-        facade.updateCatalog();
+        creditmanager.updateCatalog();
         updateList();
         productionTableView = new TableView<Production>(productions);
 
@@ -308,7 +308,7 @@ public class ProducerController implements Initializable {
     public void updateList() {
 
         productions.clear();
-        for (Production p : facade.viewProductions()) {
+        for (Production p : creditmanager.viewProductions()) {
             productions.add(p);
         }
     }
@@ -318,7 +318,7 @@ public class ProducerController implements Initializable {
         String releaseDate = tpReleaseDate.getEditor().getText();
         String title = tpTitel.getText();
         String description = tpBeskrivelse.getText();
-        facade.addProduction(releaseDate, title, description);
+        creditmanager.addProduction(releaseDate, title, description);
 
         updateList();
         confirmPopUp.setVisible(false);
@@ -374,7 +374,7 @@ public class ProducerController implements Initializable {
     }
 
     public void acceptDeleteProduction(ActionEvent event) {
-        if(facade.deleteProduction(selectedProduction.getProductionID())){
+        if(creditmanager.deleteProduction(selectedProduction.getProductionID())){
             pProduktionSletAnnuller();
             updateList();
         }
