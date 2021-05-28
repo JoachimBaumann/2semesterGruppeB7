@@ -24,12 +24,6 @@ public class Production {
 
     }
 
-    //Skal nedenstående slettes? Bliver ikke benyttet
-    /*
-    public void updateProduction(int productionID) {
-        throw new UnsupportedOperationException();
-    }*/
-
     public int getProductionID() {
         return productionID;
     }
