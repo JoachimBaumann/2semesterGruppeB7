@@ -81,16 +81,6 @@ public class ProducerController implements Initializable {
     @FXML
     private TableColumn<Production, String> pReleaseDateColumn;
 
-    //These instance variables are used to create new Person objects
-    @FXML
-    private TextField pIDTextfield;
-    @FXML
-    private TextField pTitelTextField;
-    @FXML
-    private TextField pDescriptionTextField;
-    @FXML
-    private TextField pReleaseDateTextField;
-
 
     public void signIn() {
         if (informationholder.getUser().getRole().equals("Producer")) {

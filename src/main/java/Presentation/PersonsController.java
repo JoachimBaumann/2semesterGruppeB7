@@ -3,6 +3,7 @@ package Presentation;
 import Domain.Catalog.Person;
 import Domain.Creditmanager;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -103,7 +104,17 @@ public class PersonsController implements Initializable {
         searchField.textProperty().addListener((observable, oldValue, newValue) ->
                 filteredData.setPredicate(searchForPerson(newValue))
         );
+        pPhone.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    pPhone.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
+
 
     private void choosePerson() {
         personsTV.setRowFactory(tv -> {
@@ -276,6 +287,5 @@ public class PersonsController implements Initializable {
         bBekræftSlet.setVisible(false);
         bBekræftSlet.toBack();
     }
-
 
 }
