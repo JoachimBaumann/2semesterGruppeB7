@@ -34,11 +34,11 @@ public class Catalog {
     }
 
 
-    public void addPerson(int personID, Person person) {
+    public void addPersonToCatalog(int personID, Person person) {
         persons.put(personID, person);
     }
 
-    public void addProduction(int productionID, Production production) {
+    public void addProductionToCatalog(int productionID, Production production) {
         productions.put(productionID, production);
     }
 
@@ -56,7 +56,7 @@ public class Catalog {
         return productions.get(productionName);
     }
 
-    public void addToProduction(int productionID, Credit credit) {
+    public void addCreditToProduction(int productionID, Credit credit) {
         productions.get(productionID).addToProduction(credit);
     }
 

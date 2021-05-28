@@ -54,7 +54,7 @@ public final class Creditmanager implements iCreditManager {
 
         List<Credit> templist = persistanceHandler.getCredits();
         for (Credit c : templist) {
-            catalog.addToProduction(c.getProductionID(), c);
+            catalog.addCreditToProduction(c.getProductionID(), c);
 
         }
 
@@ -89,7 +89,7 @@ public final class Creditmanager implements iCreditManager {
         int tempID = persistanceHandler.addCredit(productionID, personID, jobRole);
 
         if (tempID != -1) {
-            catalog.addToProduction(productionID, new Credit(tempID, jobRole, productionID, personID));
+            catalog.addCreditToProduction(productionID, new Credit(tempID, jobRole, productionID, personID));
         }
     }
 
@@ -105,7 +105,7 @@ public final class Creditmanager implements iCreditManager {
     public int addPerson(String mail, String fName, String lName, int phonenumber, String description) {
         int tempID = persistanceHandler.addPerson(mail, fName, lName, phonenumber, description);
         if (tempID != -1) {
-            catalog.addPerson(tempID, new Person(mail, fName, lName, phonenumber, tempID, description));
+            catalog.addPersonToCatalog(tempID, new Person(mail, fName, lName, phonenumber, tempID, description));
         }
         return -1;
     }
@@ -114,7 +114,7 @@ public final class Creditmanager implements iCreditManager {
     public int addProduction(String releaseDate, String productionName, String description) {
         int tempID = persistanceHandler.addProduction(releaseDate, productionName, description);
         if (tempID != -1) {
-            catalog.addProduction(tempID, new Production(tempID, releaseDate, productionName, description));
+            catalog.addProductionToCatalog(tempID, new Production(tempID, releaseDate, productionName, description));
         }
 
         return -1;
