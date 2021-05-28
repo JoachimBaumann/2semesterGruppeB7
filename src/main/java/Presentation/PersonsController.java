@@ -111,9 +111,10 @@ public class PersonsController implements Initializable {
                 if (!newValue.matches("\\d*")) {
                     pPhone.setText(newValue.replaceAll("[^\\d]", ""));
                 }
-            }
-        });
-    }
+                }
+            });
+        };
+
 
 
     private void choosePerson() {
