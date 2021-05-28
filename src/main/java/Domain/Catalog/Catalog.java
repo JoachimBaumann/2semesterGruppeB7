@@ -16,6 +16,8 @@ public class Catalog {
         return productions;
     }
 
+    //Skal nedenstående slettes? Metoderne bliver ikke benyttet
+/*
     public void createProduction(Integer productionID, String date, String productionName, String description) {
         productions.put(productionID, new Production(productionID, date, productionName, description));
     }
@@ -31,7 +33,7 @@ public class Catalog {
         persons.get(uID).setMail(mail);
         persons.get(uID).setPhoneNumber(phoneNumber);
 
-    }
+    }*/
 
 
     public void addPersonToCatalog(int personID, Person person) {
@@ -51,10 +53,11 @@ public class Catalog {
         return productions.get(productionID);
     }
 
-    //ikke færdig
+    //Skal nedenstående slettes? Den bliver ikke benyttet
+   /*
     public Production getProduction(String productionName) {
         return productions.get(productionName);
-    }
+    } */
 
     public void addCreditToProduction(int productionID, Credit credit) {
         productions.get(productionID).addToProduction(credit);
