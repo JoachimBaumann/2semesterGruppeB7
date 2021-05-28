@@ -148,7 +148,7 @@ public class ProducerController implements Initializable {
     // incomming spagetticode
     public void login() {
         if (userName != null && userPassword != null) {
-            User user = creditmanager.getUser(userName.getText(), userPassword.getText());
+            User user = creditmanager.login(userName.getText(), userPassword.getText());
 
             if (user != null) {
                 informationholder.setUser(user);

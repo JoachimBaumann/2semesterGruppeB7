@@ -167,7 +167,7 @@ public final class Creditmanager implements iCreditManager {
         return tempList;
     }
 
-    public User getUser(String username, String password) {
+    public User login(String username, String password) {
         ResultSet resultSet = persistanceHandler.getLogin(username);
 
         try {
@@ -191,6 +191,7 @@ public final class Creditmanager implements iCreditManager {
             return true;
         } else
             return false;
+    }
     }
 
 
