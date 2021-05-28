@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.PersonsController">
+   <children>
+      <TextField fx:id="searchField" layoutX="229.0" layoutY="87.0" prefHeight="26.0" prefWidth="360.0" promptText="Søg efter personer" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="319.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/TV2CREDITS.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="personsTV" editable="true" layoutX="25.0" layoutY="120.0" prefHeight="360.0" prefWidth="799.0">
+        <columns>
+          <TableColumn fx:id="uIDcolumn" prefWidth="44.0" text="uID" />
+          <TableColumn fx:id="fnameColumn" prefWidth="114.80001831054688" text="Navn" />
+            <TableColumn fx:id="lNameColumn" prefWidth="114.00001525878906" text="Efternavn" />
+            <TableColumn fx:id="mailColumn" prefWidth="140.800048828125" text="Mail" />
+            <TableColumn fx:id="phoneColumn" prefWidth="118.39996337890625" text="Telefon" />
+            <TableColumn fx:id="beskrivelsecolumn" prefWidth="260.80010986328125" text="Beskrivelse" />
+        </columns>
+      </TableView>
+      <TitledPane fx:id="tAddPerson" animated="false" layoutX="285.0" layoutY="113.0" text="Tilføj Person" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="266.0">
+               <children>
+                  <Button layoutX="210.0" layoutY="196.0" mnemonicParsing="false" onAction="#addPerson" text="Tilføj" />
+                  <TextField fx:id="pFirstName" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="238.0" promptText="Fornavn" />
+                  <TextField fx:id="pLastName" layoutX="14.0" layoutY="51.0" prefHeight="26.0" prefWidth="238.0" promptText="Efternavn" />
+                  <TextField fx:id="pPhone" layoutX="14.0" layoutY="84.0" prefHeight="26.0" prefWidth="238.0" promptText="Telefon" />
+                  <TextField fx:id="pMail" layoutX="14.0" layoutY="118.0" prefHeight="26.0" prefWidth="238.0" promptText="Mail" />
+                  <TextField fx:id="pBeskrivelse" layoutX="14.0" layoutY="152.0" prefHeight="26.0" prefWidth="238.0" promptText="Beskrivelse" />
+                  <Button layoutX="142.0" layoutY="196.0" mnemonicParsing="false" onAction="#hideAddPersonWindow" text="Annuller" />
+                  <TitledPane fx:id="confirmPopUp" animated="false" layoutX="38.0" layoutY="53.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#acceptCreatePerson" text="Bekræft" />
+                              <Button fx:id="cancelledPopUp" layoutX="12.0" layoutY="65.0" mnemonicParsing="false" onAction="#cancelledPopUp" text="Annuller" />
+                              <Text fill="#ff0101" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vil du gemme dine ændringer?" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <Button layoutX="20.0" layoutY="489.0" mnemonicParsing="false" onAction="#createPerson" text="Opret Person" />
+      <Button layoutX="768.0" layoutY="489.0" mnemonicParsing="false" onAction="#closePersonWindow" text="Tilbage" />
+      <TitledPane fx:id="tpOpretKreditering" animated="false" collapsible="false" layoutX="177.0" layoutY="120.0" text="Opret Kreditering" visible="false">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="tPersonName" editable="false" layoutX="26.0" layoutY="22.0" />
+                  <TextField fx:id="tPersonRole" layoutX="26.0" layoutY="90.0" />
+                  <Text layoutX="26.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JobRolle:" />
+                  <Text layoutX="26.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Navn:" />
+                  <Button layoutX="84.0" layoutY="142.0" mnemonicParsing="false" onAction="#addCredit" text="Opret Kreditering" />
+                  <Button layoutX="15.0" layoutY="142.0" mnemonicParsing="false" onAction="#cancelOpretKreditering" text="Annuller" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane fx:id="confirmPopUp1" animated="false" layoutX="204.0" layoutY="97.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#acceptCreateCredit" text="Bekræft" />
+                  <Button fx:id="cancelledPopUp1" layoutX="12.0" layoutY="65.0" mnemonicParsing="false" onAction="#cancelConfirm" text="Annuller" />
+                  <Text fill="#ff0101" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vil du gemme dine ændringer?" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <Button fx:id="bSletPerson" layoutX="124.0" layoutY="489.0" mnemonicParsing="false" onAction="#deletePerson" text="Slet Person" />
+      <TitledPane fx:id="bBekræftSlet" animated="false" collapsible="false" layoutX="325.0" layoutY="200.0" prefHeight="130.0" prefWidth="190.0" text="Slet Person" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#annullerSletConfirm" text="Annuller" />
+                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" onAction="#acceptDeletePerson" text="Bekræft" />
+                  <Text fill="RED" layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Er du sikker på du vil slette denne person?" wrappingWidth="135.92578125" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane fx:id="tFejl" animated="false" collapsible="false" layoutX="320.0" layoutY="225.0" prefHeight="97.0" prefWidth="179.0" text="Fejl" visible="false">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Text fill="RED" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du har ikke valgt en person." />
+                  <Button fx:id="bFejlOK" layoutX="127.0" layoutY="35.0" mnemonicParsing="false" onAction="#setbFejlOK" text="OK" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</AnchorPane>

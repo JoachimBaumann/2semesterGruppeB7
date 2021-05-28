@@ -1,17 +1,26 @@
 package Domain.Catalog;
 
-public class Credit {
-    private String jobTitle;
-    private int creditID;
-    Person p;
+import Domain.Creditmanager;
 
-    public Credit(String jobTitle, int creditID, Person p) {
-        this.jobTitle = jobTitle;
+public class Credit {
+    private int creditID;
+    private String jobTitle;
+    private int productionID;
+    private int PersonID;
+    Creditmanager creditmanager = Creditmanager.getInstance();
+
+    public Credit(int creditID, String jobTitle, int productionID, int personID) {
         this.creditID = creditID;
-        this.p = p;
+        this.jobTitle = jobTitle;
+        this.productionID = productionID;
+        PersonID = personID;
     }
 
-    public int getCreditID(){
+    public Person getPerson(int personID){
+        return creditmanager.getPerson(personID);
+    }
+
+    public int getCreditID() {
         return creditID;
     }
 
@@ -19,15 +28,23 @@ public class Credit {
         return jobTitle;
     }
 
-    public Person getPerson() {
-        return p;
+    public int getProductionID() {
+        return productionID;
     }
 
-    @Override
-    public String toString() {
-        return "Credit{" +
-                "jobTitle='" + jobTitle + '\'' +
-                ", p=" + p +
-                '}';
+    public int getPersonID() {
+        return PersonID;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public void setProductionID(int productionID) {
+        this.productionID = productionID;
+    }
+
+    public void setPersonID(int personID) {
+        PersonID = personID;
     }
 }

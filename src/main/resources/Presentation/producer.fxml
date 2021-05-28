@@ -2,13 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,13 +18,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane onDragDetected="#addProduction" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.Controller">
+<AnchorPane fx:id="mainPane" prefHeight="540.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ProducerController">
    <children>
-      <ToolBar layoutY="78.0" prefHeight="40.0" prefWidth="838.0">
+      <ToolBar layoutY="78.0" prefHeight="40.0" prefWidth="872.0">
         <items>
-            <Button mnemonicParsing="false" onAction="#viewAllProductions" text="Alle produtioner" />
-            <Button fx:id="bAddProduction" mnemonicParsing="false" onAction="#addProductionButton" text="Tilføj produktion" visible="false" />
-            <Button fx:id="bAddCredit" mnemonicParsing="false" text="Tilføj kreditering" visible="false" />
+            <Button mnemonicParsing="false" text="Alle Produtioner" />
+            <Button fx:id="bAddCredit" mnemonicParsing="false" onAction="#openPersonWindow" text="Personer" visible="false" />
             <Button fx:id="bsignOut" mnemonicParsing="false" onAction="#signOutP" text="Log ud" visible="false" />
         </items>
       </ToolBar>
@@ -33,16 +32,14 @@
             <Image url="@../Images/TV2CREDITS.png" />
          </image>
       </ImageView>
-      <Text fx:id="tLogProd" fill="#1c4e2c" layoutX="657.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du er logget ind som: Producer" visible="false" />
-      <Text fx:id="tLogAdmin" fill="#1c4e2c" layoutX="657.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du er logget ind som: Administrator" visible="false" />
-      <Text fx:id="tLogUser" fill="#1c4e2c" layoutX="657.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du er logget ind som: Bruger" visible="false" />
-      <SplitMenuButton fx:id="logInd" layoutX="751.0" layoutY="23.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Log ind">
+      <Text fx:id="tLogProd" fill="#1c4e2c" layoutX="600.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du er logget ind som: Producer" visible="false" />
+      <SplitMenuButton fx:id="logInd" layoutX="756.0" layoutY="23.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Log ind">
          <items>
-            <MenuItem fx:id="action1" mnemonicParsing="false" onAction="#actionOne" text="Log ind" />
+            <MenuItem fx:id="action1" mnemonicParsing="false" onAction="#openLogin" text="Log ind" />
             <MenuItem fx:id="action2" mnemonicParsing="false" onAction="#actionTwo" text="Opret bruger" />
          </items>
       </SplitMenuButton>
-      <TableView fx:id="tableView" layoutX="-2.0" layoutY="170.0" prefHeight="388.0" prefWidth="883.0">
+      <TableView fx:id="tableView" layoutX="-2.0" layoutY="170.0" prefHeight="388.0" prefWidth="883.0" visible="false">
         <columns>
           <TableColumn fx:id="tID" prefWidth="120.0" text="ID" />
           <TableColumn fx:id="tTitel" minWidth="0.0" prefWidth="300.0" text="Titel" />
@@ -50,30 +47,33 @@
             <TableColumn fx:id="tReleaseDate" minWidth="0.0" prefWidth="162.0" text="ReleaseDate" />
         </columns>
       </TableView>
-      <HBox layoutX="530.0" layoutY="90.0">
-         <children>
-            <TextField prefHeight="26.0" prefWidth="270.0" promptText="Søgefelt" />
-            <Button mnemonicParsing="false" onAction="#bSearchP" text="Søg" />
-         </children>
-      </HBox>
-      <VBox fx:id="vBoxLogIn" layoutX="431.0" layoutY="85.0" prefHeight="94.0" prefWidth="371.0">
-         <children>
-            <VBox fx:id="vBoxSignIn" prefHeight="106.0" prefWidth="371.0" visible="false">
+      <TitledPane fx:id="tBoxLogIn" animated="false" layoutX="251.0" layoutY="209.0" prefHeight="98.0" prefWidth="378.0" text="LogIn" visible="false">
+         <content>
+            <VBox fx:id="vBoxLogIn" prefHeight="194.0" prefWidth="374.0">
                <children>
-                  <HBox fx:id="hBoxSignIn" prefHeight="62.0" prefWidth="371.0" snapToPixel="false">
+                  <VBox fx:id="vBoxSignIn" prefHeight="106.0" prefWidth="371.0">
                      <children>
-                        <TextField fx:id="userName" promptText="Brugernavn" />
-                        <PasswordField fx:id="userPassword" promptText="Adgangskode" />
-                        <Button minHeight="19.0" minWidth="46.0" mnemonicParsing="false" onAction="#signIn" prefHeight="25.0" prefWidth="58.0" text="Log Ind" />
+                        <HBox fx:id="hBoxSignIn" prefHeight="62.0" prefWidth="371.0" snapToPixel="false">
+                           <children>
+                              <TextField fx:id="userName" promptText="Brugernavn" />
+                              <PasswordField fx:id="userPassword" promptText="Adgangskode" />
+                              <Button minHeight="19.0" minWidth="46.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="58.0" text="Log Ind" />
+                           </children>
+                        </HBox>
+                        <Text fx:id="tPassword" fill="#ff0404" strokeType="OUTSIDE" strokeWidth="0.0" text="Forkert brugernavn eller adgangskode" visible="false" wrappingWidth="204.53673362731934" />
+                        <Button mnemonicParsing="false" onAction="#bCancel" text="Cancel" />
+                        <Button mnemonicParsing="false" onAction="#forgotCode" text="Glemt din kode?" />
                      </children>
-                  </HBox>
-                  <Label fx:id="label" prefHeight="18.0" prefWidth="257.0" textFill="#d90e0e" />
-                  <Button mnemonicParsing="false" onAction="#bCancel" text="Cancel" />
-                  <Button mnemonicParsing="false" onAction="#forgotCode" text="Glemt din kode?" />
+                  </VBox>
                </children>
             </VBox>
+         </content>
+      </TitledPane>
+      <HBox layoutX="568.0" layoutY="90.0" prefHeight="26.0" prefWidth="271.0">
+         <children>
+            <TextField fx:id="searchField" prefHeight="26.0" prefWidth="270.0" promptText="Søgefelt" />
          </children>
-      </VBox>
+      </HBox>
       <AnchorPane fx:id="newMember" layoutX="429.0" layoutY="202.0" prefHeight="200.0" prefWidth="363.0" visible="false">
          <children>
             <TextField layoutY="10.0" prefHeight="10.0" prefWidth="168.0" />
@@ -104,31 +104,73 @@
             <Button layoutX="68.0" layoutY="161.0" mnemonicParsing="false" onAction="#rCancel" text="Cancel" />
          </children>
       </AnchorPane>
-      <VBox fx:id="vAddProduction" layoutX="8.0" layoutY="201.0" prefHeight="161.0" prefWidth="331.0" visible="false">
-         <children>
-            <HBox prefHeight="64.0" prefWidth="366.0">
+      <TitledPane fx:id="TAddProduction" animated="false" collapsible="false" layoutX="7.0" layoutY="132.0" text="Tilføj Produktion" visible="false">
+        <content>
+          <AnchorPane>
                <children>
-                  <TextField fx:id="tpTitel" prefHeight="28.0" prefWidth="330.0" promptText="Titel" />
+                  <VBox prefHeight="161.0" prefWidth="331.0">
+                     <children>
+                        <HBox prefHeight="64.0" prefWidth="366.0">
+                           <children>
+                              <TextField fx:id="tpTitel" prefHeight="28.0" prefWidth="330.0" promptText="Titel" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="331.0">
+                           <children>
+                              <TextField fx:id="tpBeskrivelse" prefHeight="28.0" prefWidth="330.0" promptText="Beskrivelse" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="42.0">
+                           <children>
+                              <DatePicker fx:id="tpReleaseDate" editable="false" prefWidth="330.0" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#closeAddProductionWindow" prefHeight="25.0" prefWidth="99.0" text="Luk" textAlignment="JUSTIFY" />
+                              <TextField prefHeight="25.0" prefWidth="273.0" promptText="releaseDate" visible="false" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#addProduction" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="64.0" prefWidth="368.0">
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <Button fx:id="bAddProduction" layoutX="7.0" layoutY="132.0" mnemonicParsing="false" onAction="#createProduction" text="Tilføj Produktion" visible="false" />
+      <TitledPane fx:id="confirmPopUp" animated="false" collapsible="false" layoutX="338.0" layoutY="150.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="tpBeskrivelse" prefHeight="28.0" prefWidth="330.0" promptText="Beskrivelse" />
+                  <Button layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#acceptCreateProduction" text="Bekræft" />
+                  <Button fx:id="cancelledPopUp" layoutX="12.0" layoutY="65.0" mnemonicParsing="false" onAction="#cancelledPopUp" text="Annuller" />
+                  <Text fill="#ff0101" layoutX="12.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vil du gemme dine ændringer?" />
                </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="42.0">
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <Button fx:id="bFjernProduktion" layoutX="116.0" layoutY="132.0" mnemonicParsing="false" onAction="#deleteProduction" text="Slet Produktion" visible="false" />
+      <TitledPane fx:id="tBekræftSletProduktion" animated="false" collapsible="false" layoutX="335.0" layoutY="210.0" prefHeight="130.0" prefWidth="190.0" text="Slet Produktion" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <DatePicker fx:id="tpReleaseDate" editable="false" promptText="releaseDate" />
+                  <Button layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#pProduktionSletAnnuller" text="Annuller" />
+                  <Button layoutX="107.0" layoutY="61.0" mnemonicParsing="false" onAction="#acceptDeleteProduction" text="Bekræft" />
+                  <Text fill="RED" layoutX="26.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Er du sikker på du vil slette denne produktion?" wrappingWidth="135.92578125" />
                </children>
-            </HBox>
-            <HBox>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane fx:id="tFejlProduktion" animated="false" collapsible="false" layoutX="335.0" layoutY="171.0" text="Fejl" visible="false">
+        <content>
+          <AnchorPane layoutX="320.0" layoutY="225.0" minHeight="0.0" minWidth="0.0" prefHeight="97.0" prefWidth="179.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#closeAddProductionWindow" prefHeight="25.0" prefWidth="99.0" text="Luk" textAlignment="JUSTIFY" />
-                  <TextField prefHeight="25.0" prefWidth="273.0" promptText="releaseDate" visible="false" />
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#bCreateProduction" prefHeight="25.0" prefWidth="99.0" text="Tilføj" textAlignment="JUSTIFY" />
+                  <Text fill="RED" layoutX="6.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du har ikke valgt en produktion" />
+                  <Button layoutX="129.0" layoutY="56.0" mnemonicParsing="false" onAction="#pFejlProduktionOK" text="OK" />
                </children>
-            </HBox>
-         </children>
-      </VBox>
+            </AnchorPane>
+        </content>
+      </TitledPane>
    </children>
 </AnchorPane>
