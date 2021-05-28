@@ -93,7 +93,7 @@ public class ProducerController implements Initializable {
 
 
     public void signIn() {
-        if (informationholder.getUser().getRole().equals("Producer"))  {
+        if (informationholder.getUser().getRole().equals("Producer")) {
             tLogProd.setVisible(true);
             tLogProd.setText("Du er logget ind som: " + informationholder.getUser().getRole());
             tBoxLogIn.setVisible(false);
@@ -105,7 +105,7 @@ public class ProducerController implements Initializable {
             tBoxLogIn.toBack();
             //HUndeprutter lugter ik
         }
-        if (informationholder.getUser().getRole().equals("Systemadministrator")){
+        if (informationholder.getUser().getRole().equals("Systemadministrator")) {
             tLogProd.setVisible(true);
             tLogProd.setText("Du er logget ind som: " + informationholder.getUser().getRole());
             tBoxLogIn.setVisible(false);
@@ -145,19 +145,18 @@ public class ProducerController implements Initializable {
     }
 
 
-        // incomming spagetticode
-    public void login(){
-        if(userName != null && userPassword != null){
-            User user = creditmanager.getUser(userName.getText());
-            if(user != null){
-                if(userName.getText().equals(user.getUsername()) && userPassword.getText().equals(user.getPassword())){
-                    informationholder.setUser(user);
-                    signIn();
-                }
-                else tPassword.setVisible(true);
+    // incomming spagetticode
+    public void login() {
+        if (userName != null && userPassword != null) {
+            User user = creditmanager.getUser(userName.getText(), userPassword.getText());
+
+            if (user != null) {
+                informationholder.setUser(user);
+                signIn();
             } else tPassword.setVisible(true);
         }
     }
+
 
     public void openLogin(ActionEvent actionEvent) {
         tBoxLogIn.setVisible(true);
@@ -193,12 +192,12 @@ public class ProducerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-             //Initializing tableview
+        //Initializing tableview
         creditmanager.updateCatalog();
         updateList();
         productionTableView = new TableView<Production>(productions);
 
-        if(informationholder.getUser() != null) {
+        if (informationholder.getUser() != null) {
             signIn();
         }
         // this makes it possible to doubleClick a row
@@ -284,7 +283,8 @@ public class ProducerController implements Initializable {
                     window.show();
 
 
-                } if(event.getClickCount() == 1) {
+                }
+                if (event.getClickCount() == 1) {
                     selectedProduction = row.getItem();
                 }
             });
@@ -336,45 +336,47 @@ public class ProducerController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene personsViewScene = new Scene(personsViewParent, 838,540);
+        Scene personsViewScene = new Scene(personsViewParent, 838, 540);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         window.setScene(personsViewScene);
         window.show();
     }
-    public void addProduction(){
+
+    public void addProduction() {
         confirmPopUp.toFront();
         confirmPopUp.setVisible(true);
 
     }
-    public void cancelledPopUp(){
+
+    public void cancelledPopUp() {
         confirmPopUp.setVisible(false);
         confirmPopUp.toBack();
     }
 
 
-    public void deleteProduction(){
+    public void deleteProduction() {
         if (selectedProduction != null) {
             tBekræftSletProduktion.setVisible(true);
             tBekræftSletProduktion.toFront();
         } else
             tFejlProduktion.setVisible(true);
-            tFejlProduktion.toFront();
+        tFejlProduktion.toFront();
     }
 
-    public void pFejlProduktionOK(){
+    public void pFejlProduktionOK() {
         tFejlProduktion.setVisible(false);
         tFejlProduktion.toBack();
     }
 
-    public void pProduktionSletAnnuller(){
+    public void pProduktionSletAnnuller() {
         tBekræftSletProduktion.setVisible(false);
         tBekræftSletProduktion.toBack();
     }
 
     public void acceptDeleteProduction(ActionEvent event) {
-        if(creditmanager.deleteProduction(selectedProduction.getProductionID())){
+        if (creditmanager.deleteProduction(selectedProduction.getProductionID())) {
             pProduktionSletAnnuller();
             updateList();
         }

@@ -72,9 +72,9 @@ public final class Creditmanager implements iCreditManager {
     }
 
     @Override
-    public boolean deletePerson(int personID) {
-        if (!persistanceHandler.deletePerson(personID)) {
-            catalog.getPersonsList().remove(personID);
+    public boolean deletePerson(int uID) {
+        if (!persistanceHandler.deletePerson(uID)) {
+            catalog.getPersonsList().remove(uID);
             return true;
         } else return false;
     }
@@ -167,17 +167,20 @@ public final class Creditmanager implements iCreditManager {
         return tempList;
     }
 
-    public User getUser(String username) {
+    public User getUser(String username, String password) {
         ResultSet resultSet = persistanceHandler.getLogin(username);
 
         try {
             resultSet.next();
             User user = new User(resultSet.getString("username"), resultSet.getString("password"), resultSet.getString("role"), resultSet.getInt("userID"));
-            return user;
+            if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                return user;
+            }
 
         } catch (SQLException throwables) {
             return null;
         }
+        return null;
 
     }
 
