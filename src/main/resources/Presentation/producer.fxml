@@ -46,7 +46,7 @@
             <TableColumn fx:id="tReleaseDate" minWidth="0.0" prefWidth="162.0" text="ReleaseDate" />
         </columns>
       </TableView>
-      <TitledPane fx:id="tBoxLogIn" animated="false" layoutX="251.0" layoutY="209.0" prefHeight="98.0" prefWidth="378.0" text="LogIn" visible="false">
+      <TitledPane fx:id="tBoxLogIn" animated="false" collapsible="false" layoutX="251.0" layoutY="209.0" prefHeight="98.0" prefWidth="378.0" text="LogIn" visible="false">
          <content>
             <VBox fx:id="vBoxLogIn" prefHeight="194.0" prefWidth="374.0">
                <children>

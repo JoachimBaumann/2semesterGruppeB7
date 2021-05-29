@@ -28,7 +28,7 @@
             <TableColumn fx:id="beskrivelsecolumn" prefWidth="260.80010986328125" text="Beskrivelse" />
         </columns>
       </TableView>
-      <TitledPane fx:id="tAddPerson" animated="false" layoutX="285.0" layoutY="113.0" text="Tilføj Person" visible="false">
+      <TitledPane fx:id="tAddPerson" animated="false" collapsible="false" layoutX="285.0" layoutY="113.0" text="Tilføj Person" visible="false">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="266.0">
                <children>
@@ -70,7 +70,7 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <TitledPane fx:id="confirmPopUp1" animated="false" layoutX="204.0" layoutY="97.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
+      <TitledPane fx:id="confirmPopUp1" animated="false" collapsible="false" layoutX="204.0" layoutY="97.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>

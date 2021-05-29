@@ -45,7 +45,7 @@
       </VBox>
       <Button layoutX="477.0" layoutY="499.0" mnemonicParsing="false" onAction="#cancelProduction" prefHeight="26.0" prefWidth="58.0" text="Tilbage" />
       <Button fx:id="bTilføjKreditering" layoutX="610.0" layoutY="500.0" mnemonicParsing="false" onAction="#createCredit" text="Opret Kreditering" visible="false" />
-      <TitledPane fx:id="confirmPopUp" animated="false" layoutX="241.0" layoutY="224.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
+      <TitledPane fx:id="confirmPopUp" animated="false" collapsible="false" layoutX="241.0" layoutY="224.0" prefHeight="130.0" prefWidth="190.0" text="Bekræft Ændringer" visible="false">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
