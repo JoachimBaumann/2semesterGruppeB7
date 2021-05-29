@@ -200,8 +200,8 @@ public class ProducerController implements Initializable {
 
         pIDColumn.setText("ID");
         pTitelColumn.setText("Titel");
-        pDescriptionColumn.setText("Description");
-        pReleaseDateColumn.setText("Release Date");
+        pDescriptionColumn.setText("Beskrivelse");
+        pReleaseDateColumn.setText("Udgivelsesdato");
         productionTableView.toBack();
         //placement
         productionTableView.setLayoutX(-2);

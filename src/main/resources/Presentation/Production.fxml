@@ -17,21 +17,21 @@
       <Text fx:id="tProductionTitle" layoutX="548.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="tProductionReleaseDate" layoutX="548.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="tProductionID" layoutX="548.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="tProduktionBeskrivelse" layoutX="548.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="tProduktionBeskrivelse" layoutX="548.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="275.0" text="Text" />
       <ImageView fitHeight="513.0" fitWidth="519.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/Funny-Movie-Poster-Parodies-movies-34619671-600-889.jpg" />
          </image></ImageView>
       <TableView fx:id="CreditTV" layoutX="477.0" layoutY="227.0" prefHeight="262.0" prefWidth="346.0">
         <columns>
-          <TableColumn fx:id="creditIDColumn" prefWidth="75.0" text="CreditID" />
-          <TableColumn fx:id="jobroleColumn" prefWidth="75.0" text="JobRole" />
-            <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="First Name" />
-            <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Last Name" />
+          <TableColumn fx:id="creditIDColumn" prefWidth="75.0" text="KreditID" />
+          <TableColumn fx:id="jobroleColumn" prefWidth="75.0" text="JobRolle" />
+            <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="Fornavn" />
+            <TableColumn fx:id="lastNameColumn" prefWidth="92.0" text="Efternavn" />
         </columns>
       </TableView>
-      <Text layoutX="520.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" wrappingWidth="29.33673095703125" />
-      <Text layoutX="477.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ReleaseDate:" wrappingWidth="70.936767578125" />
+      <Text layoutX="520.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titel:" wrappingWidth="29.33673095703125" />
+      <Text layoutX="461.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Udgivelsesdato:" wrappingWidth="83.936767578125" />
       <Text layoutX="472.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ProduktionID:" wrappingWidth="77.3367919921875" />
       <Text layoutX="484.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beskrivelse:" wrappingWidth="62.13671875" />
       <Button fx:id="bConfirmed" layoutX="723.0" layoutY="500.0" mnemonicParsing="false" onAction="#saveProductionChanges" text="Gem ændringer" visible="false" />

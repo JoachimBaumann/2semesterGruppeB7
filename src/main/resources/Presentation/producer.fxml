@@ -60,7 +60,7 @@
                            </children>
                         </HBox>
                         <Text fx:id="tPassword" fill="#ff0404" strokeType="OUTSIDE" strokeWidth="0.0" text="Forkert brugernavn eller adgangskode" visible="false" wrappingWidth="204.53673362731934" />
-                        <Button mnemonicParsing="false" onAction="#bCancel" text="Cancel" />
+                        <Button mnemonicParsing="false" onAction="#bCancel" text="Annuller" />
                         <Button mnemonicParsing="false" onAction="#forgotCode" text="Glemt din kode?" />
                      </children>
                   </VBox>
